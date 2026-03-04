@@ -15,7 +15,7 @@ export default function CTA() {
       {/* خلفية مضيئة */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none" />
 
-      {/* شريط متحرك */}
+      {/* شريط متحرك v*/}
       <div className="absolute top-10 w-full border-y border-white/5 py-4 bg-white/[0.02] -rotate-1 scale-105 overflow-hidden flex whitespace-nowrap z-0 opacity-50">
         <div className="flex animate-[marquee_30s_linear_infinite] items-center gap-12">
           {[1,2,3,4,5,6].map((i) => (
