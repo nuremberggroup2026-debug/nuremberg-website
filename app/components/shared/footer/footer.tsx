@@ -108,7 +108,7 @@ export default function ProfessionalBalancedFooter() {
             {modules.map((item) => (
               <li
                 key={item}
-                className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer"
+                className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer break-words"
               >
                 {item}
               </li>
@@ -124,7 +124,7 @@ export default function ProfessionalBalancedFooter() {
             </h4>
 
             <a href="mailto:hello@ntech.pro">
-              <span className="text-xl md:text-2xl font-black uppercase italic tracking-tighter">
+              <span className="text-xl md:text-2xl font-black uppercase italic tracking-tighter break-words">
                 {t.email}
               </span>
               <ArrowUpRight className="inline-block ml-3 text-cyan-500" size={20} />
@@ -153,7 +153,7 @@ export default function ProfessionalBalancedFooter() {
                 <span className="text-[9px] text-gray-600 block uppercase tracking-[0.3em]">
                   {t.station}
                 </span>
-                <span className="text-[9px] text-white/40 block uppercase tracking-[0.3em]">
+                <span className="text-[9px] text-white/40 block uppercase tracking-[0.3em] break-words">
                   {t.location}
                 </span>
               </div>
@@ -180,7 +180,8 @@ export default function ProfessionalBalancedFooter() {
           </div>
         </div>
 
-        <div className="text-[9px] font-black text-gray-800 uppercase">
+        {/* حل مشكلة النص الطويل */}
+        <div className="text-[9px] font-black text-gray-800 uppercase break-words">
           © 2026 Nuremberg_Technology_Holdings
         </div>
       </div>
