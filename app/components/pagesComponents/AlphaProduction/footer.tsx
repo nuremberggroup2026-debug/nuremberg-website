@@ -169,10 +169,11 @@ export default function PageFooter({ locale }: PageFooterProps) {
             <Cpu size={12} /> {t.kernel}
           </div>
         </div>
-
+{/* Bottom
         <div className="text-[9px] font-black text-gray-800 uppercase">
           © 2026 Nuremberg_Technology_Holdings
         </div>
+         */}
       </div>
     </footer>
   );

@@ -180,10 +180,11 @@ export default function ProfessionalBalancedFooter() {
           </div>
         </div>
 
-        {/* حل مشكلة النص الطويل */}
+        {/* حل مشكلة النص الطويل 
         <div className="text-[9px] font-black text-gray-800 uppercase break-words">
           © 2026 Nuremberg_Technology_Holdings
         </div>
+        */}
       </div>
     </footer>
   );
