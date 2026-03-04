@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model applications {
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  first_name   String    @db.VarChar(255)
+  last_name    String?   @db.VarChar(255)
+  email        String    @db.VarChar(255)
+  major        String    @db.VarChar(255)
+  applied_at   DateTime? @default(now()) @db.Timestamp(6)
+  cv           String
+  career_id    String    @db.Uuid
+  phone_number String?   @db.VarChar(255)
+  is_shown     Boolean?  @default(false)
+  careers      careers   @relation(fields: [career_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model banners {
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  alt            String?   @db.VarChar(255)
+  image          String?
+  description_en String?
+  description_ar String?
+  created_at     DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model careers {
+  id              String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  position_en     String?        @db.VarChar(255)
+  position_ar     String?        @db.VarChar(255)
+  description_en  String?
+  description_ar  String?
+  requirements_en String[]
+  requirements_ar String[]
+  experience_en   String?        @db.VarChar(255)
+  experience_ar   String?        @db.VarChar(255)
+  role_en         String?        @db.VarChar(255)
+  role_ar         String?        @db.VarChar(255)
+  is_deleted      Boolean?       @default(false)
+  slug            String         @unique @db.VarChar(255)
+  image           String?        @db.VarChar(255)
+  applications    applications[]
+}
+
+model categories {
+  id                      String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  category_name_en        String     @db.VarChar(255)
+  category_name_ar        String     @db.VarChar(255)
+  category_description_en String?
+  category_description_ar String?
+  category_logo           String?    @db.VarChar(255)
+  slug                    String     @unique @db.VarChar(255)
+  projects                projects[]
+}
+
+model clients {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name_en    String    @db.VarChar(255)
+  logo       String    @db.VarChar(255)
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+  name_ar    String    @db.VarChar(255)
+}
+
+model our_team {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name_en        String   @db.VarChar(255)
+  name_ar        String   @db.VarChar(255)
+  description_en String
+  description_ar String
+  position_en    String   @db.VarChar(255)
+  position_ar    String   @db.VarChar(255)
+  image          String   @db.VarChar(255)
+  display_order  Int?
+  main           Boolean? @default(false)
+}
+
+model projects {
+  id                     String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_name_en        String     @db.VarChar(255)
+  project_name_ar        String     @db.VarChar(255)
+  project_description_en String?    @db.VarChar(255)
+  project_description_ar String?    @db.VarChar(255)
+  category_id            String     @db.Uuid
+  project_image          String?
+  slug                   String     @unique @db.VarChar(255)
+  categories             categories @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model reset_password_token {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  token     String    @unique
+  user_id   String?   @db.Uuid
+  create_at DateTime? @default(now()) @db.Timestamp(6)
+  expire_at DateTime  @db.Timestamp(6)
+  users     users?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model users {
+  id                   String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  first_name           String                 @db.VarChar(255)
+  last_name            String?                @db.VarChar(225)
+  email                String                 @unique @db.VarChar(255)
+  password             String?                @db.VarChar(255)
+  role                 role                   @default(user)
+  reset_password_token reset_password_token[]
+}
+
+enum role {
+  admin
+  user
+}
