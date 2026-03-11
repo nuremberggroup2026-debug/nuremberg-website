@@ -88,21 +88,21 @@ export function Robot({ mouse, robotRotate, ...props }: RobotProps) {
     );
   });
 
-useEffect(() => {
-  if (!actions) return;
+  useEffect(() => {
+    if (!actions) return;
 
-  const action = actions["bot_B_face|Take 001|BaseLayer"];
-  if (!action) return;
+    const action = actions["bot_B_face|Take 001|BaseLayer"];
+    if (!action) return;
 
-  requestAnimationFrame(() => {
-    action.reset().play();
-    action.setLoop(THREE.LoopRepeat, Infinity);
-  });
+    requestAnimationFrame(() => {
+      action.reset().play();
+      action.setLoop(THREE.LoopRepeat, Infinity);
+    });
 
-  return () => {
-    action.stop();
-  };
-}, [actions]);
+    return () => {
+      action.stop();
+    };
+  }, [actions]);
 
   return (
     <group

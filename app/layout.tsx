@@ -4,6 +4,7 @@ import { ROOT_METADATA } from "@/lib/constants/metadata";
 
 import { NextIntlClientProvider } from "next-intl";
 import { Toaster } from "@/components/ui/sonner"
+import LoadingScreen from "@/app/components/LoadingScreen";
 
 
 import FontSwitcher from "@/app/components/fontswitcher/FontSwitcher";
@@ -21,7 +22,7 @@ export default function RootLayout({
       <body className="antialiased bg-white text-white">
         <NextAuthProviders>
             <NextIntlClientProvider>
-         
+         <LoadingScreen/>
               <FontSwitcher locale={"en"}>{children}</FontSwitcher>
              
           <Toaster
