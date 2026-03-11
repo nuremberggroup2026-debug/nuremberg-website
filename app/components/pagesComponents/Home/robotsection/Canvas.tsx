@@ -27,8 +27,8 @@ export default function Canvass({
         gl.compile(scene, camera);
       }}
     >
-      <ambientLight intensity={0.4} />
-      <directionalLight position={[3, 3, 0]} intensity={1} />
+      <ambientLight intensity={1} />
+      <directionalLight position={[3, 3, 0]} intensity={5} />
 
       <Suspense fallback={null}>
         <Scene

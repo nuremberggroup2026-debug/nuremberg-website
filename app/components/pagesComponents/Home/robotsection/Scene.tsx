@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { Robot } from "@/public/models/Robot";
+import { Robot } from "@/public/models/Hrobot";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 
