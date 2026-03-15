@@ -18,13 +18,7 @@ export default function Section2Mobile() {
             key={item.id}
             className="relative px-6 py-20 border-b border-cyan-500/10"
           >
-            {/* الرقم الخلفي */}
-            <div
-              className={`absolute top-10 font-black text-[28vw] leading-none select-none pointer-events-none opacity-[0.04] text-cyan-500
-              ${isRightAligned ? "left-4" : "right-4"}`}
-            >
-              {item.num}
-            </div>
+         
 
             <div
               className={`relative z-10 flex flex-col gap-6 ${
@@ -38,7 +32,7 @@ export default function Section2Mobile() {
                 )}
 
                 <span className="text-cyan-500 font-mono text-[10px] tracking-[0.35em] uppercase italic">
-                  {item.label} _ {item.num}
+                  {item.label} 
                 </span>
 
                 {isRightAligned && (
