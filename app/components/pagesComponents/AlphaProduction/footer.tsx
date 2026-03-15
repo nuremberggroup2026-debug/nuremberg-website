@@ -8,12 +8,11 @@ import {
 } from "lucide-react";
 
 interface PageFooterProps {
-  locale: string; // نعتمد فقط على locale
+  locale: string;
 }
 
 export default function PageFooter({ locale }: PageFooterProps) {
-
-  // نستخرج اللغة الأساسية من locale (مثلاً ar-JO → ar)
+  // تحديد اللغة
   const detectedLang = locale?.startsWith("ar") ? "ar" : "en";
   const isArabic = detectedLang === "ar";
 
@@ -63,128 +62,135 @@ export default function PageFooter({ locale }: PageFooterProps) {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   const modules = [t.backend, t.alpha, t.cloud, t.web3];
 
   return (
-    <footer
-      dir={isArabic ? "rtl" : "ltr"}
-      className="bg-[#030303] text-white px-4 md:px-16 pb-12 relative"
-    >
-      <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-white/5">
+    /* الحاوية الخارجية التي تضمن ارتفاع الصفحة بالكامل (h-screen) */
+    /* اللون الأحمر bg-red-600 هو الذي سيكمل المساحة الفارغة فوق الفوتر */
+    <div className="w-full h-screen bg-black flex flex-col justify-end overflow-hidden">
+      
+      {/* الفوتر بالأبعاد الأصلية */}
+      <footer
+        dir={isArabic ? "rtl" : "ltr"}
+        className="bg-[#030303] text-white px-4 md:px-16 pb-12 relative w-full"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-white/5">
 
-        {/* LEFT */}
-        <div className="md:col-span-5 p-10 md:p-16 space-y-12">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-black border border-cyan-500/30 flex items-center justify-center rounded-xl">
-              <Command size={22} className="text-cyan-500" />
-            </div>
-            <div>
-              <span className="text-2xl font-black uppercase italic tracking-tighter block">
-                Nuremberg_
-              </span>
-              <span className="text-[9px] font-mono text-cyan-500/60 tracking-[0.3em] uppercase">
-                Tech_Evolution
-              </span>
-            </div>
-          </div>
-
-          <p className="text-sm text-gray-500 leading-relaxed max-w-sm">
-            {t.description}
-          </p>
-
-          <div className="flex gap-4">
-            <SocialIcon icon={<Instagram size={18} />} />
-            <SocialIcon icon={<Linkedin size={18} />} />
-            <SocialIcon icon={<Github size={18} />} />
-          </div>
-        </div>
-
-        {/* MODULES */}
-        <div className="md:col-span-3 p-10 md:p-16">
-          <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
-            {t.modules}
-          </h4>
-          <ul className="space-y-6">
-            {modules.map((item) => (
-              <li
-                key={item}
-                className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* RIGHT */}
-        <div className="md:col-span-4 p-10 md:p-16 flex flex-col justify-between">
-          <div>
-            <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
-              {t.initiate}
-            </h4>
-            <a href={`mailto:${t.email}`}>
-              <span className="text-xl md:text-2xl font-black uppercase italic tracking-tighter">
-                {t.email}
-              </span>
-              <ArrowUpRight className="inline-block ml-3 text-cyan-500" size={20} />
-            </a>
-          </div>
-
-          <div className="mt-12 space-y-8">
-            <div className="grid grid-cols-2 gap-4">
-              <StatCard icon={<Activity size={12} />} label={t.uptime} value="99.99%" />
-              <StatCard icon={<Zap size={12} />} label={t.latency} value={`${ping}ms`} />
-            </div>
-
-            <div className="flex items-center justify-between">
+          {/* LEFT SECTION */}
+          <div className="md:col-span-5 p-10 md:p-16 space-y-12">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-black border border-cyan-500/30 flex items-center justify-center rounded-xl">
+                <Command size={22} className="text-cyan-500" />
+              </div>
               <div>
-                <span className="text-[9px] text-gray-600 block uppercase tracking-[0.3em]">
-                  {t.station}
+                <span className="text-2xl font-black uppercase italic tracking-tighter block">
+                  Nuremberg_
                 </span>
-                <span className="text-[9px] text-white/40 block uppercase tracking-[0.3em]">
-                  {t.location}
+                <span className="text-[9px] font-mono text-cyan-500/60 tracking-[0.3em] uppercase">
+                  Tech_Evolution
                 </span>
               </div>
+            </div>
 
-              <button
-                onClick={scrollToTop}
-                className="w-12 h-12 border border-white/10 flex items-center justify-center rounded-xl hover:bg-cyan-500 hover:text-black transition-all duration-500"
-              >
-                <ChevronUp size={20} />
-              </button>
+            <p className="text-sm text-gray-500 leading-relaxed max-w-sm">
+              {t.description}
+            </p>
+
+            <div className="flex gap-4">
+              <SocialIcon icon={<Instagram size={18} />} />
+              <SocialIcon icon={<Linkedin size={18} />} />
+              <SocialIcon icon={<Github size={18} />} />
+            </div>
+          </div>
+
+          {/* MODULES SECTION */}
+          <div className="md:col-span-3 p-10 md:p-16">
+            <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
+              {t.modules}
+            </h4>
+            <ul className="space-y-6">
+              {modules.map((item) => (
+                <li
+                  key={item}
+                  className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer transition-colors"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* RIGHT SECTION */}
+          <div className="md:col-span-4 p-10 md:p-16 flex flex-col justify-between">
+            <div>
+              <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
+                {t.initiate}
+              </h4>
+              <a href={`mailto:${t.email}`} className="group inline-block">
+                <span className="text-xl md:text-2xl font-black uppercase italic tracking-tighter group-hover:text-cyan-400 transition-colors">
+                  {t.email}
+                </span>
+                <ArrowUpRight className="inline-block ml-3 text-cyan-500 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={20} />
+              </a>
+            </div>
+
+            <div className="mt-12 space-y-8">
+              <div className="grid grid-cols-2 gap-4">
+                <StatCard icon={<Activity size={12} />} label={t.uptime} value="99.99%" />
+                <StatCard icon={<Zap size={12} />} label={t.latency} value={`${ping}ms`} />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-[9px] text-gray-600 block uppercase tracking-[0.3em]">
+                    {t.station}
+                  </span>
+                  <span className="text-[9px] text-white/40 block uppercase tracking-[0.3em]">
+                    {t.location}
+                  </span>
+                </div>
+
+                <button
+                  onClick={scrollToTop}
+                  className="w-12 h-12 border border-white/10 flex items-center justify-center rounded-xl hover:bg-cyan-500 hover:text-black transition-all duration-500 shadow-lg shadow-black"
+                >
+                  <ChevronUp size={20} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom */}
-      <div className="px-10 py-6 border-t border-white/5 flex justify-between items-center bg-black/50">
-        <div className="flex gap-6 text-[9px] font-black text-gray-700 uppercase">
-          <div className="flex items-center gap-2">
-            <Globe size={12} /> {t.network}
-          </div>
-          <div className="flex items-center gap-2">
-            <Cpu size={12} /> {t.kernel}
+        {/* BOTTOM BAR */}
+        <div className="px-10 py-6 border-t border-white/5 flex justify-between items-center bg-black/50">
+          <div className="flex gap-6 text-[9px] font-black text-gray-700 uppercase">
+            <div className="flex items-center gap-2">
+              <Globe size={12} /> {t.network}
+            </div>
+            <div className="flex items-center gap-2">
+              <Cpu size={12} /> {t.kernel}
+            </div>
           </div>
         </div>
-{/* Bottom
-        <div className="text-[9px] font-black text-gray-800 uppercase">
-          © 2026 Nuremberg_Technology_Holdings
-        </div>
-         */}
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 }
 
+// مكون الأيقونات الاجتماعية
 const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
-  <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-500 hover:border-cyan-500 hover:text-cyan-500 transition-all duration-500 cursor-pointer rounded-xl">
+  <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-500 hover:border-cyan-500 hover:text-cyan-500 transition-all duration-500 cursor-pointer rounded-xl bg-white/[0.02]">
     {icon}
   </div>
 );
 
+// مكون بطاقة الإحصائيات
 const StatCard = ({
   icon,
   label,
@@ -194,7 +200,7 @@ const StatCard = ({
   label: string;
   value: string;
 }) => (
-  <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+  <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
     <div className="flex items-center gap-2 text-cyan-500 mb-1">
       {icon}
       <span className="text-[8px] font-mono font-black uppercase tracking-widest">

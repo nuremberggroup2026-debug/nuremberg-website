@@ -19,21 +19,20 @@ export default function HeroSection({
   // النصوص حسب اللغة
   const messages: Record<string, Record<string, string>> = {
     en: {
-      title: "ALPHA PROD.",
-      highlight: "PROD.",
+      title: "ALPHA",
+      highlight: "PRODUCTION.",
       subtitle: "We Tell Your Story",
       start: "Start Experience",
-      description: `Alpha Production was established to 
-      redefine your visual perspective. We guide you through every creative phase, leveraging
-      professional mastery to ensure your story is told with precision.`,
+      description: `Alpha Production delivers standout visual content that helps your brand communicate effectively.
+From video and photography to digital media, we turn ideas into impactful visuals.`,
     },
     ar: {
       title: "ألفا",
-      highlight: "الإنتاج",
+      highlight: "للانتاج",
       subtitle: "نروي قصتك",
       start: "ابدأ التجربة",
-      description: `تأسست ألفا للإنتاج لإعادة تعريف رؤيتك البصرية. 
-      نحن نرشدك خلال كل مرحلة إبداعية، مستفيدين من الخبرة المهنية لضمان سرد قصتك بدقة.`,
+      description: `ألفا برودكشن تقدم محتوى بصري مميز يساعد علامتك التجارية على التواصل بفعالية.
+من الفيديو والتصوير إلى الميديا الرقمية، نبتكر أفكارًا تتحول إلى واقع ملموس.`,
     },
   };
 

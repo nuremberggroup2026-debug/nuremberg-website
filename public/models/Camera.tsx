@@ -38,7 +38,9 @@ export function Camera(props: JSX.IntrinsicElements['group']) {
   }, [materials])
 
   return (
-    <group {...props} dispose={null} scale={15} position={[0, -0.5, 0]}>
+    <>
+  
+    <group {...props} dispose={null}  scale={15} position={[0, -0.5, 0]}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <mesh receiveShadow castShadow geometry={nodes['#CAM0001_Body_#CAM0001_Textures_0'].geometry} material={fixedMaterial} />
         <mesh receiveShadow castShadow geometry={nodes['#CAM0001_Battery_Check_#CAM0001_Textures_0'].geometry} material={fixedMaterial} position={[0.05, 0.001, 0.072]} />
@@ -48,6 +50,7 @@ export function Camera(props: JSX.IntrinsicElements['group']) {
         <mesh receiveShadow castShadow geometry={nodes['#CAM0001_Shutter_Speed_#CAM0001_Textures_0'].geometry} material={fixedMaterial} position={[-0.057, 0.001, 0.073]} />
       </group>
     </group>
+    </>
   )
 }
 

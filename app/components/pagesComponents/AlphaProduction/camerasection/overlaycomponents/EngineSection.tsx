@@ -41,7 +41,7 @@ export default function EngineSection({ locale }: Props) {
   const t = translations[locale];
 
   return (
-    <section className="relative w-full   h-screen flex items-center justify-center px-6 md:px-16 py-32 overflow-hidden">
+    <section className="relative w-full    h-screen flex items-center justify-center px-6 md:px-16 py-32 overflow-hidden">
       
       {/* Background Frame Lines */}
       <div className="absolute inset-0 pointer-events-none">

@@ -6,6 +6,7 @@ import HeroSection from "@/app/components/pagesComponents/AlphaProduction/HeroSe
 import CameraSection from "@/app/components/pagesComponents/AlphaProduction/CameraSection";
 import CTA from "@/app/components/pagesComponents/Home/CTASection";
 
+
 gsap.registerPlugin(useGSAP);
  
 export default function Desktop() {
@@ -91,13 +92,14 @@ export default function Desktop() {
   };
 
   return (
-    <main className="h-screen w-screen snap-y snap-mandatory overflow-x-hidden bg-black overflow-y-auto">
+    <main className="h-screen w-screen snap-y snap-mandatory overflow-x-hidden bg-black  overflow-y-auto">
       <HeroSection
         heroRef={heroRef}
         arrowsContainer={arrowsContainer}
         scrollToScene={scrollToScene}
       />
       <CameraSection sceneRef={sceneRef} />
+
 
     </main>
   );

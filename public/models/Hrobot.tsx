@@ -38,13 +38,13 @@ type RobotProps = React.ComponentPropsWithoutRef<"group"> & {
   mouse?: React.MutableRefObject<{ x: number; y: number }>;
   robotRotate: string;
   setRobotRotate: React.Dispatch<React.SetStateAction<string>>;
-  headSensitivity?: number; // متغير جديد للحساسية
+  headSensitivity?: number;
 };
 
 export function Robot({
   mouse,
   robotRotate,
-  headSensitivity = 1, // افتراضي 1
+  headSensitivity = 1,
   ...props
 }: RobotProps) {
   const bodyRef = useRef<THREE.Group>(null);
@@ -64,8 +64,9 @@ export function Robot({
     if (!bodyRef.current) return;
 
     let targetZ = 0;
+
     if (robotRotate === "left") targetZ = THREE.MathUtils.degToRad(20);
-    else if (robotRotate === "right") targetZ = THREE.MathUtils.degToRad(-20);
+    if (robotRotate === "right") targetZ = THREE.MathUtils.degToRad(-20);
 
     bodyRef.current.rotation.z = THREE.MathUtils.lerp(
       bodyRef.current.rotation.z,
@@ -78,37 +79,33 @@ export function Robot({
   useFrame(() => {
     if (!headRef.current || !mouse?.current) return;
 
-    const maxAngleY = -0.25 * headSensitivity; // الماكس مضروب بالحساسية
+    const maxAngleY = -0.25 * headSensitivity;
     const maxAngleX = -0.3 * headSensitivity;
 
     const targetRotationZ = mouse.current.x * maxAngleY;
     const targetRotationX = mouse.current.y * maxAngleX;
 
-    // lerp سلس لتقليل التقطيش
     headRef.current.rotation.z = THREE.MathUtils.lerp(
       headRef.current.rotation.z,
       targetRotationZ,
       0.8
     );
+
     headRef.current.rotation.x = THREE.MathUtils.lerp(
       headRef.current.rotation.x,
       targetRotationX,
       0.8
     );
   });
-  console.log(actions)
 
   /* ===== ANIMATION ===== */
   useEffect(() => {
-    if (!actions) return;
-
-    const action = actions["Take 001"];
+    const action = actions?.["Take 001"];
     if (!action) return;
 
-    requestAnimationFrame(() => {
-      action.reset().play();
-      action.setLoop(THREE.LoopRepeat, Infinity);
-    });
+    action.reset();
+    action.setLoop(THREE.LoopRepeat, Infinity);
+    action.play();
 
     return () => {
       action.stop();
@@ -171,14 +168,20 @@ export function Robot({
                 geometry={nodes.Mesh_2.geometry}
                 material={materials.glass}
               />
+
+              {/* LEFT ARM */}
               <mesh
+                name="bot_B_arm_l"
                 geometry={nodes.bot_B_arm_l.geometry}
                 material={materials.bot_B_texture_blue}
                 position={[5.081, 0.547, -12.334]}
                 rotation={[-Math.PI, 0, 0]}
                 scale={-1}
               />
+
+              {/* RIGHT ARM */}
               <mesh
+                name="bot_B_arm_r"
                 geometry={nodes.bot_B_arm_r.geometry}
                 material={materials.bot_B_texture_blue}
                 position={[-5.068, 0.547, -12.334]}

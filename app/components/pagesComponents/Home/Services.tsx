@@ -50,8 +50,8 @@ export default function Services() {
                 onMouseEnter={() => setActive(index)}
                 className={`relative p-7 cursor-pointer rounded-xl transition-all duration-500 border-l-[3px] 
                   ${active === index 
-                    ? 'bg-white/[0.02] border-cyan-500 translate-x-3 shadow-[15px_0_30px_rgba(6,182,212,0.1)]' 
-                    : 'bg-transparent border-transparent hover:border-white/10'}`}
+                    ? 'bg-[#030303] border-cyan-500 translate-x-3 shadow-[15px_0_30px_rgba(6,182,212,0.1)]' 
+                    : 'bg-[#030303] border-transparent hover:border-white/10'}`}
               >
                 <div className="flex items-start gap-5">
                   <div className={`p-3 rounded-lg bg-[#0a0a0a] border transition-all duration-500 ${active === index ? 'border-cyan-500/50 scale-105 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'border-white/5'}`}>

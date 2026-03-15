@@ -15,7 +15,7 @@ export default function ProfessionalBalancedFooter() {
   const translations = {
     en: {
       description:
-        "Architecting high-performance digital ecosystems and cinematic narratives with surgical precision.",
+        "We help businesses and organizations unlock their full potential through innovative technology and digital solutions. By combining strategy, creativity, and advanced technology, we deliver solutions that create real value and sustainable growth.",
       modules: "Modules",
       backend: "Backend Systems",
       alpha: "Alpha Production",
@@ -32,7 +32,7 @@ export default function ProfessionalBalancedFooter() {
     },
     ar: {
       description:
-        "نقوم ببناء أنظمة رقمية عالية الأداء وصناعة تجارب سينمائية بدقة هندسية متناهية.",
+        "نساعد الشركات والمؤسسات على تحقيق كامل إمكاناتها من خلال حلول تقنية ورقمية مبتكرة. ومن خلال الجمع بين الاستراتيجية والإبداع والتكنولوجيا المتقدمة، نقدم حلولاً تخلق قيمة حقيقية وتدعم النمو المستدام.",
       modules: "الوحدات",
       backend: "أنظمة الخلفية",
       alpha: "إنتاج ألفا",

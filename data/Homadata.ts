@@ -1,25 +1,29 @@
 export const homeData = {
-  en: {
+en: {
     hero: {
       badge: "Logic & Influence Unified",
-      title: ["ENGINEERING", "RELEVANCE."],
-      description: "We build high-performance software architectures that scale with global demand.",
+      title: ["Nuremberg", "Group"],
+      description: "We help businesses grow through innovative technology, creative media, and strategic digital solutions designed to deliver measurable impact.",
+      cta: {
+        primary: "Start Your Project",
+        secondary: "Contact Us"
+      },
       cards: [
-        {
-          title: "Programming",
-          desc: "High-performance software architectures for global scalability.",
+        { 
+          title: "Programming", 
+          desc: "High-performance software architectures for global scalability." 
         },
-        {
-          title: "Social Media",
-          desc: "Data-driven strategies that define digital culture.",
+        { 
+          title: "Social Media", 
+          desc: "Data-driven strategies that define digital culture." 
         },
-        {
-          title: "Initiate Project",
-          desc: "Kickstart your collaboration with our team.",
+        { 
+          title: "Initiate Project", 
+          desc: "Kickstart your collaboration with our team." 
         },
-        
       ],
     },
+  
    /////////////////////////////////////////////////////////
      aboutSection: {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
@@ -41,21 +45,18 @@ export const homeData = {
         id: "mission",
         title: "Our Mission",
         label: "System_Objective",
-        num: "01",
-        desc: "To engineer ultra-high-performance digital infrastructures that redefine the boundaries of human-machine interaction.",
+        desc: "To empower businesses and organizations with innovative digital solutions that enhance efficiency, strengthen digital presence, and create measurable business impact.",
       },
       {
         id: "vision",
         title: "Our Vision",
         label: "Future_Projection",
-        num: "02",
-        desc: "Architecting a world where decentralization and intelligence merge seamlessly. Becoming the fundamental core of digital innovation.",
+        desc: "To become a trusted technology partner for businesses seeking digital transformation and sustainable growth in an evolving digital world.",
       },
       {
         id: "values",
         title: "Our Values",
         label: "Core_Protocols",
-        num: "03",
         desc: "Innovation is our default state. Integrity is our encryption. We operate with a 'Security-by-Design' philosophy.",
       },
     ],
@@ -82,27 +83,24 @@ export const homeData = {
     ],
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     whyUs: [
-      {
-        title: "Technical Dominance",
-        desc: "We don't just use tools; we architect systems that are scalable, secure, and future-proof.",
-        stat: "99.9% Uptime"
-      },
-      {
-        title: "Cinematic Precision",
-        desc: "Our media wing produces high-end visual stories that don't just look good—they convert.",
-        stat: "8K Quality"
-      },
-      {
-        title: "Rapid Execution",
-        desc: "Time is currency. Our agile workflow ensures your project goes from concept to launch in record time.",
-        stat: "2X Faster"
-      },
-      {
-        title: "Partner Ecosystem",
-        desc: "We don't work for you; we work with you. Your growth is the only metric we care about.",
-        stat: "50+ Partners"
-      }
-    ],
+    {
+      title: "Proven Expertise",
+      desc: "Our team combines technical knowledge, creative thinking, and industry experience to deliver reliable digital solutions."
+    },
+    {
+      title: "Tailored Solutions",
+      desc: "We understand that every business is unique, which is why we design customized solutions that align with each client’s goals and challenges."
+    },
+    {
+      title: "Commitment to Quality",
+      desc: "We maintain high standards in every project, ensuring performance, reliability, and long-term value."
+    },
+ 
+    {
+      title: "Results-Driven Approach",
+      desc: "Our focus is on delivering solutions that create measurable impact and support business growth."
+    }
+  ],
     hud: ["Cyber_Security", "Visual_Mastery", "Market_Logic"],
     ///////////////////////////////////////////////////////////////////////
         cta: {
@@ -118,43 +116,47 @@ export const homeData = {
         id: "mission",
         title: "Our Mission",
         label: "System_Objective",
-        num: "01",
-        desc: "To engineer ultra-high-performance digital infrastructures that redefine the boundaries of human-machine interaction.",
+       
+        desc: "To empower businesses and organizations with innovative digital solutions that enhance efficiency, strengthen digital presence, and create measurable business impact.",
       },
       {
         id: "vision",
         title: "Our Vision",
         label: "Future_Projection",
-        num: "02",
-        desc: "Architecting a world where decentralization and intelligence merge seamlessly. Becoming the fundamental core of digital innovation.",
+
+        desc: "To become a trusted technology partner for businesses seeking digital transformation and sustainable growth in an evolving digital world.",
       },
       {
         id: "values",
         title: "Our Values",
         label: "Core_Protocols",
-        num: "03",
-        desc: "Innovation is our default state. Integrity is our encryption. We operate with a 'Security-by-Design' philosophy.",
+ 
+        desc: "We continuously explore new technologies and creative ideas to deliver modern digital solutions.",
       },
     ],
     
   },
-  ar: {
+ar: {
     hero: {
       badge: "المنطق والتأثير الموحد",
-      title: ["الهندسة", "الأهمية."],
-      description: "ننشئ هياكل برمجية عالية الأداء تتوسع مع الطلب العالمي.",
+      title: ["نوريمبيرغ", "مجموعة"],
+      description: "نساعد الشركات والمؤسسات على النمو من خلال التكنولوجيا المبتكرة، والإنتاج الإعلامي الإبداعي، والحلول الرقمية الاستراتيجية التي تحقق نتائج ملموسة.",
+      cta: {
+        primary: "ابدأ مشروعك",
+        secondary: "تواصل معنا"
+      },
       cards: [
-        {
-          title: "البرمجة",
-          desc: "هياكل برمجية عالية الأداء قابلة للتوسع عالميًا.",
+        { 
+          title: "البرمجة", 
+          desc: "هياكل برمجية عالية الأداء قابلة للتوسع عالميًا." 
         },
-        {
-          title: "وسائل التواصل الاجتماعي",
-          desc: "استراتيجيات تعتمد على البيانات تحدد الثقافة الرقمية.",
+        { 
+          title: "وسائل التواصل الاجتماعي", 
+          desc: "استراتيجيات تعتمد على البيانات تحدد الثقافة الرقمية." 
         },
-        {
-          title: "بدء المشروع",
-          desc: "ابدأ تعاونك مع فريقنا.",
+        { 
+          title: "بدء المشروع", 
+          desc: "ابدأ تعاونك مع فريقنا بنقرة واحدة." 
         },
       ],
     },
@@ -179,14 +181,12 @@ export const homeData = {
         id: "mission",
         title: "مهمتنا",
         label: "هدف_النظام",
-        num: "01",
-        desc: "هندسة بنى رقمية فائقة الأداء تعيد تعريف حدود التفاعل بين الإنسان والآلة.",
+        desc: "تمكين الشركات والمؤسسات من خلال حلول رقمية مبتكرة تعزز الكفاءة، وتقوي الحضور الرقمي، وتحقق أثراً ملموساً في الأداء والنمو.",
       },
       {
         id: "vision",
         title: "رؤيتنا",
         label: "مشروع_المستقبل",
-        num: "02",
         desc: "تصميم عالم حيث يندمج اللامركزية والذكاء بسلاسة، لنصبح جوهر الابتكار الرقمي.",
       },
       {
@@ -219,28 +219,25 @@ export const homeData = {
       }
     ],
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-     whyUs: [
-      {
-        title: "الهيمنة التقنية",
-        desc: "لا نستخدم الأدوات فقط؛ بل نصمم أنظمة قابلة للتوسع، آمنة، ومستعدة للمستقبل.",
-        stat: "99.9% وقت تشغيل"
-      },
-      {
-        title: "الدقة السينمائية",
-        desc: "قسم الإعلام لدينا ينتج قصصًا بصرية عالية الجودة لا تبدو جيدة فقط بل تحقق نتائج.",
-        stat: "جودة 8K"
-      },
-      {
-        title: "التنفيذ السريع",
-        desc: "الوقت هو العملة. يضمن أسلوب عملنا المرن أن يتحول مشروعك من الفكرة إلى الإطلاق بسرعة قياسية.",
-        stat: "أسرع بمقدار 2X"
-      },
-      {
-        title: "نظام الشركاء",
-        desc: "لا نعمل لك؛ نعمل معك. نموك هو المقياس الوحيد الذي نهتم به.",
-        stat: "50+ شركاء"
-      }
-    ],
+     whyUs:  [
+    {
+      title: "خبرة مثبتة",
+      desc: "يجمع فريقنا بين المعرفة التقنية والخبرة العملية والتفكير الإبداعي لتقديم حلول رقمية موثوقة."
+    },
+    {
+      title: "حلول مصممة خصيصاً",
+      desc: "ندرك أن لكل شركة احتياجاتها الخاصة، لذلك نقدم حلولاً مصممة بما يتناسب مع أهداف كل عميل وتحدياته."
+    },
+    {
+      title: "الالتزام بالجودة",
+      desc: "نلتزم بأعلى معايير الجودة في جميع المشاريع لضمان الأداء المتميز والقيمة المستدامة."
+    },
+  
+    {
+      title: "التركيز على النتائج",
+      desc: "نركز على تقديم حلول تحقق أثراً ملموساً وتدعم نمو أعمال عملائنا."
+    }
+  ],
     hud: ["الأمن_السيبراني", "الإتقان_البصري", "منطق_السوق"],
     /////////////////////////////////////////////////////////////////////////////
         cta: {
@@ -257,21 +254,21 @@ export const homeData = {
         id: "mission",
         title: "مهمتنا",
         label: "هدف_النظام",
-        num: "01",
-        desc: "تصميم بنى رقمية فائقة الأداء تعيد تعريف حدود التفاعل بين الإنسان والآلة.",
+      
+        desc: "تمكين الشركات والمؤسسات من خلال حلول رقمية مبتكرة تعزز الكفاءة، وتقوي الحضور الرقمي، وتحقق أثراً ملموساً في الأداء والنمو.",
       },
       {
         id: "vision",
         title: "رؤيتنا",
         label: "توقع_المستقبل",
-        num: "02",
-        desc: "هندسة عالم يندمج فيه اللامركزية والذكاء بسلاسة، ليصبح الجوهر الأساسي للابتكار الرقمي.",
+     
+        desc: "أن نكون الشريك التقني الموثوق للشركات التي تسعى إلى التحول الرقمي وتحقيق نمو مستدام في عالم رقمي متسارع.",
       },
       {
         id: "values",
         title: "قيمنا",
         label: "بروتوكولات_الأساس",
-        num: "03",
+    
         desc: "الابتكار هو حالتنا الافتراضية. النزاهة هي التشفير الخاص بنا. نعمل وفق فلسفة 'الأمان من التصميم'.",
       },
     ],

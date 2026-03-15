@@ -13,13 +13,16 @@ export const InteractiveBackground: React.FC<
     const ctx = gsap.context(() => {
       const paths = containerRef.current?.querySelectorAll(".snake-path");
 
-      paths?.forEach((path, i) => {
-        gsap.to(path, {
-          strokeDashoffset: -400,
-          duration: 3,
-          repeat: -1,
-          ease: "none",
-          delay: i * 0.15,
+      // تأخير تشغيل الأنيميشن Frame واحد لمنع التجميد الأولي
+      requestAnimationFrame(() => {
+        paths?.forEach((path, i) => {
+          gsap.to(path, {
+            strokeDashoffset: -400,
+            duration: 3,
+            repeat: -1,
+            ease: "none",
+            delay: i * 0.15,
+          });
         });
       });
 
@@ -57,7 +60,7 @@ export const InteractiveBackground: React.FC<
       ref={containerRef}
       className={`relative w-full min-h-screen bg-[#020202] overflow-hidden ${className}`}
     >
-      {/* 1. الشبكة الهيكلية */}
+      {/* الشبكة */}
       <div
         className="absolute inset-0 grid w-full h-full p-4 pointer-events-none"
         style={{
@@ -87,7 +90,7 @@ export const InteractiveBackground: React.FC<
         ))}
       </div>
 
-      {/* 2. الوهج التفاعلي (الماوس) */}
+      {/* الوهج */}
       <div
         ref={glowRef}
         className="absolute w-[800px] h-[800px] pointer-events-none z-[2] will-change-transform"
@@ -98,10 +101,10 @@ export const InteractiveBackground: React.FC<
         }}
       />
 
-      {/* 3. طبقة التظليل الشاملة */}
+      {/* التظليل */}
       <div className="absolute inset-0 z-[3] pointer-events-none bg-black/40" />
 
-      {/* 4. الفريم الدائري العميق */}
+      {/* الفريم الدائري */}
       <div
         className="absolute inset-0 z-[4] pointer-events-none"
         style={{
@@ -110,7 +113,7 @@ export const InteractiveBackground: React.FC<
         }}
       />
 
-      {/* 5. طبقة النويز */}
+      {/* النويز */}
       <div className="absolute inset-0 z-[5] opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       {/* المحتوى */}

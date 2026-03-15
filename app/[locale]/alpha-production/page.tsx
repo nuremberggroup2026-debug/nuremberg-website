@@ -7,7 +7,7 @@ import Phone from "@/app/components/pagesComponents/AlphaProduction/phoneCompone
 export default function Page() {
   return (
     <div>
-      <div className="hidden md:block">
+      <div className="hidden  md:block">
         <Desktop />
       </div>
       <div className="block md:hidden">
