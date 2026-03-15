@@ -120,7 +120,7 @@ export default function Section2() {
               <div className="section-text flex items-center gap-3 opacity-0 mb-6">
                 {!isRightAligned && <div className="h-2 w-2 bg-cyan-500 rounded-full shadow-[0_0_10px_#06b6d4] animate-pulse" />}
                 <span className="text-cyan-500 font-mono text-[10px] tracking-[0.6em] uppercase font-bold italic">
-                  {item.label} _ {item.num}
+                  {item.label}
                 </span>
                 {isRightAligned && <div className="h-2 w-2 bg-cyan-500 rounded-full shadow-[0_0_10px_#06b6d4] animate-pulse" />}
               </div>
