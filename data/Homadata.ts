@@ -25,11 +25,11 @@ en: {
     },
   
    /////////////////////////////////////////////////////////
-     aboutSection: {
+aboutSection: {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
       imageAlt: "Alpha Systems Operations",
       label: "Core_Manifesto",
-      title: "Intelligent Engineering Meets Art",
+      title: "About Us",
       desc: "We don't just build products; we architect digital dominance. Alpha Systems is the fusion of high-end software development and cinematic visual storytelling.",
       stats: [
         { icon: "Zap", value: "99.9%", label: "Operational Precision" },
@@ -161,19 +161,19 @@ ar: {
       ],
     },
     ///////////////////////////////////////////////////////////////////
-        aboutSection: {
+  aboutSection: {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
-      imageAlt: "عمليات أنظمة ألفا",
-      label: "البيان_الأساسي",
-      title: "الهندسة الذكية تلتقي بالفن",
-      desc: "نحن لا نبني منتجات فقط؛ بل نصمم الهيمنة الرقمية. أنظمة ألفا تمثل الدمج بين تطوير البرمجيات المتقدمة والسرد البصري السينمائي.",
+      imageAlt: "عمليات ألفا سيستمز",
+      label: "بيان_النظام",
+      title: "عن  الشركة",
+      desc: "نحن لا نبني مجرد منتجات؛ نحن نصمم الهيمنة الرقمية. 'ألفا سيستمز' هي المزيج الأمثل بين تطوير البرمجيات الراقية وسرد القصص البصري السينمائي.",
       stats: [
-        { icon: "Zap", value: "99.9%", label: "الدقة التشغيلية" },
-        { icon: "ShieldCheck", value: "المستوى-1", label: "معايير الأمان" },
+        { icon: "Zap", value: "99.9%", label: "دقة العمليات" },
+        { icon: "ShieldCheck", value: "Tier-1", label: "معايير الأمان" },
       ],
       tags: ["البرمجيات", "الإنتاج", "الإستراتيجية"],
-      cta: { label: "عرض البروتوكول", link: "/about" },
-      footer: "النظام_4.0 // جاهز للنشر",
+      cta: { label: "استعراض البروتوكول", link: "/about" },
+      footer: "النظام_v4.0 // جاهز_للنشر",
     },
     ///////////////////////////////////////////////////////////////////////////////////////
      section2: [
