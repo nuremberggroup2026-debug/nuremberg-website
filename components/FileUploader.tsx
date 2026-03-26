@@ -1,40 +1,39 @@
 "use client";
 
 import React, { useState } from "react";
-import { Control, Controller, FieldError } from "react-hook-form";
+import { Control, Controller, FieldValues, Path, FieldError } from "react-hook-form";
 import { useUploadThing } from "@/lib/uploadthing";
 import { toast } from "sonner";
 import { FileUp, X, Loader2, Paperclip, CheckCircle2 } from "lucide-react";
-import { cn } from "@/lib/utils"; 
-
-interface FileUploaderProps {
-  name: string;
-  label: string;
-  control: Control<any>;
-  error?: FieldError;
-  required?: boolean;
-  disabled?: boolean;
-}
+import { cn } from "@/lib/utils";
 
 interface UploadResponse {
   name: string;
   ufsUrl?: string;
-  
 }
 
-export default function FileUploader({
+type FileUploaderProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
+  label: string;
+  required?: boolean;
+  error?: FieldError;
+  disabled?: boolean;
+};
+
+export default function FileUploader<T extends FieldValues>({
   name,
   label,
   control,
   error,
   required,
   disabled,
-}: FileUploaderProps) {
+}: FileUploaderProps<T>) {
   const [isUploading, setIsUploading] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
 
   const { startUpload } = useUploadThing("cv", {
-    onClientUploadComplete(res:UploadResponse[]) {
+    onClientUploadComplete(res: UploadResponse[]) {
       const upload = res?.[0];
       if (upload) {
         setFileName(upload.name);
@@ -42,7 +41,7 @@ export default function FileUploader({
         toast.success("File uploaded successfully!");
       }
     },
-    onUploadError(err:Error) {
+    onUploadError(err: Error) {
       setIsUploading(false);
       toast.error(`Upload failed: ${err.message}`);
     },
@@ -50,7 +49,7 @@ export default function FileUploader({
 
   const handleFileChange = async (
     e: React.ChangeEvent<HTMLInputElement>,
-    onChange: (value: string) => void,
+    onChange: (value: string) => void
   ) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -68,7 +67,7 @@ export default function FileUploader({
     setIsUploading(true);
     const res = await startUpload([file]);
     const upload = res?.[0];
-    
+
     if (upload?.ufsUrl) {
       onChange(upload.ufsUrl);
     } else {
@@ -91,7 +90,6 @@ export default function FileUploader({
           <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
             {required && <span className="text-destructive mr-1 ">*</span>}
             {label}
-            
           </label>
 
           <div className="relative">
@@ -111,7 +109,7 @@ export default function FileUploader({
                     <FileUp className="w-8 h-8 mb-3 text-muted-foreground" />
                   )}
                   <p className="mb-1 text-sm text-muted-foreground">
-                    <span className="font-semibold text-primary">Click to upload</span> 
+                    <span className="font-semibold text-primary">Click to upload</span>
                   </p>
                   <p className="text-xs text-muted-foreground/70">PDF (Max 8MB)</p>
                 </div>
@@ -148,9 +146,7 @@ export default function FileUploader({
           </div>
 
           {error && (
-            <p className="text-[0.8rem] font-medium text-destructive">
-              {error.message}
-            </p>
+            <p className="text-[0.8rem] font-medium text-destructive">{error.message}</p>
           )}
         </div>
       )}
