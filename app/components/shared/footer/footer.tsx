@@ -156,7 +156,7 @@ export default function ProfessionalBalancedFooter() {
         </div>
 
         {/* RIGHT */}
-        <div className="md:col-span-4 py-10 md:py-16 flex flex-col justify-between">
+        <div className="md:col-span-4 p-10 md:p-16 flex flex-col justify-between">
           <div>
             <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
               {t.initiate}

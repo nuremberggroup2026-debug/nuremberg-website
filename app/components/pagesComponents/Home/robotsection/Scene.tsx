@@ -22,6 +22,8 @@ export default function Scene({
     const handleMouse = (e: MouseEvent) => {
       lastMouse.current.x = e.clientX;
       lastMouse.current.y = e.clientY;
+                console.log("teeeest")
+
     };
 
     window.addEventListener("mousemove", handleMouse);
@@ -59,6 +61,7 @@ export default function Scene({
 
     mouse.current.x = normX;
     mouse.current.y = normY;
+
   });
 
   return (
