@@ -1,19 +1,19 @@
-"use client";
 
 import { Shield, Zap, Target, ArrowUpRight, Star } from "lucide-react";
 import { homeData } from "@/data/Homadata";
-import { useLocale } from "next-intl";
 
-type WhyUsItem = {
-  title: string;
-  desc: string;
-};
 
-export default function WhyUs() {
-  const locale = useLocale() as "en" | "ar";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
 
-  const items: WhyUsItem[] =
-    homeData[locale]?.whyUs || homeData.en.whyUs;
+}
+
+
+
+export default function WhyUs({locale}:PageProps) {
+
+  const items =homeData[locale]?.whyUs || homeData.en.whyUs;
 
   const icons = [Shield, Target, Zap,  Star];
 

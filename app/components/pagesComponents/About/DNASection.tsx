@@ -1,12 +1,14 @@
-"use client";
-import React from "react";
+
 import { Layers, Terminal, Lock } from "lucide-react";
 import DNACard from "@/app/components/pagesComponents/About/DNACard";
 import { aboutData } from "@/data/AboutData";
-import { useLocale } from "next-intl";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function DNASection() {
-  const locale = useLocale() as "en" | "ar";
+
+export default function DNASection({locale}:PageProps) {
   const dnaItems = aboutData[locale]?.dna || aboutData.en.dna;
 
   const icons = [Layers, Terminal, Lock];

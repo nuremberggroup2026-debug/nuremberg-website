@@ -1,17 +1,19 @@
-"use client";
-import React from "react";
+
 import TeamCard from "./TeamCard";
 import { aboutData } from "@/data/AboutData";
-import { useLocale } from "next-intl";
 import type {translatedMembers} from "@/types/index"
 
-interface Props {
-  team: translatedMembers[];
+
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+    team: translatedMembers[];
+
 }
 
 
-export default function TeamSection({team}:Props) {
-  const locale = useLocale() as "en" | "ar";
+
+export default function TeamSection({team,locale}:PageProps) {
   const teamItems = aboutData[locale]?.team || aboutData.en.team;
 
   return (

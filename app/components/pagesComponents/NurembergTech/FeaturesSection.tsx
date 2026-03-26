@@ -1,13 +1,15 @@
-"use client";
 
-import React from "react";
 import { Zap, ShieldCheck, Monitor, Database, PenTool, Box } from "lucide-react";
-import { useLocale } from "next-intl";
 import { nurembergData } from "@/data/nurembergData";
 import FeatureCard from "./FeatureCard";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function FeaturesSection() {
-  const locale = useLocale() as "en" | "ar";
+
+
+export default function FeaturesSection({locale}:PageProps) {
   const data = nurembergData[locale].features; 
 
 const icons = [Zap, ShieldCheck, Monitor, Database, PenTool, Box];

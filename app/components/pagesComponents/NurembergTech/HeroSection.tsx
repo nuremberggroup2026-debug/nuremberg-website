@@ -1,12 +1,12 @@
-"use client";
 
-import React from "react";
 import { ArrowRight } from "lucide-react";
 import { nurembergData } from "@/data/nurembergData";
-import { useLocale } from "next-intl"; // أو أي hook ترجمة/locale عندك
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function HeroSection() {
-  const locale = useLocale() as "en" | "ar";
+export default function HeroSection({locale}:PageProps) {
     const texts = nurembergData[locale]?.hero || nurembergData.en.hero;
 
   return (

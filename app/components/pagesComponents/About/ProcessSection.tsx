@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
 import WorkflowStep from "./WorkflowStep";
 import { aboutData } from "@/data/AboutData";
-import { useLocale } from "next-intl";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function ProcessSection() {
-  const locale = useLocale() as "en" | "ar";
+export default function ProcessSection({ locale }: PageProps) {
   const processItems = aboutData[locale]?.process || aboutData.en.process;
 
   return (

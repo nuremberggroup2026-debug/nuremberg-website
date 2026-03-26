@@ -3,7 +3,7 @@ import HeroSection from "@/app/components/pagesComponents/NurembergTech/HeroSect
 import FeaturesSection from "@/app/components/pagesComponents/NurembergTech/FeaturesSection";
 import Responsivesection from "@/app/components/pagesComponents/NurembergTech/techcomponents/responsivesection";
 import ProjectsArchive from "@/app/components/pagesComponents/NurembergTech/ProjectsArchive";
-import CTASection from "@/app/components/pagesComponents/NurembergTech/CTASection";
+import CTASection from "@/app/components/pagesComponents/Home/CTASection";
 import SystemsTechSection from "@/app/components/pagesComponents/NurembergTech/SystemsTechSection";
 import ImpactHero from "@/app/components/pagesComponents/NurembergTech/ImpactHero";
 import { InteractiveBackground } from "@/app/components/shared/interactivebackground";
@@ -22,13 +22,13 @@ export default async function TechPage({ params }: PageProps) {
 
   return (
     <InteractiveBackground>
-      <HeroSection />
-      <ImpactHero />
-      <SystemsTechSection />
-      <FeaturesSection />
+      <HeroSection locale={locale} />
+      <ImpactHero locale={locale}  />
+      <SystemsTechSection locale={locale}  />
+      <FeaturesSection locale={locale}  />
       {projects.length>0 && <ProjectsArchive projects={projects} />} 
-      <Responsivesection />
-      <CTASection />
+      <Responsivesection  />
+      <CTASection locale={locale}  />
     </InteractiveBackground>
   );
 }

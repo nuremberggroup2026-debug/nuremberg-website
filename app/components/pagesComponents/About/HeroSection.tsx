@@ -1,11 +1,12 @@
-"use client";
-
 import React from "react";
-import { useLocale } from "next-intl"; 
-import { aboutData } from "@/data/AboutData"; 
+import { aboutData } from "@/data/AboutData";
 
-export default function HeroSection() {
-  const locale = useLocale() as "en" | "ar";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
+
+export default function HeroSection({ locale }: PageProps) {
   const content = aboutData[locale]?.hero || aboutData.en.hero;
 
   return (

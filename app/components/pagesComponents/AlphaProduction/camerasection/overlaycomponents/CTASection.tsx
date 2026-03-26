@@ -28,13 +28,13 @@ const translations = {
 };
 
 export default function CTASection({ locale }: Props) {
-  const t = translations[locale]; // ✅ Type-safe
+  const t = translations[locale]; 
 
   return (
     <section className="h-screen w-screen flex justify-between items-center pb-24 px-12 md:px-24 relative">
       <div className="w-[38%] pointer-events-auto space-y-12">
         <div className="space-y-4">
-          <h2 className="text-7xl md:text-9xl font-[1000] italic tracking-tighter leading-[0.8]">
+          <h2 className="text-7xl md:text-8xl font-[1000] italic tracking-tighter leading-[0.8]">
             {t.goAlpha.split(" ")[0]}
             <br />
             <span className="text-cyan-500">{t.goAlpha.split(" ")[1]}</span>

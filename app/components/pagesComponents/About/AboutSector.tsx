@@ -1,11 +1,12 @@
-"use client";
 import React from "react";
 import { Monitor, Video, BarChart3, ArrowRight } from "lucide-react";
-import { useLocale } from "next-intl";
 import { aboutData } from "@/data/AboutData";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function AboutSectors() {
-  const locale = useLocale() as "en" | "ar";
+export default function AboutSectors({ locale }: PageProps) {
   const sectorsText = aboutData[locale]?.sectors || aboutData.en.sectors;
 
   const iconsMap = [Monitor, Video, BarChart3];
@@ -13,7 +14,6 @@ export default function AboutSectors() {
   return (
     <section className=" py-28 px-6">
       <div className="max-w-7xl mx-auto">
-        
         {/* Title Section */}
         <div className="text-center mb-20">
           <div className="flex justify-center items-center gap-3 mb-4">
@@ -24,7 +24,8 @@ export default function AboutSectors() {
             <div className="h-[1px] w-8 bg-cyan-500/40" />
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
-            {sectorsText.titleLine1} <span className="text-cyan-500">{sectorsText.titleLine2}</span>
+            {sectorsText.titleLine1}{" "}
+            <span className="text-cyan-500">{sectorsText.titleLine2}</span>
           </h2>
         </div>
 
@@ -34,15 +35,15 @@ export default function AboutSectors() {
             const Icon = iconsMap[idx]; // اختر الأيقونة المناسبة حسب الترتيب
 
             return (
-              <div 
+              <div
                 key={sector.id}
                 className="group relative h-[500px] bg-[#080808] border border-white/5 overflow-hidden cursor-pointer"
               >
-                <div 
+                <div
                   className="absolute inset-0 bg-cover bg-center transition-all duration-700 scale-105 group-hover:scale-100 brightness-50 group-hover:brightness-75 grayscale group-hover:grayscale-0"
                   style={{ backgroundImage: `url(${sector.image})` }}
                 />
-                
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
 
                 <div className="relative z-20 h-full p-8 md:p-10 flex flex-col justify-between">
@@ -59,7 +60,7 @@ export default function AboutSectors() {
                     <h3 className="text-2xl font-black text-white uppercase italic mb-4">
                       {sector.title}
                     </h3>
-                    
+
                     <div className="max-h-0 opacity-0 group-hover:max-h-60 group-hover:opacity-100 overflow-hidden transition-all duration-700 ease-in-out">
                       <p className="text-gray-300 text-sm leading-relaxed mb-6">
                         {sector.description}
@@ -68,7 +69,9 @@ export default function AboutSectors() {
                         {sector.features.map((feat) => (
                           <div key={feat} className="flex items-center gap-3">
                             <div className="w-1.5 h-[1.5px] bg-cyan-500" />
-                            <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">{feat}</span>
+                            <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">
+                              {feat}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -86,9 +89,9 @@ export default function AboutSectors() {
         </div>
 
         <div className="mt-20 text-center opacity-20">
-            <span className="text-[8px] font-mono text-white tracking-[0.8em] uppercase">
-              {sectorsText.footerNote}
-            </span>
+          <span className="text-[8px] font-mono text-white tracking-[0.8em] uppercase">
+            {sectorsText.footerNote}
+          </span>
         </div>
       </div>
     </section>

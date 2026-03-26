@@ -1,11 +1,9 @@
 "use client";
 
-import { useLocale } from "next-intl";
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 import { nurembergData } from "@/data\/nurembergData"; 
  import {
-  ArrowUpRight,
   Database,     
   Users,         
   Cloud,        
@@ -14,8 +12,13 @@ import { nurembergData } from "@/data\/nurembergData";
   Briefcase      
 } from "lucide-react";
 
-export default function TechBentoGlow() {
-  const locale = useLocale() as "en" | "ar";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
+
+
+export default function TechBentoGlow({locale}:PageProps) {
   const data = nurembergData[locale].techData;
 
   const gridRef = useRef<HTMLDivElement>(null);
