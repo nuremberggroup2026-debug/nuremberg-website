@@ -45,7 +45,6 @@ const items = [
   { title: "Home", url: "/", icon: Home },
   { title: "Users", url: "/admin/dashboard/users", icon: User2 },
   { title: "Banners", url: "/admin/dashboard/banner", icon: Ticket },
-  { title: "Categories", url: "/admin/dashboard/categories", icon: TbCategory },
   {
     title: "Projects",
     url: "/admin/dashboard/projects",

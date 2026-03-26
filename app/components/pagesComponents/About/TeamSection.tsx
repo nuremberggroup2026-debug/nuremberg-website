@@ -16,12 +16,18 @@ export default function TeamSection({team}:Props) {
 
   return (
     <section className="py-40 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-24 reveal-up">
-          <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter italic">
-            {teamItems.heading}
+      <div className="max-w-7xl mx-auto ">
+         <div className="text-center mb-20">
+          <div className="flex justify-center items-center gap-3 mb-4">
+            <div className="h-[1px] w-8 bg-cyan-500/40" />
+            <span className="text-[10px] font-mono text-cyan-500 tracking-[0.5em] uppercase font-bold">
+            {locale === "ar" ? "تعرف علينا" : "Meet the Team"}
+            </span>
+            <div className="h-[1px] w-8 bg-cyan-500/40" />
+          </div>
+          <h2 className="text-4xl md:text-7xl font-black uppercase   tracking-tighter italic">
+            {locale==="ar"?"فريقنا":"Our Team"}
           </h2>
-          <div className="h-[2px] w-24 bg-cyan-500 mt-6 shadow-[0_0_15px_#06b6d4]" />
         </div>
 
         <div className="grid md:grid-cols-3 gap-16">

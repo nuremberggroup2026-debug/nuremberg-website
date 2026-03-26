@@ -1,14 +1,22 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { Layers, Database, Smartphone, ArrowUpRight, Zap, Globe, Briefcase } from "lucide-react";
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
-import { nurembergData } from "@/data\/nurembergData"; // ملف البيانات يحتوي النصوص فقط
+import { nurembergData } from "@/data\/nurembergData"; 
+ import {
+  ArrowUpRight,
+  Database,     
+  Users,         
+  Cloud,        
+  Globe,         
+  Smartphone,    
+  Briefcase      
+} from "lucide-react";
 
 export default function TechBentoGlow() {
   const locale = useLocale() as "en" | "ar";
-  const data = nurembergData[locale].techData; // يحتوي النصوص فقط
+  const data = nurembergData[locale].techData;
 
   const gridRef = useRef<HTMLDivElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
@@ -64,8 +72,9 @@ export default function TechBentoGlow() {
     });
   };
 
-  // أيقونات ثابتة في المكون
-  const icons = [Layers, Database, Smartphone, Zap, Globe, Briefcase];
+ 
+
+const icons = [Database, Users, Cloud, Globe, Smartphone, Briefcase];
 
   return (
     <section className=" py-16 px-6 overflow-hidden">
@@ -76,11 +85,11 @@ export default function TechBentoGlow() {
           </h2>
         </div>
 
-        <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-4 auto-rows-[160px] gap-5">
-          <div ref={spotlightRef} className="pointer-events-none absolute w-[600px] h-[600px] opacity-0 z-0 bg-[radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent 70%)]" />
+        <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-3 auto-rows-[160px] gap-5">
+          <div ref={spotlightRef} className="pointer-events-none absolute w-150 h-150 opacity-0 z-0 bg-[radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent 70%)]" />
 
           {data.cards.map((card, idx) => {
-            const Icon = icons[idx]; // أيقونة ثابتة
+            const Icon = icons[idx]; 
             return (
               <div
                 key={idx}
@@ -94,11 +103,7 @@ export default function TechBentoGlow() {
                   <h3 className="text-xl font-black text-white uppercase italic">{card.title}</h3>
                 </div>
                 {card.desc && <p className="text-white/40 text-xs mt-2">{card.desc}</p>}
-                {card.action && (
-                  <div className="p-4 rounded-xl border-2 border-cyan-500/50 group-hover:bg-cyan-500 group-hover:text-black transition-all flex justify-center items-center mt-2">
-                    <ArrowUpRight size={28} />
-                  </div>
-                )}
+                
               </div>
             );
           })}

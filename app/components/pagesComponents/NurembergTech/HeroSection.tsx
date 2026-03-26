@@ -37,7 +37,7 @@ export default function HeroSection() {
         </p>
 
         <button className="px-10 py-5 bg-cyan-400 text-black font-black italic tracking-widest rounded-xl hover:bg-white transition-all flex items-center gap-3 uppercase">
-          {texts.cta} <ArrowRight size={20} />
+          {texts.cta} <ArrowRight size={20} className={`${locale==="ar"?"rotate-180":"rotate-0"}`} />
         </button>
       </div>
     </section>

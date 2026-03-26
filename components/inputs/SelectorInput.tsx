@@ -1,5 +1,6 @@
 "use client";
 
+import { projectsSchema } from "@/app/server/projects/validators";
 import {
   Select,
   SelectContent,
@@ -8,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Control, Controller, FieldError } from "react-hook-form";
+import {z} from "zod"
 
 interface Option {
   label: string;

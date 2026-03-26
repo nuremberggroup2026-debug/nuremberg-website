@@ -1,18 +1,18 @@
 export const aboutData = {
   en: {
     hero: {
-      manifesto: "System_Manifesto // 2026",
-      titleLine1: "Engineering the",
-      titleLine2: "Neural Infrastructure",
-      descriptionLine1: "Specialized technology lab based in Amman.",
-      descriptionLine2: "Architecting high-performance decentralized ecosystems.",
-    },
+  manifesto: "Nuremberg_Group",
+  titleLine1: "Building the",
+  titleLine2: "Digital Future",
+  descriptionLine1: "A creative and technology-driven group based in Jordan.",
+  descriptionLine2: "We build websites, apps, brands, and content that help businesses grow.",
+},
     /////////////////////////////////////////////////////////////////////////////////
        sectors: {
-      titleSectionLabel: "Core Expertise",
+      titleSectionLabel: "Our Services",
       titleLine1: "Our",
       titleLine2: "Divisions",
-      footerNote: "Alpha_Systems_Operational_Units",
+      footerNote: "Nuremberg Group",
       items: [
         {
           title: "Software Systems",
@@ -39,43 +39,43 @@ export const aboutData = {
     },
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         dna: [
-      {
-        title: "Clean Architecture",
-        desc: "Building robust systems with a focus on maintainability and ultra-low latency."
-      },
-      {
-        title: "Neural Logic",
-        desc: "Merging advanced AI capabilities with seamless human-centric interfaces."
-      },
-      {
-        title: "Security First",
-        desc: "Every protocol is built with quantum-resistant encryption at its core."
-      }
-    ],
+  {
+    title: "Creative Thinking",
+    desc: "Turning bold ideas into impactful digital experiences."
+  },
+  {
+    title: "Tech Excellence",
+    desc: "Building websites, apps, and brands with precision and innovation."
+  },
+  {
+    title: "Client Focus",
+    desc: "Treating every client as a partner and delivering solutions that matter."
+  }
+],
     ///////////////////////////////////////////////////////////////////////////////////
-     process: {
-      headingBefore: "How we",
-      headingHighlight: "deliver",
-      headingAfter: "value.",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070",
-      steps: [
-        {
-          number: "01",
-          title: "Discovery",
-          desc: "Identifying technical gaps and strategic opportunities."
-        },
-        {
-          number: "02",
-          title: "Prototyping",
-          desc: "Rapid development of high-performance blueprints."
-        },
-        {
-          number: "03",
-          title: "Deployment",
-          desc: "Seamless integration into global-scale infrastructures."
-        }
-      ]
+    process: {
+  headingBefore: "How we",
+  headingHighlight: "bring ideas to life.",
+  headingAfter: "",
+  image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070",
+  steps: [
+    {
+      number: "01",
+      title: "Understanding Needs",
+      desc: "We meet with clients to understand their vision, goals, and requirements to ensure complete satisfaction."
     },
+    {
+      number: "02",
+      title: "Design & Feedback",
+      desc: "We develop the project and share progress with clients, gathering feedback to refine and improve the solution."
+    },
+    {
+      number: "03",
+      title: "Delivery & Confirmation",
+      desc: "Once the project is finalized, we obtain client confirmation and share the completed product ready for launch."
+    }
+  ]
+},
     ///////////////////////////////////////////////////////////////////////////
         team: {
       heading: "The Architects",
@@ -99,46 +99,46 @@ export const aboutData = {
     },
     ///////////////////////////////////////////////////////////////////////////////////////////
        clients: {
-      label: "Trusted Partners",
+      label: "Key Partners",
       headingPrefix: "Our",
       headingHighlight: "Clients",
-      footerNote: "Authorized Network Link Active"
+      footerNote: "Nuremberg Group"
     },
     ///////////////////////////////////////////////////////////////////////////////////////////
         form: {
       systemStatus: "System Active",
-      dataTitle: "Data",
-      dataHighlight: "Uplink",
-      nodeStatus: "Encrypted node connection established. Ready for transmission.",
+      dataTitle: "Get in",
+dataHighlight: "Touch",
+nodeStatus: "We’re ready to hear from you.",
       latency: "Latency",
       nodeID: "Node ID",
-      operatorName: "Operator Name",
+      operatorName: "Full Name",
       enterName: "ENTER NAME",
-      signalChannel: "Signal Channel",
+      signalChannel: "EMAIL ADDRESS",
       enterEmail: "EMAIL ADDRESS",
-      targetHeader: "Target Header",
+      targetHeader: "SUBJECT",
       subject: "SUBJECT",
       priorityBit: "Priority Bit",
       level: "LEVEL",
-      dataPayload: "Data Payload",
+      dataPayload: "Message",
       messageContent: "MESSAGE CONTENT",
       transmitSignal: "Transmit Signal"
     }
   },
   ar: {
-    hero: {
-      manifesto: "بيان_النظام // 2026",
-      titleLine1: "هندسة",
-      titleLine2: "البنية التحتية العصبية",
-      descriptionLine1: "مختبر تكنولوجي متخصص مقره عمان.",
-      descriptionLine2: "تصميم نظم لامركزية عالية الأداء.",
-    },
+   hero: {
+  manifesto: "مجموعة_نورنبرغ",
+  titleLine1: "نبني",
+  titleLine2: "المستقبل الرقمي",
+  descriptionLine1: "مجموعة إبداعية وتقنية مقرها الأردن.",
+  descriptionLine2: "نطوّر المواقع والتطبيقات والعلامات التجارية والمحتوى لمساعدة الأعمال على النمو.",
+},
  /////////////////////////////////////////////////////////////////////
      sectors: {
-      titleSectionLabel: "الخبرة الأساسية",
+      titleSectionLabel: "خدماتنا",
       titleLine1: "أقسامنا",
       titleLine2: "",
-      footerNote: "وحدات_أنظمة_ألفا_التشغيلية",
+      footerNote: "مجموعة نورنبرغ",
       items: [
         {
           title: "أنظمة البرمجيات",
@@ -164,44 +164,44 @@ export const aboutData = {
       ]
     },
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-        dna: [
-      {
-        title: "هندسة نظيفة",
-        desc: "تصميم نظم قوية مع التركيز على القابلية للصيانة وأقل زمن استجابة ممكن."
-      },
-      {
-        title: "المنطق العصبي",
-        desc: "دمج قدرات الذكاء الاصطناعي المتقدمة مع واجهات سلسة تركز على المستخدم."
-      },
-      {
-        title: "الأمان أولاً",
-        desc: "كل بروتوكول مبني على تشفير مقاوم للحوسبة الكمية من الأساس."
-      }
-    ],
+     dna: [
+  {
+    title: "التفكير الإبداعي",
+    desc: "تحويل الأفكار الجريئة إلى تجارب رقمية مؤثرة."
+  },
+  {
+    title: "تميز تقني",
+    desc: "بناء المواقع والتطبيقات والعلامات التجارية بدقة وابتكار."
+  },
+  {
+    title: "تركيز على العميل",
+    desc: "التعامل مع كل عميل كشريك وتقديم حلول ذات قيمة."
+  }
+],
     //////////////////////////////////////////////////////////////////////////
-        process: {
-      headingBefore: "كيف نقوم",
-      headingHighlight: "بتقديم",
-      headingAfter: "القيمة.",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070",
-      steps: [
-        {
-          number: "01",
-          title: "الاكتشاف",
-          desc: "تحديد الثغرات التقنية والفرص الاستراتيجية."
-        },
-        {
-          number: "02",
-          title: "النماذج الأولية",
-          desc: "تطوير سريع لمخططات عالية الأداء."
-        },
-        {
-          number: "03",
-          title: "النشر",
-          desc: "تكامل سلس مع البنى التحتية على نطاق عالمي."
-        }
-      ]
+    process: {
+  headingBefore: "كيف نقوم",
+  headingHighlight: "بتحويل الأفكار إلى واقع.",
+  headingAfter: "",
+  image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070",
+  steps: [
+    {
+      number: "01",
+      title: "فهم الاحتياجات",
+      desc: "نلتقي بالعملاء لفهم رؤيتهم وأهدافهم ومتطلباتهم لضمان رضاهم التام."
     },
+    {
+      number: "02",
+      title: "التصميم والتغذية الراجعة",
+      desc: "نطور المشروع ونعرض التقدم على العملاء، ونجمع ملاحظاتهم لتحسين الحل النهائي."
+    },
+    {
+      number: "03",
+      title: "التسليم والتأكيد",
+      desc: "بعد الانتهاء من المشروع، نحصل على تأكيد العميل ونسلم المنتج النهائي جاهزًا للإطلاق."
+    }
+  ]
+},
     ////////////////////////////////////////////////////////////////////////
      team: {
       heading: "المهندسون المعماريون",
@@ -225,28 +225,28 @@ export const aboutData = {
     },
     ///////////////////////////////////////////////////////////////////////////////////////
       clients: {
-      label: "الشركاء الموثوقون",
+      label: "الشركاء الرئيسيون",
       headingPrefix: "عملاؤنا",
       headingHighlight: "",
-      footerNote: "رابط الشبكة المصرح به نشط"
+      footerNote: "مجموعة نورنبرغ"
     },
     ///////////////////////////////////////////////////////////////////////////////////
         form: {
       systemStatus: "النظام مفعل",
-      dataTitle: "البيانات",
-      dataHighlight: "Uplink",
-      nodeStatus: "تم تأسيس اتصال مشفر بالعقدة. جاهز للإرسال.",
+      dataTitle: "تواصل",
+dataHighlight: "معنا",
+nodeStatus: "نحن مستعدون لسماعك.",
       latency: "التأخير",
       nodeID: "معرّف العقدة",
-      operatorName: "اسم المشغل",
+      operatorName: "الاسم كامل",
       enterName: "ادخل الاسم",
-      signalChannel: "قناة الإشارة",
+      signalChannel:"البريد الإلكتروني",
       enterEmail: "البريد الإلكتروني",
-      targetHeader: "العنوان الرئيسي",
+      targetHeader: "الموضوع",
       subject: "الموضوع",
       priorityBit: "بت الأولوية",
       level: "المستوى",
-      dataPayload: "حِمولة البيانات",
+      dataPayload: "الرسالة",
       messageContent: "محتوى الرسالة",
       transmitSignal: "إرسال الإشارة"
     }

@@ -58,7 +58,8 @@ export default function ProjectsSection({ projects }: Props) {
           >
             <Image
               key={active}
- src={projects[active].project_image || "/images/fallback.jpg"}              fill
+              src={projects[active].project_image || "/images/fallback.jpg"}
+              fill
               className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${isChanging ? "scale-110 blur-sm opacity-20" : "scale-100 grayscale-[0.5] group-hover:grayscale-0 opacity-40 group-hover:opacity-60"}`}
               alt=""
             />
@@ -92,15 +93,19 @@ export default function ProjectsSection({ projects }: Props) {
                   </div>
                 </div>
 
-                <button className="relative group/btn overflow-hidden w-16 h-16 rounded-3xl bg-white text-black flex items-center justify-center transition-all duration-300 hover:bg-cyan-400 hover:w-48">
-                  <span className="absolute left-6 font-black italic tracking-widest opacity-0 group-hover/btn:opacity-100 transition-opacity">
-                    VIEW_PROJECT
-                  </span>
-                  <ArrowUpRight
-                    size={24}
-                    className="group-hover/btn:translate-x-16 transition-transform"
-                  />
-                </button>
+                {projects[active].project_link && (
+                  <a href={projects[active].project_link} target="_blank">
+                    <button className="relative group/btn overflow-hidden w-16 h-16 rounded-3xl bg-white text-black flex items-center justify-center transition-all duration-300 hover:bg-cyan-400 hover:w-48">
+                      <span className="absolute left-6 font-black italic tracking-widest opacity-0 group-hover/btn:opacity-100 transition-opacity">
+                        VIEW_PROJECT
+                      </span>
+                      <ArrowUpRight
+                        size={24}
+                        className="group-hover/btn:translate-x-16 transition-transform"
+                      />
+                    </button>
+                  </a>
+                )}
               </div>
             </div>
           </div>

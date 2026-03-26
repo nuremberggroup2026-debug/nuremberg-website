@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Code2, Terminal, Cpu } from "lucide-react";
 import { useLocale } from "next-intl";
-import { nurembergData } from "@/data/nurembergData"; // ملف الترجمات
+import { nurembergData } from "@/data/nurembergData"; 
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -50,15 +50,13 @@ export default function CyberProgrammingSection() {
       ref={containerRef}
       className="relative py-32 px-6 overflow-hidden min-h-[750px] flex items-center"
     >
-      {/* خلفيات زينة */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-500/10 blur-[150px] rounded-full" />
       <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-blue-600/10 blur-[150px] rounded-full" />
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-        {/* المحتوى النصي */}
         <div className="lg:col-span-6 space-y-8 glass-panel">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 backdrop-blur-md">
-            <Terminal size={16} className="text-cyan-400" />
+            <Terminal size={16} className={`text-cyan-400 ${locale==="ar" ?"rotate-y-180":"rotate-y-0"}`} />
             <span className="text-[11px] font-mono text-cyan-400 uppercase tracking-[0.3em]">
               {texts.status}
             </span>
@@ -76,20 +74,11 @@ export default function CyberProgrammingSection() {
               {texts.description} <span className="text-white">{texts.highlight}</span>
             </p>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              {texts.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-1 border border-white/10 rounded-md text-[10px] font-mono text-white/40 uppercase tracking-widest"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+           
           </div>
 
           <div className="pt-8">
-            <button className="group relative flex items-center gap-6 p-1 pr-8 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-500">
+            <button className="group relative flex items-center gap-6 p-5 pr-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-500">
               <div className="w-14 h-14 rounded-full bg-cyan-500 flex items-center justify-center text-black group-hover:rotate-45 transition-transform duration-500">
                 <ArrowUpRight size={24} />
               </div>
@@ -105,7 +94,6 @@ export default function CyberProgrammingSection() {
           </div>
         </div>
 
-        {/* الصورة والنصوص الثانوية */}
         <div className="lg:col-span-6 relative floating-image">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>

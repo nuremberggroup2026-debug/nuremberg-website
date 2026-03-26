@@ -1,5 +1,5 @@
 "use client";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Control } from "react-hook-form";
 import { projectsSchema } from "@/app/server/projects/validators";
 import { boolean, z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -23,14 +23,14 @@ import FormSelect from "../inputs/SelectorInput";
 type ProjectFormValues = z.infer<typeof projectsSchema>;
 
 interface Props {
-    project: NewProject
-  categories: { id: string; category_name_en: string }[] | null;
+  project: NewProject;
   action: (
-   id:string, data: NewProject,
+    id: string,
+    data: NewProject,
   ) => Promise<{ success: boolean; message: string; status: number }>;
 }
 
-function EditProjectForm({ action,categories,project }: Props) {
+function EditProjectForm({ action, project }: Props) {
   const {
     register,
     handleSubmit,
@@ -40,26 +40,22 @@ function EditProjectForm({ action,categories,project }: Props) {
     formState: { errors, isSubmitting, isDirty },
   } = useForm<ProjectFormValues>({
     resolver: zodResolver(projectsSchema),
-    defaultValues:{
-        project_name_en: project.project_name_en ??"",
-        project_name_ar: project.project_name_ar ??"",
-        project_description_en: project.project_description_en ??"",
-        project_description_ar: project.project_description_ar ??"",
-        category_id: project.category_id ??"",
-        project_image: project.project_image ??"",
-        slug: project.slug ??""
-    }
+    defaultValues: {
+      project_name_en: project.project_name_en ?? "",
+      project_name_ar: project.project_name_ar ?? "",
+      project_description_en: project.project_description_en ?? "",
+      project_description_ar: project.project_description_ar ?? "",
+      project_link: project.project_link ?? "",
+      project_image: project.project_image ?? "",
+      slug: project.slug ?? "",
+    },
   });
   const router = useRouter();
   const handleUploadComplete = (url: string) => {
-    setValue("project_image", url, { shouldValidate: true,shouldDirty:true });
+    setValue("project_image", url, { shouldValidate: true, shouldDirty: true });
   };
 
-  const categoryOptions= categories?.map((category)=>({
-    label: category.category_name_en,
-    value: category.id
-  })) ?? [];
-
+ 
   const handleUploadError = (error: Error) => {
     console.error(error);
     toast.error(`Upload failed: ${error.message}`);
@@ -67,22 +63,17 @@ function EditProjectForm({ action,categories,project }: Props) {
 
   const watchedName = watch("project_name_en");
   useEffect(() => {
-     const slug = (watchedName ?? "")
+    const slug = (watchedName ?? "")
       .toLowerCase()
       .replace(/&/g, "and")
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
-    setValue(
-      "slug",
-        slug,
-     { shouldDirty: false, shouldValidate: false },
-    );
-  },[watchedName, setValue]);
-
+    setValue("slug", slug, { shouldDirty: false, shouldValidate: false });
+  }, [watchedName, setValue]);
 
   const onSubmit: SubmitHandler<ProjectFormValues> = async (data) => {
     try {
-      const result = await action(project.id??"",data);
+      const result = await action(project.id ?? "", data);
       if (result.status === 401) {
         toast.error(result.message);
         router.push("/login");
@@ -122,9 +113,8 @@ function EditProjectForm({ action,categories,project }: Props) {
             onSubmit={handleSubmit(onSubmit)}
             className="w-full md:w-[50vw] xl:w-[40vw]"
           >
+           
 
-            <FormSelect control={control} name="category_id" label="Category" error={errors.category_id} options={categoryOptions} />
-          
             <TextInput
               register={register("project_name_en")}
               label="Name (EN)"
@@ -134,6 +124,12 @@ function EditProjectForm({ action,categories,project }: Props) {
               register={register("project_name_ar")}
               label="Name (AR)"
               error={errors.project_name_ar}
+            />
+
+            <TextInput
+              register={register("project_link")}
+              label="Project Link"
+              error={errors.project_link}
             />
             <TextareaInput
               register={register("project_description_en")}

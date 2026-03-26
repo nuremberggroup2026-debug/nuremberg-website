@@ -1,5 +1,5 @@
 "use client";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Control } from "react-hook-form";
 import { projectsSchema } from "@/app/server/projects/validators";
 import { boolean, z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -19,17 +19,15 @@ import { Label } from "@radix-ui/react-dropdown-menu";
 import { NewProject } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import FormSelect from "../inputs/SelectorInput";
 type ProjectFormValues = z.infer<typeof projectsSchema>;
 
 interface Props {
-  categories: { id: string; category_name_en: string }[] | null;
   action: (
     data: NewProject,
   ) => Promise<{ success: boolean; message: string; status: number }>;
 }
 
-function CreateProjectForm({ action,categories }: Props) {
+function CreateProjectForm({ action }: Props) {
   const {
     register,
     handleSubmit,
@@ -45,10 +43,6 @@ function CreateProjectForm({ action,categories }: Props) {
     setValue("project_image", url, { shouldValidate: true });
   };
 
-  const categoryOptions= categories?.map((category)=>({
-    label: category.category_name_en,
-    value: category.id
-  })) ?? [];
 
   const handleUploadError = (error: Error) => {
     console.error(error);
@@ -111,10 +105,7 @@ function CreateProjectForm({ action,categories }: Props) {
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="w-full md:w-[50vw] xl:w-[40vw]"
-          >
-
-            <FormSelect control={control} name="category_id" label="Category" error={errors.category_id} options={categoryOptions} />
-          
+          >          
             <TextInput
               register={register("project_name_en")}
               label="Name (EN)"
@@ -134,6 +125,11 @@ function CreateProjectForm({ action,categories }: Props) {
               register={register("project_description_ar")}
               label="Arabic Description"
               error={errors.project_description_ar}
+            />
+            <TextInput
+              register={register("project_link")}
+              label="Project Link"
+              error={errors.project_link}
             />
 
             <div>

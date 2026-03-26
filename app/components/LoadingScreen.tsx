@@ -81,7 +81,7 @@ export default function LoadingScreen() {
               </span>
             </div>
 
-            <div className="loading-bar-container w-full h-[2px] bg-white/5 relative overflow-hidden">
+            <div className="loading-bar-container w-full h-0.5 bg-white/5 relative overflow-hidden">
               <div
                 className="absolute top-0 left-0 h-full bg-cyan-500 shadow-[0_0_10px_#06b6d4] transition-all duration-200"
                 style={{ width: `${progress}%` }}

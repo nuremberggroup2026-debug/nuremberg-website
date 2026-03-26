@@ -35,25 +35,12 @@ export type NewClient = {
   created_at?: Date | null;
 };
 
-
-
-
-
 export type translatedClients = {
   id?: string;
   name: string;
   logo: string;
 };
 
-export type NewCategory = {
-  id?: string;
-  category_name_en: string;
-  category_name_ar: string;
-  category_description_en: string | null;
-  category_description_ar: string | null;
-  category_logo: string | null;
-  slug: string;
-};
 
 export type NewProject = {
   id?: string;
@@ -61,7 +48,7 @@ export type NewProject = {
   project_name_ar: string;
   project_description_en: string | null;
   project_description_ar: string | null;
-  category_id: string;
+  project_link:string|null;
   project_image: string | null;
   slug: string;
 };
@@ -75,10 +62,7 @@ export type GetProject = {
   category_id: string;
   project_image: string | null;
   slug: string;
-  categories: {
-    category_name_en: string;
-    id: string;
-  };
+ 
 };
 
 export type NewCareer = {
@@ -140,10 +124,8 @@ export type translatedProjects = {
     project_image: string | null;
     project_slug: string;
     project_name: string;
+    project_link:string|null;
     project_description: string | null;
-    category_name: string;
-    category_id: string;
-    category_description: string | null;
 };
 
 export type Locale = "en" | "ar";

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import  { useRef } from "react";
 import {
   Zap,
   Send,
@@ -7,25 +7,56 @@ import {
   Mail,
   MessageSquare,
   Tag,
-  AlertCircle,
   Settings,
+  Loader2,
 } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { aboutData } from "@/data/AboutData";
-import { useLocale } from "next-intl";
-
-interface ProInputProps {
-  label: string;
-  placeholder: string;
-  icon: React.ReactNode;
-  isTextArea?: boolean;
+import { useRouter } from "next/navigation";
+import { createContactSchema } from "@/app/[locale]/(root)/about-us/(actions)/emailSchema";
+import { z } from "zod";
+import { Locale } from "@/types";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import ProInputs from "@/components/inputs/ProInput";
+type ContactFormValues = z.infer<ReturnType<typeof createContactSchema>>;
+interface Props {
+  action: (
+    data: ContactFormValues,
+  ) => Promise<{ success: boolean; message: string }>;
+  locale: Locale;
 }
 
-export default function FormSection() {
+export default function FormSection({ action, locale }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-    const locale = useLocale() as "en" | "ar";
   const texts = aboutData[locale]?.form || aboutData.en.form;
+  const router = useRouter();
+  const {
+    register,
+    formState: { errors, isDirty, isSubmitting },reset,
+    handleSubmit,
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(createContactSchema(locale)),
+  });
+
+  const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
+    try {
+      const result = await action(data);
+      if (result.success) {
+        toast.success(result.message);
+        reset()
+        router.replace("/about-us");
+        return;
+      }
+      toast.error(result.message);
+    } catch (error) {
+      toast.error(
+        locale === "en" ? "Error sending email" : "خطأ في إرسال البريد",
+      );
+    }
+  };
 
   useGSAP(
     () => {
@@ -53,15 +84,27 @@ export default function FormSection() {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen w-full flex items-center justify-center p-4 relative z-10 font-sans tracking-tight"
+      className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative z-10 font-sans tracking-tight"
     >
-      <div className="main-panel w-full max-w-[1050px] bg-[#050505]/95 backdrop-blur-2xl border-2 border-cyan-500/60 shadow-[0_0_25px_rgba(6,182,212,0.4)] overflow-hidden relative">
-        <div className="absolute -top-24 -right-24 opacity-[0.05] text-white pointer-events-none">
+       <div className="text-center mb-20">
+          <div className="flex justify-center items-center gap-3 mb-4">
+            <div className="h-px w-12 bg-cyan-500/40" />
+            <span className="text-[11px] font-mono text-cyan-500 tracking-[0.5em] uppercase font-bold">
+              {locale==="ar" ?"التواصل":"Contact"}
+            </span>
+            <div className="h-px w-12 bg-cyan-500/40" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
+            {locale==="ar"?"تواصل":"contact"} <span className="text-cyan-500">{locale==="ar"?"معنا":"with us"}</span>
+          </h2>
+        </div>
+      <div className="main-panel w-full max-w-312.5 bg-[#050505]/95 backdrop-blur-2xl border-2 border-cyan-500/60 shadow-[0_0_25px_rgba(6,182,212,0.4)] overflow-hidden relative">
+        <div className="absolute -top-24 -right-24 opacity-[0.05] text-white pointer-events-none ">
           <Settings size={450} className="gear-rotate" />
         </div>
 
         <div className="grid lg:grid-cols-10 gap-0">
-          <div className="lg:col-span-3 bg-white/[0.03] p-8 border-r-2 border-cyan-500/20 flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-3 bg-white/3 p-8 border-r-2 border-cyan-500/20 flex flex-col justify-between relative overflow-hidden">
             <div className="relative z-10">
               <div className="flex items-center gap-2 text-cyan-400 mb-6">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_#06b6d4]" />
@@ -75,7 +118,7 @@ export default function FormSection() {
                 <span className="text-cyan-500">{texts.dataHighlight}</span>
               </h2>
 
-              <div className="mt-8 flex items-end gap-[4px] h-12">
+              <div className="mt-8 flex items-end gap-1 h-12">
                 {Array.from({ length: 10 }).map((_, i) => (
                   <div
                     key={i}
@@ -85,32 +128,24 @@ export default function FormSection() {
                 ))}
               </div>
 
-              <p className="mt-8 text-[11px] text-gray-400 font-bold leading-relaxed uppercase tracking-widest max-w-[200px]">
+              <p className="mt-8 text-[11px] text-gray-400 font-bold leading-relaxed uppercase tracking-widest max-w-57.5">
                 {texts.nodeStatus}
               </p>
             </div>
-
-            <div className="space-y-3 pt-6 font-mono text-[10px] text-gray-500 border-t border-white/10 relative z-10 uppercase tracking-tighter">
-              <div className="flex justify-between">
-                <span>{texts.latency}</span>{" "}
-                <span className="text-cyan-400 font-bold">12ms</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{texts.nodeID}</span>{" "}
-                <span className="text-white font-bold">Amman_01</span>
-              </div>
-            </div>
           </div>
 
-          <div className="lg:col-span-7 p-8 md:p-10 relative">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <div className="lg:col-span-7 p-8 md:p-16 relative">
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid md:grid-cols-2 gap-8">
-                <ProInput
+                <ProInputs
+                  register={register("name")}
                   label={texts.operatorName}
                   placeholder={texts.enterName}
                   icon={<User size={16} />}
                 />
-                <ProInput
+                <ProInputs
+                  register={register("email")}
+                  error={errors.email}
                   label={texts.signalChannel}
                   placeholder={texts.enterEmail}
                   icon={<Mail size={16} />}
@@ -118,20 +153,19 @@ export default function FormSection() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <ProInput
+                <ProInputs
+                  register={register("subject")}
                   label={texts.targetHeader}
+                  error={errors.subject}
                   placeholder={texts.subject}
                   icon={<Tag size={16} />}
-                />
-                <ProInput
-                  label={texts.priorityBit}
-                  placeholder={texts.level}
-                  icon={<AlertCircle size={16} />}
                 />
               </div>
 
               <div className="input-field">
-                <ProInput
+                <ProInputs
+                  register={register("message")}
+                  error={errors.message}
                   label={texts.dataPayload}
                   placeholder={texts.messageContent}
                   isTextArea
@@ -142,14 +176,38 @@ export default function FormSection() {
               <div className="input-field pt-2">
                 <button
                   type="submit"
-                  className="w-full h-14 bg-cyan-600 hover:bg-cyan-500 text-white font-black text-sm tracking-[0.6em] uppercase transition-all flex items-center justify-center gap-4 group rounded-sm shadow-[0_10px_30px_rgba(8,145,178,0.3)]"
+                  disabled={!isDirty || isSubmitting}
+                  className={`w-full h-14 text-white font-black text-sm tracking-[0.6em] uppercase transition-all flex items-center justify-center gap-4 group rounded-sm shadow-[0_10px_30px_rgba(8,145,178,0.3)] 
+      ${
+        isSubmitting
+          ? "bg-cyan-800 cursor-not-allowed opacity-80"
+          : "bg-cyan-600 hover:bg-cyan-500 active:scale-[0.98]"
+      }`}
                 >
-                  <Send
-                    size={18}
-                    className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-                  />
-                  {texts.transmitSignal}
-                  <Zap size={18} fill="currentColor" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2
+                        size={18}
+                        className="animate-spin text-cyan-300"
+                      />
+                      <span className="animate-pulse">
+                        {locale === "ar" ? "جاري الإرسال..." : "Sending..."}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <Send
+                        size={18}
+                        className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                      />
+                      {locale==="ar"?"إرسال البريد":"Send Email"}
+                      <Zap
+                        size={18}
+                        fill="currentColor"
+                        className="group-hover:scale-125 transition-transform"
+                      />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
@@ -159,39 +217,3 @@ export default function FormSection() {
     </div>
   );
 }
-
-const ProInput = ({
-  label,
-  placeholder,
-  icon,
-  isTextArea = false,
-}: ProInputProps) => (
-  <div className="input-field group flex flex-col gap-3">
-    <div className="flex items-center gap-2.5">
-      <span className="text-cyan-500 group-focus-within:text-cyan-400 transition-colors">
-        {icon}
-      </span>
-      <label className="text-[11px] font-black text-white uppercase tracking-[0.2em] group-focus-within:text-cyan-400 transition-colors">
-        {label}
-      </label>
-    </div>
-
-    <div className="relative">
-      {isTextArea ? (
-        <textarea
-          rows={2}
-          placeholder={placeholder}
-          className="w-full bg-black/60 border-2 border-white/20 p-4 text-sm font-bold text-white focus:outline-none focus:border-cyan-500/80 focus:bg-cyan-950/20 transition-all placeholder:text-white/10 resize-none rounded-sm uppercase tracking-wider"
-        />
-      ) : (
-        <input
-          type="text"
-          placeholder={placeholder}
-          className="w-full bg-black/60 border-2 border-white/20 p-4 text-sm font-bold text-white focus:outline-none focus:border-cyan-500/80 focus:bg-cyan-950/20 transition-all placeholder:text-white/10 uppercase tracking-wider rounded-sm"
-        />
-      )}
-
-      <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-400 transition-all duration-500 group-focus-within:w-full shadow-[0_0_15px_#22d3ee]" />
-    </div>
-  </div>
-);

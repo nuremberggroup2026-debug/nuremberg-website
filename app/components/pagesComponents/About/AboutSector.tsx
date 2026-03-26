@@ -8,7 +8,6 @@ export default function AboutSectors() {
   const locale = useLocale() as "en" | "ar";
   const sectorsText = aboutData[locale]?.sectors || aboutData.en.sectors;
 
-  // استيراد الأيقونات هنا في الملف الأساسي
   const iconsMap = [Monitor, Video, BarChart3];
 
   return (

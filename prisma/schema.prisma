@@ -48,17 +48,6 @@ model careers {
   applications    applications[]
 }
 
-model categories {
-  id                      String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  category_name_en        String     @db.VarChar(255)
-  category_name_ar        String     @db.VarChar(255)
-  category_description_en String?
-  category_description_ar String?
-  category_logo           String?    @db.VarChar(255)
-  slug                    String     @unique @db.VarChar(255)
-  projects                projects[]
-}
-
 model clients {
   id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name_en    String    @db.VarChar(255)
@@ -81,15 +70,14 @@ model our_team {
 }
 
 model projects {
-  id                     String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  project_name_en        String     @db.VarChar(255)
-  project_name_ar        String     @db.VarChar(255)
-  project_description_en String?    @db.VarChar(255)
-  project_description_ar String?    @db.VarChar(255)
-  category_id            String     @db.Uuid
+  id                     String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  project_name_en        String  @db.VarChar(255)
+  project_name_ar        String  @db.VarChar(255)
+  project_description_en String?
+  project_description_ar String?
   project_image          String?
-  slug                   String     @unique @db.VarChar(255)
-  categories             categories @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  slug                   String  @unique @db.VarChar(255)
+  project_link           String? @db.VarChar(255)
 }
 
 model reset_password_token {
