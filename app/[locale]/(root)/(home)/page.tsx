@@ -1,7 +1,5 @@
-"use client";
 
 import Section2 from "@/app/components/pagesComponents/Home/section2";
-import MissionVisionSection from "@/app/components/pagesComponents/Home/MissionVisionSection";
 import HeroSection from "@/app/components/pagesComponents/Home/heroSection";
 import HomeAbout from "@/app/components/pagesComponents/Home/HomeAbout";
 import WhyUs from "@/app/components/pagesComponents/Home/WhyUs";

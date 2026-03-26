@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+
 import { Cpu, Video, Share2 } from "lucide-react";
 import { HeavyCard } from "@/app/components/shared/heavyCard";
 import { InteractiveBackground } from "@/app/components/shared/interactivebackground";

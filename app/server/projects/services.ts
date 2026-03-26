@@ -156,7 +156,7 @@ export const getProjectByCategoryId = (categoryId: string) =>
 
 export const updateProject = async (id: string, data: Partial<NewProject>) => {
   try {
-    const exsiting = await prisma.projects.findUnique({ where: { id } });
+    const exsiting = await prisma.projects.findUnique({ where: { id }});
 
     if (!exsiting)
       return { data: null, message: "Project Not Found", status: 200 };
@@ -225,9 +225,10 @@ export const getAllProjectsByLocale = (locale: Locale) =>
             },
           },
         });
-        const translatedProjects = result.map((project:ProjectType) => {
+        const translatedProjects = result.map((project) => {
           return {
             id: project.id,
+            project_link: project.project_link,
             project_image: project.project_image,
             project_slug: project.slug,
             project_name:

@@ -22,7 +22,6 @@ export default function RootLayout({
       <body className="antialiased bg-white text-white">
         <NextAuthProviders>
             <NextIntlClientProvider>
-         <LoadingScreen/>
               <FontSwitcher locale={"en"}>{children}</FontSwitcher>
              
           <Toaster

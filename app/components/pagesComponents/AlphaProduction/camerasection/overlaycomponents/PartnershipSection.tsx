@@ -1,71 +1,99 @@
-"use client";
-import { Users, PenTool, BarChart, Rocket } from "lucide-react";
+import { 
+  Settings, 
+  Video, 
+  Mic, 
+  Sun, 
+  Sparkles,
+  Handshake
+} from "lucide-react";
 import GlassBlock from "./GlassBlock";
 
-interface PartnershipSectionProps {
+interface ProductionSectionProps {
   locale: "en" | "ar";
 }
 
-export default function PartnershipSection({ locale }: PartnershipSectionProps) {
-  const sideArea =
-    "w-[38%] h-full flex flex-col justify-center px-8 md:px-16 pointer-events-none";
+export default function ProductionSection({ locale }: ProductionSectionProps) {
+  const isAr = locale === "ar";
 
-  // =======================
-  // الترجمات داخل الملف
-  // =======================
   const translations = {
     en: {
-      partnershipTitle: "PARTNERSHIP",
-      partnershipDesc: "We don't just work for you; we work with you to align vision with market reality.",
-      creativeTitle: "CREATIVE",
-      creativeDesc: "Our creative labs develop unique concepts that break the digital noise.",
-      analysisTitle: "ANALYSIS",
-      analysisDesc: "Every shot is data-driven, ensuring high engagement and conversion rates.",
-      launchTitle: "LAUNCH",
-      launchDesc: "Full support during the project release to ensure maximum visual impact.",
+      mainTitle: "Production",
+      items: [
+        { title: "Management", desc: "Overseeing the entire workflow.", icon: Settings, pos: "top-12 left-12", delay: "0s" },
+        { title: "Directing", desc: "Visionary leadership on set.", icon: Video, pos: "top-12 right-12", delay: "0.5s" },
+        { title: "Recording", desc: "High-fidelity video & audio.", icon: Mic, pos: "bottom-12 left-12", delay: "1s" },
+        { title: "Lighting", desc: "Atmospheric visual depth.", icon: Sun, pos: "bottom-12 right-12", delay: "1.5s" },
+        { title: "Styling", desc: "Makeup & wardrobe prep.", icon: Sparkles, pos: "top-1/2 -translate-y-1/2 left-8", delay: "2s" },
+        { title: "Assistance", desc: "Essential ground support.", icon: Handshake, pos: "top-1/2 -translate-y-1/2 right-8", delay: "2.5s" },
+      ],
     },
     ar: {
-      partnershipTitle: "الشراكة",
-      partnershipDesc: "نحن لا نعمل من أجلك فقط، بل نعمل معك لمواءمة الرؤية مع واقع السوق.",
-      creativeTitle: "الإبداع",
-      creativeDesc: "مختبراتنا الإبداعية تطور مفاهيم فريدة تكسر ضوضاء الرقمية.",
-      analysisTitle: "التحليل",
-      analysisDesc: "كل لقطة مبنية على البيانات لضمان تفاعل مرتفع ومعدلات تحويل عالية.",
-      launchTitle: "الإطلاق",
-      launchDesc: "دعم كامل أثناء إصدار المشروع لضمان أقصى تأثير بصري.",
+      mainTitle: "خدمات الإنتاج",
+      items: [
+        { title: "إدارة الإنتاج", desc: "الإشراف الكامل على العمل.", icon: Settings, pos: "top-12 right-12", delay: "0s" },
+        { title: "الإخراج", desc: "قيادة الرؤية الفنية.", icon: Video, pos: "top-12 left-12", delay: "0.5s" },
+        { title: "التسجيل", desc: "التقاط فائق الدقة.", icon: Mic, pos: "bottom-12 right-12", delay: "1s" },
+        { title: "الإضاءة", desc: "خلق عمق بصري.", icon: Sun, pos: "bottom-12 left-12", delay: "1.5s" },
+        { title: "التجهيز", desc: "المكياج والأزياء.", icon: Sparkles, pos: "top-1/2 -translate-y-1/2 right-8", delay: "2s" },
+        { title: "الدعم", desc: "المساعدة اللوجستية.", icon: Handshake, pos: "top-1/2 -translate-y-1/2 left-8", delay: "2.5s" },
+      ],
     },
   };
 
-  const t = translations[locale]; // نختار الترجمات حسب locale
+  const t = translations[locale];
 
   return (
-    <section className="h-screen w-screen flex justify-between items-center">
-      <div className={sideArea}>
-        <GlassBlock
-          icon={Users}
-          title={t.partnershipTitle}
-          desc={t.partnershipDesc}
-        />
-        <GlassBlock
-          icon={PenTool}
-          title={t.creativeTitle}
-          desc={t.creativeDesc}
-        />
-      </div>
-      <div className={`${sideArea} items-end`}>
-        <GlassBlock
-          align="right"
-          icon={BarChart}
-          title={t.analysisTitle}
-          desc={t.analysisDesc}
-        />
-        <GlassBlock
-          align="right"
-          icon={Rocket}
-          title={t.launchTitle}
-          desc={t.launchDesc}
-        />
-      </div>
-    </section>
+    <>
+      <style jsx>{`
+        @keyframes custom-float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+          animation: custom-float 4s ease-in-out infinite;
+        }
+      `}</style>
+
+      <section 
+        className="relative h-screen w-screen flex flex-col items-center py-16 px-10 overflow-hidden bg-transparent"
+        dir={isAr ? "rtl" : "ltr"}
+      >
+        {/* العنوان الرئيسي: نفس التصميم السابق (Bold, Italic, White) */}
+        <div className="relative z-50 text-center pointer-events-none select-none">
+          <h2 className="text-6xl md:text-8xl font-[1000] text-white uppercase tracking-tighter italic leading-none drop-shadow-sm">
+            {t.mainTitle}
+          </h2>
+          <div className="h-[1px] w-32 bg-white/20 mx-auto mt-6" />
+        </div>
+
+        {/* توزيع البطاقات في الهوامش لترك المركز لمجسم الـ 3D */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
+          {t.items.map((service, index) => (
+            <div
+              key={index}
+              className={`absolute ${service.pos} pointer-events-auto transition-transform duration-500 hover:scale-110 animate-float`}
+              style={{ 
+                width: "240px",
+                animationDelay: service.delay 
+              }}
+            >
+              <GlassBlock 
+                align={service.pos.includes("right") ? "right" : "left"}
+                icon={service.icon} 
+                title={service.title} 
+                desc={service.desc} 
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* تذييل تقني خفيف */}
+        <div className="absolute bottom-10 z-50 flex flex-col items-center opacity-20 pointer-events-none">
+          <span className="text-[10px] font-mono text-white tracking-[1em] uppercase">
+            Phase_02 // Execution
+          </span>
+        </div>
+      </section>
+    </>
   );
 }

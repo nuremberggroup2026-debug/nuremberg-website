@@ -2,9 +2,8 @@
 
 import React from "react";
 import { 
-  Camera, Film, Layers, Video, Target, ChevronRight, 
-  Mail, Phone, MapPin, Instagram, Facebook, Linkedin, 
-  MonitorPlay, Scissors, Clapperboard, Share2, PlayCircle
+  Camera,  Target,
+  Scissors, Clapperboard, PlayCircle
 } from "lucide-react";
 import Footer from "@/app/components/pagesComponents/AlphaProduction/footer"
 import { useLocale } from "next-intl";

@@ -1,4 +1,3 @@
-"use client";
 import { Video } from "lucide-react";
 
 interface Props {
@@ -20,7 +19,7 @@ export default function HeroSection({ locale }: Props) {
   const sideArea =
     "w-[38%] h-full flex flex-col justify-center px-8 md:px-16 pointer-events-none";
 
-  const t = translations[locale]; // ✅ TypeScript يفهم أن locale صحيح
+  const t = translations[locale]; 
 
   return (
     <section className="h-screen w-screen flex justify-between items-center relative">

@@ -1,8 +1,7 @@
 "use client";
 import { useLocale } from "next-intl";
 import { homeData } from "@/data/Homadata";
-import { MoveRight, Hexagon, Fingerprint, Rocket } from "lucide-react";
-import gsap from "gsap";
+import { Code, Video, TrendingUp } from "lucide-react";import gsap from "gsap";
 import { useRef, useEffect } from "react";
 
 export default function HeroSection() {
@@ -87,9 +86,9 @@ export default function HeroSection() {
           {hero.cards.map((card, idx) => (
             <div key={idx} className="info-card p-10 flex flex-col items-center justify-center group hover:bg-white/[0.02] transition-colors relative">
               <div className="text-cyan-500 mb-6">
-                {idx === 0 && <Hexagon size={28} className="animate-spin-slow" />}
-                {idx === 1 && <Fingerprint size={28} />}
-                {idx === 2 && <Rocket size={28} className="group-hover:-translate-y-2 transition-transform" />}
+                {idx === 0 && <Code size={28} className="animate-spin-slow" />}
+                {idx === 1 && <Video size={28} />}
+                {idx === 2 && <TrendingUp size={28} className="group-hover:-translate-y-2 transition-transform" />}
               </div>
               <h3 className="text-white font-mono text-xs tracking-[0.2em] uppercase mb-4">{card.title}</h3>
               <p className="text-gray-500 text-[11px] leading-relaxed uppercase max-w-[200px]">{card.desc}</p>

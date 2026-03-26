@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { useLocale } from "next-intl"; // <-- لاختيار اللغة
-import { aboutData } from "@/data/AboutData"; // ملف البيانات للصفحة
+import { useLocale } from "next-intl"; 
+import { aboutData } from "@/data/AboutData"; 
 
 export default function HeroSection() {
   const locale = useLocale() as "en" | "ar";

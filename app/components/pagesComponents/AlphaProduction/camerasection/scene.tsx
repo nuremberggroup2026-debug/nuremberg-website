@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useLayoutEffect, Suspense, useMemo } from "react";
+import  { useRef, useLayoutEffect, Suspense, useMemo } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import {
   Environment,
@@ -17,7 +17,6 @@ import { Camera } from "@/public/models/Camera";
 import Overlay from "./overlay";
 import * as THREE from "three";
 
-// دالة لإنشاء Texture متدرج دائري للهالة
 function createGlowTexture() {
   const canvas = document.createElement("canvas");
   canvas.width = 64;
@@ -90,22 +89,26 @@ function AnimatedSceneContents() {
   useLayoutEffect(() => {
     tl.current = gsap.timeline({ paused: true });
 
-    // --- أنيميشن حركة الكاميرا ---
-    tl.current.to(camera.position, { x: 0, y: 0.1, z: -6, duration: 1 }, 0);
-    tl.current.to(camera.position, { x: 10, y: 1, z: 4, duration: 1 }, 1);
-    tl.current.to(camera.position, { x: -5, y: 2, z: 4, duration: 1 }, 2);
-    tl.current.to(camera.position, { x: 0, y: 5, z: 6, duration: 1 }, 3);
-    tl.current.to(camera.position, { x: 6, y: -1, z: 3, duration: 1 }, 4);
-    tl.current.to(camera.position, { x: -6, y: 0.5, z: 8, duration: 1 }, 5);
-    tl.current.to(camera.position, { x: 0, y: 1, z: 11, duration: 1 }, 6);
-    tl.current.to(camera.position, { x: 0, y: 1, z: 8, duration: 1 }, 7);
 
-    // --- أنيميشن الـ LookAt واللاشي ---
-    // يبدأ التغيير والتلاشي معاً عند الثانية 6
+
+
+tl.current.to(camera.position, { x: 0, y: 0.1, z: -6, duration: 1 }, 0);
+
+
+tl.current.to(camera.position, { x: 7, y: 1, z: 4, duration: 1 }, 1.5);
+
+tl.current.to(camera.position, { x: -5, y: 2, z: 6, duration: 1 }, 3);
+
+tl.current.to(camera.position, { x: 5, y: 2, z: 4, duration: 1 }, 4.5);
+
+
+tl.current.to(camera.position, { x: 0, y: .5, z: 8, duration: 1 }, 6);
+
+
     tl.current.to(
       lookAtTarget.current,
-      { x: 0, y: -17, z: 0, duration: 5, ease: "power4.inOut" },
-      6
+      { x: 0, y: -17, z: 0, duration: 6, ease: "power4.inOut" },
+      5
     );
 
     // تلاشي الهالة (Glow)
@@ -126,12 +129,7 @@ function AnimatedSceneContents() {
       }, 6);
     }
 
-    // استقرار الـ LookAt النهائي
-    tl.current.to(
-      lookAtTarget.current,
-      { x: 0, y: -17, z: 0, duration: 5, ease: "power4.inOut" },
-      10
-    );
+
 
   }, [camera]);
 
@@ -164,7 +162,7 @@ export default function Scene() {
   return (
     <div className="h-screen overflow-hidden bg-black">
       <Canvas shadows camera={{ position: [0, 0.1, -0.5], fov: 35 }}>
-        <ScrollControls pages={11} damping={0.3}>
+        <ScrollControls pages={12} damping={0.3}>
           <AnimatedSceneContents />
           <Overlay locale={locale as "en" | "ar"} />
         </ScrollControls>

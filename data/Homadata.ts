@@ -14,12 +14,12 @@ en: {
           desc: "High-performance software architectures for global scalability." 
         },
         { 
-          title: "Social Media", 
+          title: "Media Production", 
           desc: "Data-driven strategies that define digital culture." 
         },
         { 
-          title: "Initiate Project", 
-          desc: "Kickstart your collaboration with our team." 
+          title: "Branding", 
+          desc: "Kickstart your brand with us." 
         },
       ],
     },
@@ -28,7 +28,6 @@ en: {
 aboutSection: {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
       imageAlt: "Alpha Systems Operations",
-      label: "Core_Manifesto",
       title: "About Us",
       desc: "We don't just build products; we architect digital dominance. Alpha Systems is the fusion of high-end software development and cinematic visual storytelling.",
       stats: [
@@ -36,7 +35,7 @@ aboutSection: {
         { icon: "ShieldCheck", value: "Tier-1", label: "Security Standards" },
       ],
       tags: ["Software", "Production", "Strategy"],
-      cta: { label: "View The Protocol", link: "/about" },
+      cta: { label: "Contact Us", link: "/about-us" },
       footer: "System_v4.0 // Deployment_Ready",
     },
     ////////////////////////////////////////////////////////////////////////
@@ -105,11 +104,10 @@ aboutSection: {
     ///////////////////////////////////////////////////////////////////////
         cta: {
       marquee: ["Core_Evolution", "Alpha_Protocol"],
-      global: "Global_Reach:",
+      global: "Avalabiliy:",
       status: "Online",
-      title: ["GET", "ALPHA", "RESULTS."],
-      button: "Initiate Project",
-      footer: "Secure_Handshake_2026"
+      title: ["GET", "IN", "TOUCH."],
+      button: "Contact us",
     },
        section2Mobile: [
       {
@@ -151,12 +149,12 @@ ar: {
           desc: "هياكل برمجية عالية الأداء قابلة للتوسع عالميًا." 
         },
         { 
-          title: "وسائل التواصل الاجتماعي", 
+          title: "انتاج فني", 
           desc: "استراتيجيات تعتمد على البيانات تحدد الثقافة الرقمية." 
         },
         { 
-          title: "بدء المشروع", 
-          desc: "ابدأ تعاونك مع فريقنا بنقرة واحدة." 
+          title: "العلامة التجارية", 
+          desc: "ابدأ رحلتك معنا لتعزيز علامتك التجارية من خلال تعاون مبتكر." 
         },
       ],
     },
@@ -164,7 +162,6 @@ ar: {
   aboutSection: {
       image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
       imageAlt: "عمليات ألفا سيستمز",
-      label: "بيان_النظام",
       title: "عن  الشركة",
       desc: "نحن لا نبني مجرد منتجات؛ نحن نصمم الهيمنة الرقمية. 'ألفا سيستمز' هي المزيج الأمثل بين تطوير البرمجيات الراقية وسرد القصص البصري السينمائي.",
       stats: [
@@ -172,7 +169,7 @@ ar: {
         { icon: "ShieldCheck", value: "Tier-1", label: "معايير الأمان" },
       ],
       tags: ["البرمجيات", "الإنتاج", "الإستراتيجية"],
-      cta: { label: "استعراض البروتوكول", link: "/about" },
+      cta: { label: "تواصل معنا", link: "/about-us" },
       footer: "النظام_v4.0 // جاهز_للنشر",
     },
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -242,11 +239,10 @@ ar: {
     /////////////////////////////////////////////////////////////////////////////
         cta: {
       marquee: ["تطور_النواة", "بروتوكول_ألفا"],
-      global: "الوصول_العالمي:",
+      global: "التوافر:",
       status: "متصل",
-      title: ["احصل", "على_ألفا", "النتائج."],
-      button: "ابدأ المشروع",
-      footer: "مصافحة_آمنة_2026"
+      title: ["تواصل", "معنا", "الآن."],
+      button: "اتصل بنا",
     },
     //////////////////////////////////////////////////////////////////////////////////
         section2Mobile: [

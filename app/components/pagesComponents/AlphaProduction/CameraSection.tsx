@@ -1,4 +1,3 @@
-"use client";
 import React, { RefObject } from "react";
 import Scene from "@/app/components/pagesComponents/AlphaProduction/camerasection/scene";
 

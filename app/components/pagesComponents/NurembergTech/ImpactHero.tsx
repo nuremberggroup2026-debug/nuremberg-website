@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Code2, Terminal, Cpu } from "lucide-react";
 import { useLocale } from "next-intl";
-import { nurembergData } from "@/data/nurembergData"; // ملف الترجمات
+import { nurembergData } from "@/data/nurembergData"; 
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);

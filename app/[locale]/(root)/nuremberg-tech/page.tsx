@@ -3,8 +3,7 @@
 import React from "react";
 import HeroSection from "@/app/components/pagesComponents/NurembergTech/HeroSection";
 import FeaturesSection from "@/app/components/pagesComponents/NurembergTech/FeaturesSection";
-import ResponsiveModule from "@/app/components/pagesComponents/NurembergTech/ResponsiveModule";
-import TechStackSection from "@/app/components/pagesComponents/NurembergTech/TechStackSection";
+import Responsivesection from "@/app/components/pagesComponents/NurembergTech/techcomponents/responsivesection";
 import ProjectsArchive from "@/app/components/pagesComponents/NurembergTech/ProjectsArchive";
 import CTASection from "@/app/components/pagesComponents/NurembergTech/CTASection";
 import SystemsTechSection from "@/app/components/pagesComponents/NurembergTech/SystemsTechSection"
@@ -43,8 +42,8 @@ const projects = (await getAllProjectsByLocale(locale)).data ?? [];
       <ImpactHero/>
       <SystemsTechSection/>
       <FeaturesSection />
-      <ResponsiveModule />
-      <ProjectsArchive projects={projects} />
+      <Responsivesection />
+      {projects.length>0&&<ProjectsArchive projects={projects} />}
       <CTASection />
       </InteractiveBackground>
   );

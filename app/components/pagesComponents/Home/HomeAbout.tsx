@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { ArrowUpRight, Globe, Zap, ShieldCheck } from "lucide-react";
+import { ArrowUpRight,  Zap, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { homeData } from "@/data/Homadata";
 import { useLocale } from "next-intl";
@@ -51,12 +50,7 @@ export default function HomeAbout() {
           <div className={`lg:col-span-5 flex flex-col justify-center ${isArabic ? "lg:pr-16 text-right" : "lg:pl-16 text-left"}`}>
             <div className="space-y-8">
               <div>
-                <div className={`flex items-center gap-2 mb-6 ${isArabic ? "justify-end" : ""}`}>
-                  <span className="text-cyan-500 font-mono text-[10px] tracking-[0.3em] font-bold underline decoration-2 underline-offset-4">
-                    {about.label}
-                  </span>
-                </div>
-                
+     
                 <h2 className="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
                   {about.title.split(" ").map((word, i) => (
                     <span key={i} className={i % 2 !== 0 ? "text-transparent font-outline-cyan block" : "block"}>
@@ -70,7 +64,7 @@ export default function HomeAbout() {
                 {about.desc}
               </p>
 
-              <div className={`flex flex-wrap gap-2 ${isArabic ? "justify-end" : ""}`}>
+              <div className={`flex flex-wrap gap-2 justify-start`}>
                 {about.tags.map((tag, idx) => (
                   <span key={idx} className="text-[10px] font-mono text-gray-500 border border-white/5 px-3 py-1 bg-white/[0.02]">
                     #{tag}

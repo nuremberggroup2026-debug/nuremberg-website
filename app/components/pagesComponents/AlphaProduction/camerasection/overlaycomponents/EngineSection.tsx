@@ -1,4 +1,3 @@
-"use client";
 
 interface Props {
   locale: "en" | "ar";
@@ -6,138 +5,70 @@ interface Props {
 
 const translations = {
   en: {
-    liveProduction: "Live Production Alpha",
-    alphaEngine: "ALPHA ENGINE",
-    description:
-      "Experience the pinnacle of software craftsmanship. Engineered for extreme reliability and sub-millisecond precision.",
-    architecture: "Architecture",
-    architectureValue: "Distributed",
-    latency: "Latency",
-    latencyValue: "< 1.2ms",
-    accessTerminal: "Access Terminal",
-    systemHandshake: "System_Handshake: Verified",
-    secureLink: "Secure_Link: Active",
-    sourceControl: "Source_Control",
-    mainframe: "Mainframe_v2",
+    title: "WE ARE YOUR EYES THROUGH OUR LENS",
+    description: 
+      "Alpha Production was created to open your eyes to a whole new world. If you have a story, we will be your lens, bringing professional knowledge in technology and storytelling to every frame.",
+    subText: "From initial guidance to budget optimization, we provide full support.",
+    services: ["Content Creation", "Photography", "Production", "Editing", "Animation"],
   },
   ar: {
-    liveProduction: "إنتاج مباشر ألفا",
-    alphaEngine: "ألفا المحرك",
-    description:
-      "اختبر قمة صناعة البرمجيات. مصمم لأقصى درجات الاعتمادية ودقة أقل من المللي ثانية.",
-    architecture: "الهندسة المعمارية",
-    architectureValue: "موزع",
-    latency: "الكمون",
-    latencyValue: "< 1.2ms",
-    accessTerminal: "الوصول إلى المحطة",
-    systemHandshake: "مبادلة النظام: تم التحقق",
-    secureLink: "رابط آمن: نشط",
-    sourceControl: "التحكم بالمصدر",
-    mainframe: "Mainframe_v2",
-  },
+    title: "نحن عيونك من خلال عدستنا",
+    description: 
+      "تأسست ألفا برودكشن لتفتح عينيك على عالم جديد. إذا كان لديك قصة، فسنكون عدستك، سخرنا خبرتنا في التكنولوجيا والسرد القصصي لنضعها في كل إطار.",
+    subText: "من التوجيه الأولي إلى تحسين الميزانية، نقدم دعماً كاملاً.",
+    services: ["صناعة المحتوى", "التصوير", "الإنتاج", "المونتاج", "الرسوم المتحركة"],
+  }
 };
 
-export default function EngineSection({ locale }: Props) {
+export default function BalancedTargetSection({ locale }: Props) {
   const t = translations[locale];
+  const isAr = locale === "ar";
 
   return (
-    <section className="relative w-full    h-screen flex items-center justify-center px-6 md:px-16 py-32 overflow-hidden">
+    <section className="relative h-screen w-screen flex items-center justify-center px-6 md:px-20 py-12 bg-transparent" dir={isAr ? "rtl" : "ltr"}>
       
-      {/* Background Frame Lines */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-16 left-16 w-40 h-40 border-l border-t border-cyan-500/20"></div>
-        <div className="absolute bottom-16 right-16 w-40 h-40 border-r border-b border-cyan-500/20"></div>
-
-        <div className="absolute top-1/2 left-6 -translate-y-1/2 hidden xl:block">
-          <div className="rotate-90 origin-left text-[9px] font-mono text-cyan-500/30 tracking-[1em] uppercase whitespace-nowrap">
-            Production_Environment // Alpha_Protocol_v2.0
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-20 items-center relative z-10">
+      {/* الحاوية الزجاجية - ارتفاع محكم */}
+      <div className="relative max-w-7xl w-full bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-[2rem] overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl overflow-hidden">
         
-        {/* Text Side */}
-        <div className="lg:col-span-6 space-y-12">
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
-              <span className="text-[10px] font-mono text-cyan-500 uppercase tracking-[0.4em] font-black">
-                {t.liveProduction}
-              </span>
-            </div>
+        {/* الجانب النصي - Padding مضغوط */}
+        <div className="lg:col-span-7 p-8 md:p-12 space-y-6 flex flex-col justify-center">
+          
+          <h2 className="text-4xl md:text-5xl font-[1000] leading-[1] tracking-tighter uppercase italic text-white">
+            {t.title}
+          </h2>
 
-            <h1 className="text-6xl md:text-[110px] font-[1000] text-white italic uppercase tracking-tighter leading-[0.85]">
-              ALPHA <br />
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: "1px rgba(255,255,255,0.8)" }}
-              >
-                {t.alphaEngine}
-              </span>
-            </h1>
-          </div>
-
-          <div className="max-w-xl space-y-8">
-            <p className="text-white/60 text-xl font-light leading-relaxed">
+          <div className="space-y-3">
+            <p className="text-white/80 text-lg font-light leading-snug">
               {t.description}
             </p>
+            <p className="text-white/30 text-xs italic tracking-wide">
+              {t.subText}
+            </p>
+          </div>
 
-            <div className="grid grid-cols-2 gap-10 border-y border-white/10 py-10">
-              <div>
-                <div className="text-cyan-500 font-mono text-xs uppercase tracking-widest mb-1">
-                  {t.architecture}
-                </div>
-                <div className="text-white font-black italic text-xl uppercase">
-                  {t.architectureValue}
-                </div>
-              </div>
-              <div>
-                <div className="text-cyan-500 font-mono text-xs uppercase tracking-widest mb-1">
-                  {t.latency}
-                </div>
-                <div className="text-white font-black italic text-xl uppercase">
-                  {t.latencyValue}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-8 pt-6">
-              <button className="px-12 py-4 bg-white text-black font-[1000] italic uppercase tracking-tighter text-lg hover:bg-cyan-500 transition-all duration-300 active:scale-95">
-                {t.accessTerminal}
-              </button>
-
-              <div className="text-[10px] font-mono text-white/30 uppercase tracking-widest leading-tight">
-                {t.systemHandshake} <br />
-                {t.secureLink}
-              </div>
-            </div>
+          {/* الخدمات كـ Tags أصغر */}
+          <div className="flex flex-wrap gap-2 pt-4">
+            {t.services.map((s, i) => (
+              <span key={i} className="px-3 py-1 border border-white/5 rounded-md text-[9px] font-mono uppercase tracking-[0.15em] text-cyan-400/60 bg-white/5">
+                {s}
+              </span>
+            ))}
           </div>
         </div>
 
-        {/* Image Side */}
-        <div className="lg:col-span-6 relative">
-          <div className="relative aspect-square lg:aspect-[4/5] overflow-hidden rounded-[3rem] border border-white/15 shadow-2xl group">
-
-            <img
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
-              alt="Production Server Architecture"
-              className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
-            />
-
-            <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-black/80 to-transparent">
-              <div className="text-[9px] font-mono text-cyan-400 uppercase tracking-widest italic">
-                {t.sourceControl}
-              </div>
-              <div className="text-white font-black italic text-2xl uppercase tracking-tight">
-                {t.mainframe}
-              </div>
-            </div>
-
-            <div className="absolute top-0 left-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[2000ms] skew-x-12"></div>
+        {/* الجانب البصري - عرض سينمائي */}
+        <div className="lg:col-span-5 relative min-h-[250px] lg:min-h-full border-l border-white/10">
+          <img 
+            src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070&auto=format&fit=crop" 
+            alt="Cinematography"
+            className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.4] hover:scale-105 transition-transform duration-[4s]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          
+          {/* كود تقني جانبي بسيط */}
+          <div className="absolute bottom-6 right-6 text-cyan-500/20 font-mono text-[8px] uppercase tracking-[0.6em] vertical-text hidden md:block">
+            ALPHA_CORE_SYSTEM
           </div>
-
-          <div className="absolute -bottom-16 -right-16 w-56 h-56 border border-white/5 rounded-full pointer-events-none"></div>
         </div>
       </div>
     </section>
