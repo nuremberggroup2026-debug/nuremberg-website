@@ -1,6 +1,5 @@
 "use client";
 
-import { projectsSchema } from "@/app/server/projects/validators";
 import {
   Select,
   SelectContent,
@@ -8,27 +7,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Control, Controller, FieldError } from "react-hook-form";
-import {z} from "zod"
+import { Control, Controller, FieldError, FieldValues, Merge, Path } from "react-hook-form";
 
 interface Option {
   label: string;
   value: string;
 }
 
-interface FormSelectProps {
-  name: string;
+interface FormSelectProps<T extends FieldValues> {
+  name: Path<T>;
   label: string;
-  control: Control<any>;
+  control: Control<T>;
   options: Option[];
-  error?: FieldError;
+  error?: FieldError | Merge<FieldError, (FieldError | undefined)[]> | undefined; // ✅ fixed
   placeholder?: string;
   className?: string;
   description?: string;
   triggerClassName?: string;
 }
 
-export default function FormSelect({
+export default function FormSelect<T extends FieldValues>({
   name,
   label,
   control,
@@ -38,7 +36,7 @@ export default function FormSelect({
   className = "",
   description,
   triggerClassName = "w-[180px]",
-}: FormSelectProps) {
+}: FormSelectProps<T>) {
   const id = name;
   const errorId = `${id}-error`;
 
@@ -59,9 +57,7 @@ export default function FormSelect({
             <SelectTrigger
               id={id}
               aria-invalid={!!error}
-              aria-describedby={
-                error ? errorId : description ? `${id}-desc` : undefined
-              }
+              aria-describedby={error ? errorId : description ? `${id}-desc` : undefined}
               className={`bg-white shadow-sm transition
                 focus:outline-none focus:ring-2 focus:ring-blue-500
                 ${triggerClassName}
@@ -87,11 +83,8 @@ export default function FormSelect({
         </p>
       )}
 
-      {error && (
-        <p
-          id={errorId}
-          className="mt-1 text-xs text-red-600 ml-2"
-        >
+      {error && "message" in error && (
+        <p id={errorId} className="mt-1 text-xs text-red-600 ml-2">
           {error.message}
         </p>
       )}
