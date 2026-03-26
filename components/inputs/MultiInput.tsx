@@ -5,20 +5,26 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
-import { Control, Controller, FieldError, Merge } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldError,
+  FieldValues,
+  Path,
+  Merge,
+} from "react-hook-form";
 
-interface MultiInputFormProps {
-  name: string;
+type MultiInputFormProps<T extends FieldValues> = {
+  name: Path<T>;
   label: string;
-  control: Control<any>;
-  error?: Merge<FieldError, (FieldError | undefined)[]>;
+  control: Control<T>;
+  error?: FieldError | Merge<FieldError, (FieldError | undefined)[]> | undefined; // ✅ fixed
   placeholder?: string;
   className?: string;
   description?: string;
-}
+};
 
-
-export default function MultiInputForm({
+export default function MultiInputForm<T extends FieldValues>({
   name,
   label,
   control,
@@ -26,7 +32,7 @@ export default function MultiInputForm({
   placeholder = "Add target audience",
   className = "",
   description,
-}: MultiInputFormProps) {
+}: MultiInputFormProps<T>) {
   const id = name;
   const errorId = `${id}-error`;
 
@@ -48,18 +54,15 @@ export default function MultiInputForm({
         render={({ field }) => {
           const [input, setInput] = useState("");
 
-          const addAudience = () => {
+          const addItem = () => {
             const trimmed = input.trim();
             if (!trimmed) return;
-
             field.onChange([...(field.value || []), trimmed]);
             setInput("");
           };
 
-          const removeAudience = (index: number) => {
-            field.onChange(
-              (field.value || []).filter((_: string, i: number) => i !== index)
-            );
+          const removeItem = (index: number) => {
+            field.onChange((field.value || []).filter((_: string, i: number) => i !== index));
           };
 
           return (
@@ -73,13 +76,11 @@ export default function MultiInputForm({
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
-                      addAudience();
+                      addItem();
                     }
                   }}
                   aria-invalid={!!error}
-                  aria-describedby={
-                    error ? errorId : description ? `${id}-desc` : undefined
-                  }
+                  aria-describedby={error ? errorId : description ? `${id}-desc` : undefined}
                   className={`w-full bg-white shadow-sm transition
                     focus:outline-none focus:ring-2
                     ${
@@ -89,11 +90,7 @@ export default function MultiInputForm({
                     }`}
                 />
 
-                <Button
-                  type="button"
-                  onClick={addAudience}
-                  className="w-full sm:w-auto"
-                >
+                <Button type="button" onClick={addItem} className="w-full sm:w-auto">
                   + Add
                 </Button>
               </div>
@@ -105,13 +102,11 @@ export default function MultiInputForm({
                     variant="secondary"
                     className="flex items-center gap-2 px-3 py-2 text-sm max-w-full"
                   >
-                    <span className="truncate max-w-50 sm:max-w-60">
-                      {truncate(item)}
-                    </span>
+                    <span className="truncate max-w-50 sm:max-w-60">{truncate(item)}</span>
 
                     <button
                       type="button"
-                      onClick={() => removeAudience(index)}
+                      onClick={() => removeItem(index)}
                       className="text-muted-foreground hover:text-destructive shrink-0"
                     >
                       <X className="h-4 w-4" />
@@ -130,7 +125,7 @@ export default function MultiInputForm({
         </p>
       )}
 
-      {error && (
+      {error && "message" in error && (
         <p id={errorId} className="mt-1 text-xs text-red-600 ml-2">
           {error.message}
         </p>
