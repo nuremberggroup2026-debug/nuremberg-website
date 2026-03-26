@@ -25,6 +25,7 @@ export default function ProfessionalBalancedFooter() {
   const isArabic = locale === "ar";
   const addressAr= process.env.NEXT_PUBLIC_ADDRESS_AR
   const addressEn= process.env.NEXT_PUBLIC_ADDRESS_EN
+  const phoneNum=process.env.NEXT_PUBLIC_PHONE_NUMBER
 
   const translations = {
     en: {
@@ -184,7 +185,7 @@ export default function ProfessionalBalancedFooter() {
 
               <div className="flex items-center gap-3 break-words">
                 <Phone size={14} className="text-cyan-500" />
-                <a href="tel:+962790000000" className="hover:text-white">
+                <a href={`tel:${phoneNum}` }className="hover:text-white">
                   {t.phone}
                 </a>
               </div>
