@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import HeroSection from "@/app/components/pagesComponents/AlphaProduction/HeroSection";
 import CameraSection from "@/app/components/pagesComponents/AlphaProduction/CameraSection";
-import CTA from "@/app/components/pagesComponents/Home/CTASection";
 
 
 gsap.registerPlugin(useGSAP);

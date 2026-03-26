@@ -1,6 +1,5 @@
-"use client";
 
-import React from "react";
+
 import Desktop from "@/app/components/pagesComponents/AlphaProduction/desktopComponent";
 import Phone from "@/app/components/pagesComponents/AlphaProduction/phoneComponent";
 

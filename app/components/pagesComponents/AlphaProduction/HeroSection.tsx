@@ -1,5 +1,5 @@
 "use client";
-import React, { RefObject } from "react";
+import { RefObject } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLocale } from "next-intl";
 
@@ -16,7 +16,6 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const locale = useLocale();
 
-  // النصوص حسب اللغة
   const messages: Record<string, Record<string, string>> = {
     en: {
       title: "ALPHA",
@@ -28,7 +27,7 @@ From video and photography to digital media, we turn ideas into impactful visual
     },
     ar: {
       title: "ألفا",
-      highlight: "للانتاج",
+      highlight: "للإنتاج",
       subtitle: "نروي قصتك",
       start: "ابدأ التجربة",
       description: `ألفا برودكشن تقدم محتوى بصري مميز يساعد علامتك التجارية على التواصل بفعالية.

@@ -1,6 +1,4 @@
-"use client";
 
-import React from "react";
 import ProjectsSection from "@/app/components/pagesComponents/NurembergTech/techcomponents/projectssection";
 import type { translatedProjects} from "@/types/index"
 

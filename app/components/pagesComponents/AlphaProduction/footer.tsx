@@ -12,7 +12,6 @@ interface PageFooterProps {
 }
 
 export default function PageFooter({ locale }: PageFooterProps) {
-  // تحديد اللغة
   const detectedLang = locale?.startsWith("ar") ? "ar" : "en";
   const isArabic = detectedLang === "ar";
 
@@ -73,7 +72,7 @@ export default function PageFooter({ locale }: PageFooterProps) {
   return (
     /* الحاوية الخارجية التي تضمن ارتفاع الصفحة بالكامل (h-screen) */
     /* اللون الأحمر bg-red-600 هو الذي سيكمل المساحة الفارغة فوق الفوتر */
-    <div className="w-full h-screen bg-black flex flex-col justify-end overflow-hidden">
+    <div className="w-full h-screen bg-amber-400 flex flex-col justify-end overflow-hidden">
       
       {/* الفوتر بالأبعاد الأصلية */}
       <footer

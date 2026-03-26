@@ -1,4 +1,6 @@
 "use client";
+
+import React from "react";
 import { useLocale } from "next-intl"; 
 import { aboutData } from "@/data/AboutData"; 
 

@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { Shield, Zap, Target, Users, ArrowUpRight, Star } from "lucide-react";
+import { Shield, Zap, Target, ArrowUpRight, Star } from "lucide-react";
 import { homeData } from "@/data/Homadata";
 import { useLocale } from "next-intl";
 
@@ -16,14 +15,12 @@ export default function WhyUs() {
   const items: WhyUsItem[] =
     homeData[locale]?.whyUs || homeData.en.whyUs;
 
-  // قائمة الأيقونات لكل عنصر
   const icons = [Shield, Target, Zap,  Star];
 
   return (
     <section className="py-32 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
 
-        {/* Header */}
         <div className="text-center mb-24">
           <span className="text-cyan-500 font-mono text-xs tracking-[0.4em] uppercase font-bold">
             Alpha_Standard
@@ -47,7 +44,7 @@ export default function WhyUs() {
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-12">
           {items.map((reason, index) => {
-            const Icon = icons[index] || ArrowUpRight; // أيقونة افتراضية إذا زاد العدد
+            const Icon = icons[index] || ArrowUpRight; 
             return (
               <div
                 key={index}

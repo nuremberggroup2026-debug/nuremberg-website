@@ -1,4 +1,3 @@
-"use client";
 
 import { Inter, Cairo } from "next/font/google";
 
