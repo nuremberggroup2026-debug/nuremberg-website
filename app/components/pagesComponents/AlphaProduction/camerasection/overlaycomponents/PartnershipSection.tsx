@@ -60,7 +60,7 @@ export default function ProductionSection({ locale }: ProductionSectionProps) {
       >
         {/* العنوان الرئيسي: نفس التصميم السابق (Bold, Italic, White) */}
         <div className="relative z-50 text-center pointer-events-none select-none">
-          <h2 className="text-6xl md:text-8xl font-[1000] text-white uppercase tracking-tighter italic leading-none drop-shadow-sm">
+          <h2 className="text-6xl md:text-5xl font-[1000] text-white uppercase tracking-tighter italic leading-none drop-shadow-sm">
             {t.mainTitle}
           </h2>
           <div className="h-[1px] w-32 bg-white/20 mx-auto mt-6" />

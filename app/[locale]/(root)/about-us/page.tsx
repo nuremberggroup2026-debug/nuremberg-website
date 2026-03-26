@@ -1,7 +1,7 @@
 import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import {sendEmailAction} from "./(actions)/sendEmailAction"
+import { sendEmailAction } from "./(actions)/sendEmailAction";
 import HeroSection from "@/app/components/pagesComponents/About/HeroSection";
 import DNASection from "@/app/components/pagesComponents/About/DNASection";
 import ProcessSection from "@/app/components/pagesComponents/About/ProcessSection";
@@ -30,19 +30,15 @@ export default async function NeuralCoreAbout({ params }: PageProps) {
     (await getAllMembersBylocale(locale)).data,
     (await getAllClientsByLocale(locale)).data,
   ]);
-  /*const team = (await getAllMembersBylocale(locale)).data ?? [];
-  const clients = (await getAllClientsByLocale(locale)).data ?? [];*/
 
   return (
     <InteractiveBackground>
-      <HeroSection />
-      <AboutSectors />
-      <DNASection />
-      <ProcessSection />
-      
-      {team && <TeamSection team={team} />}
-      {clients && <OurClientsSection clients={clients} />}
-
+      <HeroSection locale={locale} />
+      <AboutSectors locale={locale} />
+      <DNASection locale={locale} />
+      <ProcessSection locale={locale} />
+      {team && <TeamSection locale={locale} team={team} />}
+      {clients && <OurClientsSection locale={locale} clients={clients} />}
       <FormSection action={sendEmailAction} locale={locale} />
     </InteractiveBackground>
   );

@@ -59,7 +59,6 @@ export type GetProject = {
   project_name_ar: string;
   project_description_en: string | null;
   project_description_ar: string | null;
-  category_id: string;
   project_image: string | null;
   slug: string;
  

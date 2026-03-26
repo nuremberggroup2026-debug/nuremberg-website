@@ -31,15 +31,7 @@ export const ProjectsColumns: ColumnDef<GetProject>[] = [
   },
 
 
-  {
-    id: "category_name_en",
-    header: "Category",
-    accessorFn: (row) => row.categories?.category_name_en,
-    cell: ({ row }) => {
-      const name = row.original.categories?.category_name_en;
-      return <div className="font-medium">{name}</div>;
-    },
-  },
+  
 
 
   {

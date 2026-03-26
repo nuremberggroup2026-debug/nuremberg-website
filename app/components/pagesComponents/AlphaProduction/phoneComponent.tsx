@@ -1,15 +1,16 @@
-"use client";
 
-import React from "react";
 import { 
   Camera,  Target,
   Scissors, Clapperboard, PlayCircle
 } from "lucide-react";
 import Footer from "@/app/components/pagesComponents/AlphaProduction/footer"
-import { useLocale } from "next-intl";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function Phonee() {
-  const locale=useLocale()
+
+export default function Phonee({locale}:PageProps) {
   return (
     <div className="bg-[#020202] text-white min-h-screen font-sans selection:bg-cyan-500 overflow-x-hidden">
       

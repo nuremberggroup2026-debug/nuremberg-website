@@ -4,16 +4,19 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, Code2, Terminal, Cpu } from "lucide-react";
-import { useLocale } from "next-intl";
 import { nurembergData } from "@/data/nurembergData"; 
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function CyberProgrammingSection() {
+
+export default function CyberProgrammingSection({locale}:PageProps) {
   const containerRef = useRef(null);
-  const locale = useLocale() as "en" | "ar";
   const texts = nurembergData[locale]?.section || nurembergData.en.section;
 
   useEffect(() => {

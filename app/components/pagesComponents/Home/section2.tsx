@@ -1,7 +1,11 @@
 import Section2Desktop from "./MissionVisionSection";
 import Section2Mobile from "./Section2Mobile";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function Section2() {
+export default function Section2({locale}:PageProps) {
   return (
     <>
       <div className="hidden lg:block">
@@ -9,7 +13,7 @@ export default function Section2() {
       </div>
 
       <div className="block lg:hidden">
-        <Section2Mobile />
+        <Section2Mobile locale={locale} />
       </div>
     </>
   );

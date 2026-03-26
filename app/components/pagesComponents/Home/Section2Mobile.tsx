@@ -1,11 +1,12 @@
-"use client";
 
-import React from "react";
-import { useLocale } from "next-intl";
 import { homeData } from "@/data/Homadata";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function Section2Mobile() {
-  const locale = useLocale() as "en" | "ar";
+
+export default function Section2Mobile({locale}:PageProps) {
   const content = homeData[locale]?.section2Mobile || homeData.en.section2Mobile;
 
   return (

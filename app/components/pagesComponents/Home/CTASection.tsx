@@ -2,10 +2,14 @@
 
 import { ArrowRight, Globe, Zap } from "lucide-react";
 import { homeData } from "@/data/Homadata";
-import { useLocale } from "next-intl";
 
-export default function CTA() {
-  const locale = useLocale() as "en" | "ar";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
+
+
+export default function CTA({locale}:PageProps) {
   const data = homeData[locale]?.cta || homeData.en.cta;
 
   return (
@@ -74,13 +78,7 @@ export default function CTA() {
             </div>
           </button>
           
-          <div className="flex items-center gap-6 opacity-40">
-            <div className="h-[1px] w-12 bg-white/20" />
-            <p className="text-white font-mono text-[9px] uppercase tracking-[0.6em] whitespace-nowrap">
-              {data.footer}
-            </p>
-            <div className="h-[1px] w-12 bg-white/20" />
-          </div>
+   
         </div>
       </div>
 
