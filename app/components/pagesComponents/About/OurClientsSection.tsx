@@ -38,7 +38,7 @@ export default function ClientsSection({ clients, locale }: PageProps) {
               <img
                 src={client.logo}
                 alt="Client Logo"
-                className="h-8 md:h-10 w-auto relative z-10 brightness-0 invert opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+                className="h-8 md:h-14 w-auto relative z-10 brightness-0 invert opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
               />
             </div>
           ))}

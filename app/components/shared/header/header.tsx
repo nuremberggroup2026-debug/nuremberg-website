@@ -93,7 +93,7 @@ export default function CameraCyberNavbar() {
             <LanguageSwitcher />
           </div>
 
-          <div className="flex flex-col items-start border-r border-white/10 pr-4">
+          <div className="flex flex-col items-start ">
             <span className="text-[8px] text-gray-500 font-mono italic uppercase font-bold">{locale === "ar" ? "الساعة" : "Clock"}</span>
             <span className="text-[10px] text-white font-mono leading-none tracking-tighter font-black"><DigitalClock /></span>
           </div>

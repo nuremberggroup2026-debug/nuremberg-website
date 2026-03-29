@@ -131,4 +131,4 @@ const translatedClients= result.map((client:NewClient)=>{
       status: 500,
     };
   }
-})()
+},[`all-clients-by-locale-${locale}`],{revalidate:3600,tags:["clients"]})()
