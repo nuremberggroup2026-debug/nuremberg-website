@@ -1,205 +1,182 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
-  ArrowUpRight, Command, Globe, Cpu,
-  Instagram, Linkedin, Github, ChevronUp,
-  Activity, Zap
+  ArrowUpRight,
+  Command,
+  Globe,
+  Cpu,
+  Instagram,
+  Linkedin,
+  ChevronUp,
+  Activity,
+  Zap,
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
 } from "lucide-react";
 
-interface PageFooterProps {
-  locale: string;
+interface Props {
+  locale: "en" | "ar";
 }
 
-export default function PageFooter({ locale }: PageFooterProps) {
-  const detectedLang = locale?.startsWith("ar") ? "ar" : "en";
-  const isArabic = detectedLang === "ar";
+export default function ProfessionalBalancedFooter({ locale }: Props) {
+  const isArabic = locale === "ar";
 
-  const translations = {
-    en: {
-      description: "Architecting high-performance digital ecosystems and cinematic narratives with surgical precision.",
-      modules: "Modules",
-      backend: "Backend Systems",
-      alpha: "Alpha Production",
-      cloud: "Cloud Security",
-      web3: "Web3 Lab",
-      initiate: "Initiate_Project",
-      uptime: "Uptime",
-      latency: "Latency",
-      station: "Station_02",
-      location: "Amman, Jordan",
-      network: "Network_Mainnet",
-      kernel: "Kernel_V2.6.0",
-      email: "HELLO@NTECH.PRO"
-    },
-    ar: {
-      description: "نقوم ببناء أنظمة رقمية عالية الأداء وصناعة تجارب سينمائية بدقة هندسية متناهية.",
-      modules: "الوحدات",
-      backend: "أنظمة الخلفية",
-      alpha: "إنتاج ألفا",
-      cloud: "أمن السحابة",
-      web3: "مختبر Web3",
-      initiate: "ابدأ_مشروعك",
-      uptime: "مدة_التشغيل",
-      latency: "زمن_الاستجابة",
-      station: "المحطة_02",
-      location: "عمّان، الأردن",
-      network: "الشبكة_الرئيسية",
-      kernel: "النواة_V2.6.0",
-      email: "HELLO@NTECH.PRO"
-    }
+  const t = {
+    description:
+      locale === "ar"
+        ? "نساعد الشركات على النمو من خلال حلول رقمية ذكية."
+        : "We help businesses grow through smart digital solutions.",
+
+    important: locale === "ar" ? "روابط مهمة" : "Important Links",
+    home: locale === "ar" ? "الرئيسية" : "Home",
+    about: locale === "ar" ? "من نحن" : "About Us",
+    alphaLink: locale === "ar" ? "ألفا للإنتاج" : "Alpha Production",
+    tech: locale === "ar" ? "نورمبرغ تك" : "Nuremberg Tech",
+
+    initiate: locale === "ar" ? "ابدأ مشروعك" : "Start Project",
+
+    uptime: locale === "ar" ? "الاعتمادية" : "Reliability",
+    latency: locale === "ar" ? "الأداء" : "Performance",
+
+    station: locale === "ar" ? "المكتب" : "Office",
+    location: locale === "ar" ? "عمّان، الأردن" : "Amman, Jordan",
+
+    network: locale === "ar" ? "بيئة التشغيل" : "Live Environment",
+    kernel: locale === "ar" ? "إصدار النظام" : "System Version",
+
+    email: "hello@ntech.pro",
+    phone: "+962 7 9000 0000",
   };
-
-  const t = translations[detectedLang];
 
   const [ping, setPing] = useState(14);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPing(Math.floor(Math.random() * (18 - 12 + 1) + 12));
+      setPing(Math.floor(Math.random() * 7) + 12);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
-  const modules = [t.backend, t.alpha, t.cloud, t.web3];
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    /* الحاوية الخارجية التي تضمن ارتفاع الصفحة بالكامل (h-screen) */
-    /* اللون الأحمر bg-red-600 هو الذي سيكمل المساحة الفارغة فوق الفوتر */
-    <div className="w-full h-screen  flex flex-col justify-end overflow-hidden">
+<div className="h-screen flex flex-col justify-end">
+    <footer
+      dir={isArabic ? "rtl" : "ltr"}
+      className="bg-[#030303] text-white px-4 md:px-16 pb-5 relative"
+    >
       
-      {/* الفوتر بالأبعاد الأصلية */}
-      <footer
-        dir={isArabic ? "rtl" : "ltr"}
-        className="bg-[#030303] text-white px-4 md:px-16 pb-12 relative w-full"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-white/5">
-
-          {/* LEFT SECTION */}
-          <div className="md:col-span-5 p-10 md:p-16 space-y-12">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-black border border-cyan-500/30 flex items-center justify-center rounded-xl">
-                <Command size={22} className="text-cyan-500" />
-              </div>
-              <div>
-                <span className="text-2xl font-black uppercase italic tracking-tighter block">
-                  Nuremberg_
-                </span>
-                <span className="text-[9px] font-mono text-cyan-500/60 tracking-[0.3em] uppercase">
-                  Tech_Evolution
-                </span>
-              </div>
+      <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-white/5">
+        {/* LEFT */}
+        <div className="md:col-span-4 p-10 md:p-16 space-y-12">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-black border border-cyan-500/30 flex items-center justify-center rounded-xl">
+              <Command size={22} className="text-cyan-500" />
             </div>
-
-            <p className="text-sm text-gray-500 leading-relaxed max-w-sm">
-              {t.description}
-            </p>
-
-            <div className="flex gap-4">
-              <SocialIcon icon={<Instagram size={18} />} />
-              <SocialIcon icon={<Linkedin size={18} />} />
-              <SocialIcon icon={<Github size={18} />} />
-            </div>
-          </div>
-
-          {/* MODULES SECTION */}
-          <div className="md:col-span-3 p-10 md:p-16">
-            <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
-              {t.modules}
-            </h4>
-            <ul className="space-y-6">
-              {modules.map((item) => (
-                <li
-                  key={item}
-                  className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer transition-colors"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* RIGHT SECTION */}
-          <div className="md:col-span-4 p-10 md:p-16 flex flex-col justify-between">
             <div>
-              <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
-                {t.initiate}
-              </h4>
-              <a href={`mailto:${t.email}`} className="group inline-block">
-                <span className="text-xl md:text-2xl font-black uppercase italic tracking-tighter group-hover:text-cyan-400 transition-colors">
-                  {t.email}
-                </span>
-                <ArrowUpRight className="inline-block ml-3 text-cyan-500 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={20} />
-              </a>
+              <span className="text-2xl font-black uppercase italic tracking-tighter block">
+                {locale === "en" ? "Nuremberg Group" : "مجموعة نورمبغ"}
+              </span>
+              <span className="text-[9px] font-mono text-cyan-500/60 tracking-[0.3em] uppercase">
+                {locale === "en" ? "Tech_Evolution" : "تطور التكنولوجيا"}
+              </span>
             </div>
+          </div>
 
-            <div className="mt-12 space-y-8">
-              <div className="grid grid-cols-2 gap-4">
-                <StatCard icon={<Activity size={12} />} label={t.uptime} value="99.99%" />
-                <StatCard icon={<Zap size={12} />} label={t.latency} value={`${ping}ms`} />
+          <p className="text-sm text-gray-500 leading-relaxed max-w-sm">
+            {t.description}
+          </p>
+
+          <div className="flex gap-4">
+            <SocialIcon icon={<Instagram size={18} />} />
+            <SocialIcon icon={<Linkedin size={18} />} />
+            <SocialIcon icon={<Facebook size={18} />} />
+          </div>
+        </div>
+
+        {/* LINKS */}
+        <div className="md:col-span-3 p-10 md:p-16">
+          <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
+            {t.important}
+          </h4>
+
+          <ul className="space-y-6">
+            <FooterLink href="/home" label={t.home} />
+            <FooterLink href="/about-us" label={t.about} />
+            <FooterLink href="/alpha-production" label={t.alphaLink} />
+            <FooterLink href="/nuremberg-tech" label={t.tech} />
+          </ul>
+        </div>
+
+        {/* RIGHT */}
+        <div className="md:col-span-4 p-10 md:p-16 flex flex-col justify-between">
+          <div>
+            <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
+              {t.initiate}
+            </h4>
+
+            <a
+              href={`mailto:${t.email}`}
+              className="inline-flex items-start gap-3 group"
+            >
+              <span className="text-lg md:text-xl font-black uppercase italic tracking-tighter group-hover:text-cyan-500 transition-colors">
+                {t.email}
+              </span>
+              <ArrowUpRight
+                className="mt-1 text-cyan-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition"
+                size={20}
+              />
+            </a>
+
+            <div className="mt-6 space-y-3 text-sm text-gray-500">
+              <div className="flex items-center gap-3">
+                <Mail size={14} className="text-cyan-500" /> {t.email}
               </div>
-
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-[9px] text-gray-600 block uppercase tracking-[0.3em]">
-                    {t.station}
-                  </span>
-                  <span className="text-[9px] text-white/40 block uppercase tracking-[0.3em]">
-                    {t.location}
-                  </span>
-                </div>
-
-                <button
-                  onClick={scrollToTop}
-                  className="w-12 h-12 border border-white/10 flex items-center justify-center rounded-xl hover:bg-cyan-500 hover:text-black transition-all duration-500 shadow-lg shadow-black"
-                >
-                  <ChevronUp size={20} />
-                </button>
+              <div className="flex items-center gap-3">
+                <Phone size={14} className="text-cyan-500" /> {t.phone}
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin size={14} className="text-cyan-500" /> {t.location}
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* BOTTOM BAR */}
-        <div className="px-10 py-6 border-t border-white/5 flex justify-between items-center bg-black/50">
-          <div className="flex gap-6 text-[9px] font-black text-gray-700 uppercase">
-            <div className="flex items-center gap-2">
-              <Globe size={12} /> {t.network}
-            </div>
-            <div className="flex items-center gap-2">
-              <Cpu size={12} /> {t.kernel}
-            </div>
+      {/* ✅ نفس البوتوم بار */}
+      <div className="px-10 py-6 border-t border-white/5 flex justify-between bg-black/50">
+        <div className="flex gap-6 text-[9px] text-gray-700 uppercase">
+          <div className="flex gap-2 items-center">
+            <Globe size={12} /> {t.network}
+          </div>
+          <div className="flex gap-2 items-center">
+            <Cpu size={12} /> {t.kernel}
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
     </div>
   );
 }
 
-// مكون الأيقونات الاجتماعية
-const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
-  <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-500 hover:border-cyan-500 hover:text-cyan-500 transition-all duration-500 cursor-pointer rounded-xl bg-white/[0.02]">
+const FooterLink = ({ href, label }: any) => (
+  <li className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white">
+    <Link href={href}>{label}</Link>
+  </li>
+);
+
+const SocialIcon = ({ icon }: any) => (
+  <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-500 hover:border-cyan-500 hover:text-cyan-500 transition rounded-xl">
     {icon}
   </div>
 );
 
-// مكون بطاقة الإحصائيات
-const StatCard = ({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) => (
-  <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+const StatCard = ({ icon, label, value }: any) => (
+  <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition">
     <div className="flex items-center gap-2 text-cyan-500 mb-1">
       {icon}
       <span className="text-[8px] font-mono font-black uppercase tracking-widest">
