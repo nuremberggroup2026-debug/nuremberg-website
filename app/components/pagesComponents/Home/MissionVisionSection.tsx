@@ -125,12 +125,27 @@ export default function Section2() {
                 {isRightAligned && <div className="h-2 w-2 bg-cyan-500 rounded-full shadow-[0_0_10px_#06b6d4] animate-pulse" />}
               </div>
 
-              <h1 className="section-text text-7xl text-white md:text-[8.5rem] font-[1000] italic uppercase tracking-tighter opacity-0 leading-[0.8] mb-10">
-                {item.title.split(" ")[0]} <br />
-                <span className="text-transparent" style={{ WebkitTextStroke: '1px #06b6d4' }}>
-                  {item.title.split(" ")[1]}
-                </span>
-              </h1>
+           <h1 className="section-text text-7xl text-white md:text-[8.5rem] font-[1000] italic uppercase tracking-tighter opacity-0 leading-[1] mb-10 overflow-visible">
+  {/* الكلمة الأولى */}
+  <span className="inline-block px-4"> 
+    {item.title.split(" ")[0]}
+  </span> 
+  
+  <br />
+
+  {/* الكلمة الثانية المفرغة */}
+  <span 
+    className="text-transparent inline-block py-2 px-6" 
+    style={{ 
+      WebkitTextStroke: '1px #06b6d4',
+      // الحل الجذري: إضافة مسافة أمان (Padding) من اليمين واليسار داخل الـ Style
+      paddingRight: '0.2em', 
+      paddingLeft: '0.1em'
+    }}
+  >
+    {item.title.split(" ")[1]}
+  </span>
+</h1>
 
               <div className={`section-text flex flex-col opacity-0 ${isRightAligned ? "items-end" : "items-start"}`}>
                 <div className="w-32 h-[2px] bg-cyan-500 shadow-[0_0_10px_#06b6d4] mb-8" />

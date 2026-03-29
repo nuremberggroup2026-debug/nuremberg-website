@@ -58,7 +58,7 @@ export default function CTA({locale}:PageProps) {
 
         <h2 className="text-[14vw] md:text-[150px] font-[1000] text-white leading-[0.75] uppercase italic tracking-[-0.06em] mb-20 group cursor-default">
           <span className="inline-block transition-transform duration-700 group-hover:-translate-x-4">{data.title[0]}</span> 
-          <span className="text-cyan-500 font-outline-2 text-transparent ml-4 transition-all duration-700 group-hover:text-cyan-500 group-hover:drop-shadow-[0_0_30px_rgba(6,182,212,0.5)]">
+          <span className="text-cyan-500 pr-7 font-outline-2  text-transparent ml-4 transition-all duration-700 group-hover:text-cyan-500 group-hover:drop-shadow-[0_0_30px_rgba(6,182,212,0.5)]">
             {data.title[1]}
           </span> 
           <br /> 

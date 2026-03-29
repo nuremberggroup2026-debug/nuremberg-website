@@ -147,17 +147,7 @@ export default function ProfessionalBalancedFooter({ locale }: Props) {
         </div>
       </div>
 
-      {/* ✅ نفس البوتوم بار */}
-      <div className="px-10 py-6 border-t border-white/5 flex justify-between bg-black/50">
-        <div className="flex gap-6 text-[9px] text-gray-700 uppercase">
-          <div className="flex gap-2 items-center">
-            <Globe size={12} /> {t.network}
-          </div>
-          <div className="flex gap-2 items-center">
-            <Cpu size={12} /> {t.kernel}
-          </div>
-        </div>
-      </div>
+   
     </footer>
     </div>
   );
