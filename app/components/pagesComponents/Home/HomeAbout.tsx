@@ -11,8 +11,8 @@ export default function HomeAbout() {
   const isArabic = locale === "ar";
 
   return (
-    <section className="py-32 px-6 bg-[#030303] text-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.05),transparent_70%)]" />
+    <section className="py-32 px-6  text-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full " />
       
       <div className="max-w-7xl mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-2 relative">
@@ -91,9 +91,7 @@ export default function HomeAbout() {
         {/* Decorative Footer */}
         <div className="mt-24 flex items-center gap-4 opacity-20 group cursor-default">
            <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white to-transparent" />
-           <div className="font-mono text-[9px] tracking-[1em] uppercase animate-pulse">
-             {about.footer}
-           </div>
+      
            <div className="h-[1px] flex-grow bg-gradient-to-r from-transparent via-white to-transparent" />
         </div>
       </div>

@@ -13,7 +13,7 @@ export default function AboutSectors({ locale }: PageProps) {
   const iconsMap = [Monitor, Video, BarChart3];
 
   return (
-    <section className="py-24 px-6 bg-[#050505]">
+    <section className="py-24 px-6 ">
       <div className="max-w-7xl mx-auto">
         {/* Title Section */}
         <div className="text-center mb-16 md:mb-20">

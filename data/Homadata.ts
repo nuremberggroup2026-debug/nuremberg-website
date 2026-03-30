@@ -36,7 +36,6 @@ aboutSection: {
       ],
       tags: ["Software", "Production", "Strategy"],
       cta: { label: "Contact Us", link: "/about-us" },
-      footer: "System_v4.0 // Deployment_Ready",
     },
     ////////////////////////////////////////////////////////////////////////
        section2: [
