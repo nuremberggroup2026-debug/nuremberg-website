@@ -1,5 +1,11 @@
-
-import { Zap, ShieldCheck, Monitor, Database, PenTool, Box } from "lucide-react";
+import {
+  Zap,
+  ShieldCheck,
+  Monitor,
+  Database,
+  PenTool,
+  Box,
+} from "lucide-react";
 import { nurembergData } from "@/data/nurembergData";
 import FeatureCard from "./FeatureCard";
 type Locale = "en" | "ar";
@@ -7,18 +13,28 @@ interface PageProps {
   locale: Locale;
 }
 
+export default function FeaturesSection({ locale }: PageProps) {
+  const data = nurembergData[locale].features;
 
-
-export default function FeaturesSection({locale}:PageProps) {
-  const data = nurembergData[locale].features; 
-
-const icons = [Zap, ShieldCheck, Monitor, Database, PenTool, Box];
+  const icons = [Zap, ShieldCheck, Monitor, Database, PenTool, Box];
   return (
     <section className="py-32 px-10 md:px-20 bg-zinc-950/40 border-y border-white/5">
       <div className="text-left mb-20 flex flex-row justify-center space-y-4">
-       
         <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase">
-          {data.subtitle}
+         {" "}
+          {locale === "en" ? (
+            <div className="flex flex-row justify-center">
+              {" "}
+              <p className="text-white">What sets </p>{" "}
+              <p className="text-cyan-400 px-1.5">us apart</p>
+            </div>
+          ) : (
+            <div className="flex flex-row justify-center" >
+              {" "}
+              <p className="text-white">ما </p>{" "}
+              <p className="text-cyan-400 px-1.5">يميزينا</p>
+            </div>
+          )}
         </h2>
       </div>
 

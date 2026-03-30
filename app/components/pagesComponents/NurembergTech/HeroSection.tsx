@@ -30,7 +30,7 @@ export default function HeroSection({ locale }: PageProps) {
         {/* Main Title - Responsive Font Sizes */}
         <h1 className="text-4xl sm:text-6xl md:text-8xl font-black leading-[1.1] md:leading-[0.9] mb-6 md:mb-8 italic tracking-tighter uppercase break-words">
           {texts.mainTitle1} 
-          <span className="block md:inline-block"> {/* تضمن كسر السطر بشكل جميل في الجوال */}
+          <span className="block md:inline-block">
             <br className="hidden md:block" />
             <span className="text-transparent  bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
               {" "}{texts.mainTitle2}

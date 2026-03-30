@@ -14,29 +14,12 @@ export default function ProjectsSection({ projects, isAr }: Props) {
   const displayProjects = projects.slice(0, 4);
 
   return (
-    <section className="py-20 md:py-32 bg-[#020202] text-white overflow-hidden">
+    <section className="py-20 md:py-20 bg-[#020202] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-6">
-          <div className="w-full md:w-auto">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-[1px] w-8 bg-cyan-500/50" />
-              <span className="text-[10px] font-mono text-cyan-500 tracking-[0.4em] uppercase">
-                {isAr ? "أعمال مميزة" : "Featured_Work"}
-              </span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-[1000] uppercase italic tracking-tighter">
-              {isAr ? "وحداتنا" : "Our"}{" "}
-              <span className="text-cyan-500">{isAr ? "" : "Modules"}</span>
-            </h2>
-          </div>
-        </div>
-
         {/* Projects Container */}
         <div className="flex flex-col md:flex-row w-full gap-3 md:h-[550px]">
           {displayProjects.map((p, i) => {
             const isActive = active === i;
-
             return (
               <div
                 key={p.id}
@@ -83,7 +66,7 @@ export default function ProjectsSection({ projects, isAr }: Props) {
                         />
                       </div>
 
-                      <div className="p-6 space-y-5 bg-gradient-to-b from-white/[0.05] to-transparent">
+                      <div className="p-6 space-y-5 bg-linear-to-b from-white/5 to-transparent">
                         <p className="text-[13px] font-mono text-gray-400 leading-relaxed border-l-2 border-cyan-500/50 pl-4">
                           {p.project_description}
                         </p>
