@@ -35,6 +35,8 @@ export default function CameraCyberNavbar() {
     { name: locale === "ar" ? "معلومات عنا" : "About Us", link: "/about-us", icon: <Zap className="group-hover:-translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-700" size={14} /> },
     { name: locale === "ar" ? "ألفا للإنتاج" : "Alpha Production", link: "/alpha-production", icon: <Aperture className="group-hover:-rotate-180 transition-transform duration-700" size={14} /> },
     { name: locale === "ar" ? "نورمبرغ تك" : "Nuremberg Tech", link: "/nuremberg-tech", icon: <Box className="group-hover:-translate-y-0.5 transition-transform duration-700" size={14} /> },
+        { name: locale === "ar" ? "الوظائف" : "Careers", link: "/careers", icon: <Box className="group-hover:-translate-y-0.5 transition-transform duration-700" size={14} /> },
+
   ];
 
   return (
@@ -125,7 +127,7 @@ export default function CameraCyberNavbar() {
       <div className={`fixed inset-0 bg-[#020202]/95 backdrop-blur-[40px] transition-all duration-700 md:hidden pointer-events-auto z-[65] overflow-hidden ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"}`}>
         
         {/* Animated background */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center opacity-20">
+        <div className="absolute inset-0 z-0 flex items-center  justify-center opacity-20">
             <div className="absolute w-[80vw] h-[80vw] border border-cyan-500/20 rounded-full animate-[ping_4s_linear_infinite]" />
             <div className="absolute w-[60vw] h-[60vw] border border-cyan-500/10 rounded-full animate-[ping_6s_linear_infinite]" />
             <div className="absolute w-[100vw] h-[1px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent rotate-45 animate-[pulse_3s_infinite]" />
@@ -140,7 +142,7 @@ export default function CameraCyberNavbar() {
              <div className="h-[1px] w-32 bg-cyan-500/50 mt-2" />
           </div>
 
-          <nav className="flex flex-col items-center gap-10">
+          <nav className="flex flex-col items-start gap-10">
             {navItems.map((item, idx) => (
               <Link
                 key={item.name}

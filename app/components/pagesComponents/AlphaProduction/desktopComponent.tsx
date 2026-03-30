@@ -4,6 +4,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import HeroSection from "@/app/components/pagesComponents/AlphaProduction/HeroSection";
 import CameraSection from "@/app/components/pagesComponents/AlphaProduction/CameraSection";
+import LoadingScreen from "@/app/components/LoadingScreen";
+
 
 
 gsap.registerPlugin(useGSAP);
@@ -92,6 +94,7 @@ export default function Desktop() {
 
   return (
     <main className="h-screen w-screen snap-y snap-mandatory overflow-x-hidden bg-black  overflow-y-auto">
+      <LoadingScreen/>
       <HeroSection
         heroRef={heroRef}
         arrowsContainer={arrowsContainer}
