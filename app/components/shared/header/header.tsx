@@ -40,10 +40,10 @@ export default function CameraCyberNavbar() {
   return (
     <div className="fixed inset-0 pointer-events-none z-50 p-6">
       {/* Corner borders */}
-      <div className="absolute top-24 md:top-10   left-10 w-12 h-12 border-t-2 border-l-2 border-cyan-500/40" />
-      <div className="absolute top-24   md:top-10 right-10 w-12 h-12 border-t-2 border-r-2 border-cyan-500/40" />
-      <div className="absolute bottom-24  md:bottom-10 left-10 w-12 h-12 border-b-2 border-l-2 border-cyan-500/40" />
-      <div className="absolute bottom-24  md:bottom-10 right-10 w-12 h-12 border-b-2 border-r-2 border-cyan-500/40" />
+      <div className="absolute top-24 md:top-10   left-2 w-12 h-12 border-t-2 border-l-2 border-cyan-500/40" />
+      <div className="absolute top-24   md:top-10 right-2 w-12 h-12 border-t-2 border-r-2 border-cyan-500/40" />
+      <div className="absolute bottom-8  md:bottom-10 left-2 w-12 h-12 border-b-2 border-l-2 border-cyan-500/40" />
+      <div className="absolute bottom-8  md:bottom-10 right-2 w-12 h-12 border-b-2 border-r-2 border-cyan-500/40" />
 
       <div className="max-w-7xl mx-auto flex items-center justify-center gap-5 pointer-events-auto relative z-[70]">
         {/* Left: Logo + REC */}
