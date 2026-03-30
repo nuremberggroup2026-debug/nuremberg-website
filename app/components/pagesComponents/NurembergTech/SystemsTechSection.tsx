@@ -2,14 +2,9 @@
 
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
-import { nurembergData } from "@/data\/nurembergData"; 
- import {
-  Database,     
-  Users,         
-  Cloud,        
-  Globe,         
-  Smartphone,    
-  Briefcase      
+import { nurembergData } from "@/data/nurembergData"; 
+import {
+  Database, Users, Cloud, Globe, Smartphone, Briefcase
 } from "lucide-react";
 
 type Locale = "en" | "ar";
@@ -17,37 +12,18 @@ interface PageProps {
   locale: Locale;
 }
 
-
-export default function TechBentoGlow({locale}:PageProps) {
+export default function TechBentoGlow({ locale }: PageProps) {
   const data = nurembergData[locale].techData;
 
   const gridRef = useRef<HTMLDivElement>(null);
-  const spotlightRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(cardsRef.current,
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power4.out" }
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power4.out" }
       );
-
-      const handleMouseMove = (e: MouseEvent) => {
-        if (!gridRef.current || !spotlightRef.current) return;
-        const rect = gridRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        gsap.to(spotlightRef.current, {
-          x: x - 300,
-          y: y - 300,
-          duration: 0.8,
-          opacity: 1
-        });
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
     }, gridRef);
 
     return () => ctx.revert();
@@ -57,10 +33,9 @@ export default function TechBentoGlow({locale}:PageProps) {
     const card = cardsRef.current[idx];
     if (!card) return;
     gsap.to(card, { 
-      borderColor: "rgba(6, 182, 212, 1)", 
-      boxShadow: "0 0 25px rgba(6, 182, 212, 0.4), inset 0 0 15px rgba(6, 182, 212, 0.2)",
-      scale: 1.01,
-      duration: 0.3 
+      boxShadow: "0 0 20px rgba(6, 182, 212, 0.4)", 
+      borderColor: "rgba(6,182,212,1)",
+      duration: 0.3
     });
   };
 
@@ -68,57 +43,54 @@ export default function TechBentoGlow({locale}:PageProps) {
     const card = cardsRef.current[idx];
     if (!card) return;
     gsap.to(card, { 
-      borderColor: "rgba(6, 182, 212, 0.4)", 
-      boxShadow: "0 0 10px rgba(6, 182, 212, 0.1)",
-      scale: 1,
-      duration: 0.3 
+      boxShadow: "0 0 8px rgba(6, 182, 212, 0.1)", 
+      borderColor: "rgba(6,182,212,0.4)",
+      duration: 0.3
     });
   };
 
- 
-
-const icons = [Database, Users, Cloud, Globe, Smartphone, Briefcase];
+  const icons = [Database, Users, Cloud, Globe, Smartphone, Briefcase];
 
   return (
-    <section className=" py-16 px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-6xl md:text-8xl font-[1000] text-white italic uppercase tracking-tighter leading-none">
-            {data.title}
-          </h2>
-        </div>
+    <section className="py-16 px-4 md:px-10 bg-black">
+      <div className="max-w-6xl mx-auto text-center mb-12">
+        <h2 className="text-4xl md:text-6xl font-[1000] text-white italic uppercase tracking-tighter leading-none">
+          {data.title}
+        </h2>
+      </div>
 
-        <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-3 auto-rows-[160px] gap-5">
-          <div ref={spotlightRef} className="pointer-events-none absolute w-150 h-150 opacity-0 z-0 bg-[radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent 70%)]" />
-
-          {data.cards.map((card, idx) => {
-            const Icon = icons[idx]; 
-            return (
-              <div
-                key={idx}
-                ref={el => {cardsRef.current[idx] = el}}
-                onMouseEnter={() => onCardEnter(idx)}
-                onMouseLeave={() => onCardLeave(idx)}
-                className={`group relative bg-[#050505] border-2 border-cyan-500/40 p-6 md:col-span-${card.colSpan} md:row-span-${card.rowSpan || 1} rounded-2xl flex flex-col justify-between shadow-[0_0_10px_rgba(6,182,212,0.1)] transition-all`}
-              >
-                <div className="relative z-10 flex items-center justify-between">
-                  <Icon className="text-cyan-400" size={32} />
-                  <h3 className="text-xl font-black text-white uppercase italic">{card.title}</h3>
-                </div>
-                {card.desc && <p className="text-white/40 text-xs mt-2">{card.desc}</p>}
-                
+      {/* Grid جديد للبطاقات */}
+      <div 
+        ref={gridRef} 
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
+      >
+        {data.cards.map((card: any, idx: number) => {
+          const Icon = icons[idx % icons.length]; 
+          return (
+            <div
+              key={idx}
+              ref={el => {cardsRef.current[idx] = el}}
+              onMouseEnter={() => onCardEnter(idx)}
+              onMouseLeave={() => onCardLeave(idx)}
+              className="group bg-[#050505] border-2 border-cyan-500/40 rounded-2xl p-5 flex flex-col justify-between shadow-[0_0_8px_rgba(6,182,212,0.1)] transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+            >
+              <div className="flex items-center gap-4">
+                <Icon size={28} className="text-cyan-400" />
+                <h3 className="text-lg md:text-xl font-black text-white uppercase italic">{card.title}</h3>
               </div>
-            );
-          })}
-        </div>
+              {card.desc && <p className="text-white/40 text-sm mt-2">{card.desc}</p>}
+            </div>
+          );
+        })}
+      </div>
 
-        <div className="mt-8 flex justify-between items-center px-2">
-          <div className="flex gap-4 items-center">
-            <div className="h-2 w-2 rounded-full bg-cyan-500 animate-ping" />
-            <span className="text-[10px] font-mono text-cyan-500 tracking-[0.3em] uppercase">{data.gridStatus}</span>
-          </div>
-          <span className="text-[10px] font-mono text-white/20 uppercase">{data.footer}</span>
+      {/* Footer Info */}
+      <div className="mt-8 flex flex-col sm:flex-row justify-between items-center px-2 text-xs text-white/30 gap-2 sm:gap-0">
+        <div className="flex gap-2 items-center">
+          <div className="h-2 w-2 rounded-full bg-cyan-500 animate-ping" />
+          <span className="font-mono tracking-[0.2em] uppercase">{data.gridStatus}</span>
         </div>
+        <span className="font-mono uppercase">{data.footer}</span>
       </div>
     </section>
   );

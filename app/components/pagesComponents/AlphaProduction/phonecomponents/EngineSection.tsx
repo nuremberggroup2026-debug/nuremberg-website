@@ -25,7 +25,7 @@ export default function BalancedTargetSection({ locale }: Props) {
 
   return (
     <section
-      className="w-full min-h-screen  bg-black flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 gap-8"
+      className="w-full min-h-screen   flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 gap-8"
       dir={isAr ? "rtl" : "ltr"}
     >
       {/* النص */}

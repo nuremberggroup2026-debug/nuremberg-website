@@ -48,7 +48,7 @@ export default function ProductionSectionMobile({
   return (
     <section
       dir={isAr ? "rtl" : "ltr"}
-      className="h-screen w-full bg-black text-white px-6 py-14 flex flex-col justify-center relative overflow-hidden"
+      className="h-screen w-full  text-white px-6 py-14 flex flex-col justify-center relative overflow-hidden"
     >
       {/* خلفية خفيفة تعطي نفس الإحساس */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.06),_transparent_70%)]" />

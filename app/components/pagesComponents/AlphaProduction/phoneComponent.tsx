@@ -8,6 +8,7 @@ import EngineSection from "./phonecomponents/EngineSection";
 import AlphaOffers from "./phonecomponents/AlphaOffers";
 import FutureVission from "./phonecomponents/FutureVission";
 import Footer from "@/app/components/shared/footer/footer";
+import { InteractiveBackground } from "../../shared/interactivebackground";
 
 
 type Locale = "en" | "ar";
@@ -18,6 +19,7 @@ interface PageProps {
 export default function Phonee({ locale }: PageProps) {
   return (
     <div>
+      <InteractiveBackground cols={4} rows={22}>
       <HeroSectionMobile locale={locale} />
       <MissionSection locale={locale} />
       <ServicesSectionMobile locale={locale} />
@@ -27,6 +29,7 @@ export default function Phonee({ locale }: PageProps) {
       <EngineSection locale={locale} />
       <AlphaOffers locale={locale} />
       <FutureVission locale={locale} />
+      </InteractiveBackground>
       <Footer/>
     </div>
   );

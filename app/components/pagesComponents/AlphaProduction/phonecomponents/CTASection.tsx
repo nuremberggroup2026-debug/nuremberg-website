@@ -41,7 +41,7 @@ export default function CTASectionMobile({ locale }: Props) {
   return (
     <section
       dir={isAr ? "rtl" : "ltr"}
-      className="h-screen w-full bg-black text-white px-6 py-14 flex flex-col justify-between"
+      className="h-screen w-full  text-white px-6 py-14 flex flex-col justify-between"
     >
       <div className="max-w-sm mx-auto w-full flex flex-col justify-between h-full">
 

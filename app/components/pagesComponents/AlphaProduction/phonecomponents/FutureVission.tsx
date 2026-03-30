@@ -8,7 +8,7 @@ export default function FutureVission({ locale }: Props) {
   const isAr = locale === "ar";
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-10 py-16 text-center bg-black">
+    <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-10 py-16 text-center ">
       <div className="max-w-3xl md:max-w-5xl">
         {/* العنوان الصغير */}
         <span className="text-cyan-500 text-xs md:text-sm tracking-[0.3em] mb-4 block uppercase font-bold">

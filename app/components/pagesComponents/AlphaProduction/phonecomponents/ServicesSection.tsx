@@ -46,7 +46,7 @@ export default function ServicesSectionMobile({
   return (
     <section
       dir={locale === "ar" ? "rtl" : "ltr"}
-      className="h-screen w-full bg-black text-white px-6 py-14 flex flex-col justify-center"
+      className="h-screen w-full  text-white px-6 py-14 flex flex-col justify-center"
     >
       <div className="max-w-sm mx-auto w-full">
 
