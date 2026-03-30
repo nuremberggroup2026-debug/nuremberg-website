@@ -21,7 +21,7 @@ const t = {
   ar: {
     portal: "نظام_التقديم",
     title: "انضم إلى",
-    title2: "نوريمبيرغ",
+    title2: "نورمبيرغ",
     jobLabel: "الوظيفة المستهدفة",
     firstName: "الاسم الأول",
     lastName: "اسم العائلة",

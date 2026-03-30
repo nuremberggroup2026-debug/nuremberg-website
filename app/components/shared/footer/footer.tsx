@@ -26,6 +26,11 @@ export default function ProfessionalBalancedFooter() {
   const addressAr= process.env.NEXT_PUBLIC_ADDRESS_AR
   const addressEn= process.env.NEXT_PUBLIC_ADDRESS_EN
   const phoneNum=process.env.NEXT_PUBLIC_PHONE_NUMBER
+  const landNum=process.env.NEXT_PUBLIC_LAND_NUMBER
+  const linkedINURL= process.env.NEXT_PUBLIC_LINKEDIN_URL
+  const facebookURL= process.env.NEXT_PUBLIC_FACEBOOK_URL
+  const instagramURL= process.env.NEXT_PUBLIC_INSTAGRAM_URL
+
 
   const translations = {
     en: {
@@ -106,10 +111,10 @@ export default function ProfessionalBalancedFooter() {
     >
       <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-white/5">
         {/* LEFT */}
-        <div className="md:col-span-4 p-10 md:p-16 space-y-12">
+        <div className="md:col-span-4  py-6 md:py-16 px-3 md:px-10 space-y-12">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-black border border-cyan-500/30 flex items-center justify-center rounded-xl">
-              <Command size={22} className="text-cyan-500" />
+            <div className="w-12 h-12   flex items-center justify-center rounded-xl">
+              <img src="/favicon.ico" alt="Alpha Logo" className="w-full h-full object-contain filter brightness-110 group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div>
               <span className="text-2xl font-black uppercase italic tracking-tighter block">
@@ -126,16 +131,16 @@ export default function ProfessionalBalancedFooter() {
           </p>
 
           <div className="flex gap-4">
-            <SocialIcon icon={<Instagram size={18} />} />
-            <SocialIcon icon={<Linkedin size={18} />} />
-            <SocialIcon icon={<Facebook size={18} />} />
+            <a href={instagramURL} target="_blank"><SocialIcon icon={<Instagram size={18} />} /></a>
+            <a href={linkedINURL} target="_blank"><SocialIcon icon={<Linkedin size={18} />} /></a>
+            <a href={facebookURL} target="_blank"><SocialIcon icon={<Facebook size={18} />} /></a>
           </div>
         </div>
 
        
         {/* IMPORTANT LINKS */}
-        <div className="md:col-span-3 p-10 md:p-16">
-          <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
+        <div className="md:col-span-3  py-6 md:py-16  px-3 md:p-10">
+          <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-4 md:mb-10">
             {t.important}
           </h4>
 
@@ -156,42 +161,36 @@ export default function ProfessionalBalancedFooter() {
         </div>
 
         {/* RIGHT */}
-        <div className="md:col-span-4 p-10 md:p-16 flex flex-col justify-between">
+        <div className="md:col-span-4 py-6 md:py-16 px-3 md:px-10 flex flex-col justify-between">
           <div>
-            <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-10">
+            <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-4 md:mb-10">
               {t.initiate}
             </h4>
 
-            <a
-              href={`mailto:${t.email}`}
-              className="inline-flex items-start gap-3 group"
-            >
-              <span className="text-lg md:text-xl font-black uppercase italic tracking-tighter break-words group-hover:text-cyan-500 transition-colors">
-                {t.email}
-              </span>
-              <ArrowUpRight
-                className="mt-1 text-cyan-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
-                size={20}
-              />
-            </a>
 
-            <div className="mt-6 space-y-3 text-sm text-gray-500">
+            <div className="  space-y-3 text-sm text-gray-500">
               <div className="flex items-center gap-3 break-words">
-                <Mail size={14} className="text-cyan-500" />
+                <Mail size={18} className="text-cyan-500" />
                 <a href={`mailto:${t.email}`} className="hover:text-white">
                   {t.email}
                 </a>
               </div>
 
               <div className="flex items-center gap-3 break-words">
-                <Phone size={14} className="text-cyan-500" />
+                <Phone size={18} className="text-cyan-500" />
                 <a href={`tel:${phoneNum}` } className="hover:text-white">
+                  {t.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-3 break-words">
+                <Phone size={18} className="text-cyan-500" />
+                <a href={`tel:${landNum}` } className="hover:text-white">
                   {t.phone}
                 </a>
               </div>
 
               <div className="flex items-center gap-3 break-words">
-                <MapPin size={14} className="text-cyan-500" />
+                <MapPin size={18} className="text-cyan-500" />
                 <span>{t.location}</span>
               </div>
             </div>

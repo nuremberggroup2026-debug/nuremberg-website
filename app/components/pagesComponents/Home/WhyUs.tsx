@@ -22,9 +22,7 @@ export default function WhyUs({locale}:PageProps) {
       <div className="max-w-7xl mx-auto relative z-10">
 
         <div className="text-center mb-24">
-          <span className="text-cyan-500 font-mono text-xs tracking-[0.4em] uppercase font-bold">
-            Alpha_Standard
-          </span>
+          
 
        <h2 className="text-5xl md:text-7xl font-[1000] uppercase italic tracking-tighter leading-none mt-6">
   {locale === "ar" ? (

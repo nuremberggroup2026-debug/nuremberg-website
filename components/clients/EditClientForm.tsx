@@ -50,7 +50,7 @@ export default function EditClientForm({ action,client }: Props) {
   const logoValue = watch("logo");
 
   const handleUploadComplete = (url: string) => {
-    setValue("logo", url, { shouldValidate: true });
+    setValue("logo", url, { shouldDirty: true,shouldValidate:true });
     toast.success("Image uploaded");
   };
 

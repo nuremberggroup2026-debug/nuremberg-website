@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowRight, LucideIcon } from "lucide-react";
 import { aboutData } from "@/data/AboutData";
 import { Locale } from "@/types";
+import Link from "next/link";
 
 interface DesktopProps {
   iconsMap: LucideIcon[];
@@ -52,7 +53,7 @@ export const DesktopSectorsGrid = ({  iconsMap, locale}: DesktopProps) => {
             </div>
             <div className="absolute inset-0 border border-white/5 opacity-0 group-hover:opacity-100 group-hover:border-cyan-500/50 transition-all duration-500 z-30" />
             <div className={`absolute bottom-6 ${locale==="ar"?"left-6":"right-6"} opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 text-cyan-500 z-40`}>
-              <ArrowRight size={24} className={`${locale==="ar"?"rotate-180":"rotate-0"}`} />
+              <Link href={sector.redirect_path}><ArrowRight size={24} className={`${locale==="ar"?"rotate-180":"rotate-0"}`} /></Link>
             </div>
           </div>
         );

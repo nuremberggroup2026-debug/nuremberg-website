@@ -70,7 +70,7 @@ export default function CTA({locale}:PageProps) {
             <div className="relative z-10 flex items-center gap-5 text-black font-black uppercase text-xs tracking-[0.4em]">
               {data.button} 
               <div className="bg-black/5 p-1 rounded-full group-hover:bg-black/20 transition-colors">
-                <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform duration-500" />
+                <ArrowRight size={22} className={`${locale==="en"?"group-hover:translate-x-2":"group-hover:-translate-x-2"} transition-transform duration-500 ${locale==="en"?"rotate-0":"rotate-180"}`} />
               </div>
             </div>
           </button>

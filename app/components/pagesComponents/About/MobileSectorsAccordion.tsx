@@ -69,7 +69,7 @@ export const MobileSectorsAccordion = ({ locale }: MobileProps) => {
                 </div>
                 <div className="mt-8 flex justify-between items-center border-t border-white/5 pt-4">
                   <span className="text-[9px] font-mono text-cyan-500/50"></span>
-                  <button onClick={()=>{router.push("/alpha-production")}}><ArrowRight size={18} className={`text-cyan-500 ${locale === "en" ? "rotate-0" : "rotate-180"}`} /></button>
+                  <button onClick={()=>{router.push(`${sector.redirect_path}`)}}><ArrowRight size={18} className={`text-cyan-500 ${locale === "en" ? "rotate-0" : "rotate-180"}`} /></button>
                 </div>
               </div>
             </div>

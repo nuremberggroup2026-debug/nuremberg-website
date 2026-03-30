@@ -19,21 +19,24 @@ export const aboutData = {
           id: "01",
           description: "Architecting high-performance digital ecosystems. From scalable web apps to custom enterprise software designed for seamless operations.",
           features: ["Custom ERPs", "Web Architecture", "Mobile Apps"],
-          image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+          image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+          redirect_path:"/nuremberg-tech"
         },
         {
           title: "Media Production",
           id: "02",
           description: "Visual storytelling through a cinematic lens. High-end video production, professional photography, and post-production mastery.",
           features: ["Cinematic Shoots", "Post-Production", "Motion Graphics"],
-          image: "https://images.unsplash.com/photo-1595020738512-66672a9d72a9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          image: "https://images.unsplash.com/photo-1595020738512-66672a9d72a9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          redirect_path:"/alpha-production"
         },
         {
           title: "Digital Marketing",
           id: "03",
           description: "Driving growth through data-driven strategies. We amplify your brand identity and deliver measurable engagement in a competitive landscape.",
           features: ["Brand Strategy", "SEO Mastery", "Performance Ads"],
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+          redirect_path:"/alpha-production"
         }
       ]
     },
@@ -145,21 +148,24 @@ nodeStatus: "We’re ready to hear from you.",
           id: "01",
           description: "تصميم نظم رقمية عالية الأداء. من تطبيقات ويب قابلة للتوسع إلى برمجيات شركات مخصصة تعمل بسلاسة.",
           features: ["أنظمة ERP مخصصة", "هندسة الويب", "تطبيقات الجوال"],
-          image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+          image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+          redirect_path:"/nuremberg-tech"
         },
         {
           title: "إنتاج الوسائط",
           id: "02",
           description: "سرد بصري بعدسة سينمائية. إنتاج فيديو عالي الجودة، تصوير فوتوغرافي احترافي، وإتقان مرحلة ما بعد الإنتاج.",
           features: ["تصوير سينمائي", "مرحلة ما بعد الإنتاج", "رسوم متحركة"],
-          image: "https://images.unsplash.com/photo-1595020738512-66672a9d72a9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          image: "https://images.unsplash.com/photo-1595020738512-66672a9d72a9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          redirect_path:"/alpha-production"
         },
         {
           title: "التسويق الرقمي",
           id: "03",
           description: "تحفيز النمو من خلال استراتيجيات قائمة على البيانات. نعمل على تعزيز هوية علامتك التجارية وتحقيق التفاعل القابل للقياس.",
           features: ["استراتيجية العلامة التجارية", "إتقان SEO", "إعلانات الأداء"],
-          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+          redirect_path:"/alpha-production"
         }
       ]
     },
