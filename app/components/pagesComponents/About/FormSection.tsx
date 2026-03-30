@@ -178,7 +178,7 @@ export default function FormSection({ action, locale }: Props) {
                 <button
                   type="submit"
                   disabled={!isDirty || isSubmitting}
-                  className={`w-full h-14 text-white font-black text-sm tracking-[0.6em] uppercase transition-all flex items-center justify-center gap-4 group rounded-sm shadow-[0_10px_30px_rgba(8,145,178,0.3)] 
+                  className={`w-full h-14 text-white font-black text-sm tracking-[0.6em]  transition-all flex items-center justify-center gap-4 group rounded-sm shadow-[0_10px_30px_rgba(8,145,178,0.3)] 
       ${
         isSubmitting
           ? "bg-cyan-800 cursor-not-allowed opacity-80"
