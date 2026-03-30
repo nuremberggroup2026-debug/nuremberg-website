@@ -26,7 +26,7 @@ export default async function TechPage({ params }: PageProps) {
       <ImpactHero locale={locale}  />
       <SystemsTechSection locale={locale}  />
       <FeaturesSection locale={locale}  />
-      {projects.length>0 && <ProjectsArchive projects={projects} />} 
+      {projects.length>0 && <ProjectsArchive projects={projects} locale={locale} />} 
   <div className="hidden  md:block">
       <Responsivesection  />
        </div>

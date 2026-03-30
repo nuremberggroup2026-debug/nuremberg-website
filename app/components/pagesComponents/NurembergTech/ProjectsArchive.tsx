@@ -1,18 +1,14 @@
-"use client";
 
 import ProjectsSection from "@/app/components/pagesComponents/NurembergTech/techcomponents/projectssection";
-import type { translatedProjects } from "@/types/index";
-import { useLocale } from "next-intl";
+import type { Locale, translatedProjects } from "@/types/index";
 
 interface Props {
   projects: translatedProjects[];
+  locale:Locale
 }
 
-export default function ProjectsArchive({ projects }: Props) {
-  const isAr = useLocale() === "ar";
-
-  console.log(projects);
-
+export default function ProjectsArchive({ projects,locale }: Props) {
+  const isAr = locale === "ar";
   return (
     <section className="py-32">
       <div className="px-10 md:px-20 mb-20 flex justify-center items-center gap-8">
@@ -24,7 +20,7 @@ export default function ProjectsArchive({ projects }: Props) {
         
       </div>
 
-      <ProjectsSection projects={projects} />
+      <ProjectsSection projects={projects} isAr={isAr} />
     </section>
   );
 }
