@@ -33,64 +33,94 @@ const ResponsiveMobileSection: React.FC = () => {
 
   const DEVICE_TYPES = ["desktop", "laptop", "tablet", "phone"] as const;
 
-  // Scale mapping for devices (Desktop & Laptop أكبر)
   const SCALE_MAP: Record<string, number> = {
     desktop: 0.85,
     laptop: 0.85,
     tablet: 0.75,
-    phone: .85
+    phone: 0.85
   };
 
   useGSAP(() => {
     const devices = gsap.utils.toArray<HTMLDivElement>(".mobile-device-wrapper");
 
-    // Hide all initially
+    // initial state
     gsap.set(devices, { yPercent: 100, opacity: 0, scale: 0.7 });
-    gsap.set(devices[0], { yPercent: 0, opacity: 1, scale: SCALE_MAP[DEVICE_TYPES[0]], zIndex: 100 });
+    gsap.set(devices[0], {
+      yPercent: 0,
+      opacity: 1,
+      scale: SCALE_MAP[DEVICE_TYPES[0]],
+      zIndex: 100
+    });
 
-    // Timeline with onUpdate controlling visibility for all devices
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: "top top",
-        end: "+=400%",
-        pin: true,
-        scrub: 1,
-        snap: { snapTo: 1 / (DEVICE_TYPES.length - 1), duration: 0.5, ease: "power2.inOut" },
-        onUpdate: (self) => {
-          const stage = Math.round(self.progress * (DEVICE_TYPES.length - 1));
-          setActiveStage(stage);
+    const handleUpdate = (progress: number) => {
+      const stage = Math.round(progress * (DEVICE_TYPES.length - 1));
+      setActiveStage(stage);
 
-          devices.forEach((device, i) => {
-            if (i === stage) {
-              gsap.to(device, {
-                opacity: 1,
-                scale: SCALE_MAP[DEVICE_TYPES[i]],
-                yPercent: 0,
-                zIndex: 100,
-                overwrite: "auto"
-              });
-            } else if (i < stage) {
-              gsap.to(device, {
-                opacity: 0,
-                scale: 1.2,
-                yPercent: -100,
-                zIndex: 90 - i,
-                overwrite: "auto"
-              });
-            } else {
-              gsap.to(device, {
-                opacity: 0,
-                scale: 0.7,
-                yPercent: 100,
-                zIndex: 90 - i,
-                overwrite: "auto"
-              });
-            }
+      devices.forEach((device, i) => {
+        if (i === stage) {
+          gsap.to(device, {
+            opacity: 1,
+            scale: SCALE_MAP[DEVICE_TYPES[i]],
+            yPercent: 0,
+            zIndex: 100,
+            overwrite: "auto"
+          });
+        } else if (i < stage) {
+          gsap.to(device, {
+            opacity: 0,
+            scale: 1.2,
+            yPercent: -100,
+            zIndex: 90 - i,
+            overwrite: "auto"
+          });
+        } else {
+          gsap.to(device, {
+            opacity: 0,
+            scale: 0.7,
+            yPercent: 100,
+            zIndex: 90 - i,
+            overwrite: "auto"
           });
         }
-      }
+      });
+    };
+
+    const mm = gsap.matchMedia();
+
+    // 📱 Mobile (snap ON)
+    mm.add("(max-width: 767px)", () => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: "+=400%",
+          pin: true,
+          scrub: 1,
+          snap: {
+            snapTo: 1 / (DEVICE_TYPES.length - 1),
+            duration: 0.5,
+            ease: "power2.inOut"
+          },
+          onUpdate: (self) => handleUpdate(self.progress)
+        }
+      });
     });
+
+    // 💻 Desktop (snap OFF)
+    mm.add("(min-width: 768px)", () => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: "+=400%",
+          pin: true,
+          scrub: 1,
+          onUpdate: (self) => handleUpdate(self.progress)
+        }
+      });
+    });
+
+    return () => mm.revert();
   }, { scope: triggerRef });
 
   return (
@@ -101,7 +131,7 @@ const ResponsiveMobileSection: React.FC = () => {
         <StageHeader stage={STAGES[activeStage]} index={activeStage} />
       </div>
 
-      {/* Device Content */}
+      {/* Devices */}
       <div className="relative flex-1 w-full flex items-center justify-center overflow-hidden">
         {DEVICE_TYPES.map((type, idx) => (
           <div
@@ -118,7 +148,9 @@ const ResponsiveMobileSection: React.FC = () => {
             >
               <DeviceFrame type={type} active={activeStage === idx}>
                 <div className="w-full h-full min-h-[450px] bg-[#0a0a0a] overflow-hidden">
-                  <MockDeviceCanvas title={isAr ? STAGES[idx].title : type.toUpperCase()} />
+                  <MockDeviceCanvas
+                    title={isAr ? STAGES[idx].title : type.toUpperCase()}
+                  />
                 </div>
               </DeviceFrame>
             </div>
@@ -126,14 +158,16 @@ const ResponsiveMobileSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Navigation / Progress */}
+      {/* Progress */}
       <div className="h-[10vh] flex flex-col items-center justify-center gap-4 z-50">
         <div className="flex gap-3">
           {STAGES.map((_, i) => (
             <div
               key={i}
               className={`h-1.5 transition-all duration-500 rounded-full ${
-                activeStage === i ? "w-10 bg-cyan-500 shadow-[0_0_15px_#06b6d4]" : "w-3 bg-white/10"
+                activeStage === i
+                  ? "w-10 bg-cyan-500 shadow-[0_0_15px_#06b6d4]"
+                  : "w-3 bg-white/10"
               }`}
             />
           ))}
@@ -143,7 +177,7 @@ const ResponsiveMobileSection: React.FC = () => {
         </span>
       </div>
 
-      {/* Ambient Gradient */}
+      {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.03)_0%,transparent_70%)] pointer-events-none" />
     </section>
   );

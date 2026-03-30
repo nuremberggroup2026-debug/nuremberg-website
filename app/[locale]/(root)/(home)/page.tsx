@@ -6,6 +6,7 @@ import WhyUs from "@/app/components/pagesComponents/Home/WhyUs";
 import CTA from "@/app/components/pagesComponents/Home/CTASection";
 import Services from "@/app/components/pagesComponents/Home/Services";
 import {InteractiveBackground} from "@/app/components/shared/interactivebackground"
+import LoadingScreen from "@/app/components/LoadingScreen";
 type Locale = "en" | "ar";
 interface PageProps {
   params: Promise<{
@@ -16,6 +17,7 @@ export default async function Page({ params }: PageProps) {
    const { locale } = await params;
   return (
 <>
+<LoadingScreen/>
 <InteractiveBackground>
       <HeroSection  />
       <HomeAbout  />
