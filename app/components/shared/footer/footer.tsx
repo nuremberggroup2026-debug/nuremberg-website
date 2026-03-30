@@ -185,7 +185,7 @@ export default function ProfessionalBalancedFooter() {
 
               <div className="flex items-center gap-3 break-words">
                 <Phone size={14} className="text-cyan-500" />
-                <a href={`tel:${phoneNum}` }className="hover:text-white">
+                <a href={`tel:${phoneNum}` } className="hover:text-white">
                   {t.phone}
                 </a>
               </div>

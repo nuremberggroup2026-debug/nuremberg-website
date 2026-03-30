@@ -11,14 +11,11 @@ interface PageProps {
 
 export default function CTA({locale}:PageProps) {
   const data = homeData[locale]?.cta || homeData.en.cta;
-
   return (
     <section className="py-32 overflow-hidden relative">
 
-      {/* خلفية مضيئة */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyan-500/10 blur-[150px] rounded-full pointer-events-none" />
 
-      {/* شريط متحرك v*/}
       <div className="absolute top-10 w-full border-y border-white/5 py-4 bg-white/[0.02] -rotate-1 scale-105 overflow-hidden flex whitespace-nowrap z-0 opacity-50">
         <div className="flex animate-[marquee_30s_linear_infinite] items-center gap-12">
           {[1,2,3,4,5,6].map((i) => (
@@ -42,7 +39,6 @@ export default function CTA({locale}:PageProps) {
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10 pt-20">
 
-        {/* Global Reach */}
         <div className="relative inline-block mb-12 group">
           <div className="absolute -inset-2 bg-cyan-500 blur-xl opacity-20 group-hover:opacity-40 transition-opacity animate-pulse" />
           <div className="relative bg-black/50 backdrop-blur-md border border-cyan-500/40 px-8 py-3 rounded-full flex items-center gap-4 transition-all duration-500 group-hover:scale-105">
@@ -65,9 +61,10 @@ export default function CTA({locale}:PageProps) {
           <span className="inline-block transition-transform duration-700 group-hover:translate-x-4">{data.title[2]}</span>
         </h2>
 
-        {/* زر الإجراء */}
         <div className="flex flex-col items-center gap-8">
-          <button className="group relative overflow-hidden bg-white px-14 py-7 rounded-full transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_20px_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(6,182,212,0.4)]">
+          <button onClick={()=>{
+     window.location.href="/about-us#contact-form"
+          }} className="group relative overflow-hidden bg-white px-14 py-7 rounded-full transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_20px_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(6,182,212,0.4)]">
             <div className="absolute inset-0 bg-cyan-500 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]" />
             
             <div className="relative z-10 flex items-center gap-5 text-black font-black uppercase text-xs tracking-[0.4em]">

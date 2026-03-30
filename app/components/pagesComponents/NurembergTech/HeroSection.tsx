@@ -1,6 +1,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { nurembergData } from "@/data/nurembergData";
+import Link from "next/link";
 type Locale = "en" | "ar";
 interface PageProps {
   locale: Locale;
@@ -36,9 +37,10 @@ export default function HeroSection({locale}:PageProps) {
           <span className="text-cyan-400">{texts.highlight}</span>.
         </p>
 
+      <Link href={"/about-us#contact-form"}>
         <button className="px-10 py-5 bg-cyan-400 text-black font-black italic tracking-widest rounded-xl hover:bg-white transition-all flex items-center gap-3 uppercase">
           {texts.cta} <ArrowRight size={20} className={`${locale==="ar"?"rotate-180":"rotate-0"}`} />
-        </button>
+        </button></Link>
       </div>
     </section>
   );

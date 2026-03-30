@@ -83,6 +83,7 @@ export default function FormSection({ action, locale }: Props) {
 
   return (
     <div
+      id="contact-form"
       ref={containerRef}
       className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative z-10 font-sans tracking-tight"
     >

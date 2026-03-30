@@ -41,14 +41,13 @@ export type translatedClients = {
   logo: string;
 };
 
-
 export type NewProject = {
   id?: string;
   project_name_en: string;
   project_name_ar: string;
   project_description_en: string | null;
   project_description_ar: string | null;
-  project_link:string|null;
+  project_link: string | null;
   project_image: string | null;
   slug: string;
 };
@@ -61,7 +60,6 @@ export type GetProject = {
   project_description_ar: string | null;
   project_image: string | null;
   slug: string;
- 
 };
 
 export type NewCareer = {
@@ -112,7 +110,6 @@ export type translatedMembers = {
   description: string;
   position: string;
   image: string;
-
 };
 export type MemberOrder = {
   id: string;
@@ -120,11 +117,22 @@ export type MemberOrder = {
 };
 export type translatedProjects = {
   id: string | undefined;
-    project_image: string | null;
-    project_slug: string;
-    project_name: string;
-    project_link:string|null;
-    project_description: string | null;
+  project_image: string | null;
+  project_slug: string;
+  project_name: string;
+  project_link: string | null;
+  project_description: string | null;
 };
 
 export type Locale = "en" | "ar";
+
+export type translatedCareers = {
+  id: string | undefined;
+  position: string | null;
+  description: string | null;
+  image: string | null;
+  requirements: string[];
+  role: string | null;
+  experience: string | null;
+  slug: string;
+};

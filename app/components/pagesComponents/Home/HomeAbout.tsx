@@ -74,7 +74,7 @@ export default function HomeAbout() {
 
               <div className="pt-6">
                 <Link 
-                  href={about.cta.link} 
+                  href={`${about.cta.link}#contact-form`} 
                   className="relative inline-flex items-center group overflow-hidden border border-cyan-500 px-8 py-4 transition-all duration-300 hover:bg-cyan-500"
                 >
                   <span className="relative z-10 text-cyan-500 group-hover:text-black font-bold text-xs uppercase tracking-widest transition-colors duration-300">

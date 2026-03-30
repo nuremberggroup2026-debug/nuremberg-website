@@ -2,7 +2,6 @@ import prisma from "@/lib/prisma";
 import { Locale, NewCareer } from "@/types";
 import { revalidateTag, unstable_cache } from "next/cache";
 import {UTApi} from "uploadthing/server";
-import { ca } from "zod/v4/locales";
 
 const utapi = new UTApi();
 
@@ -218,8 +217,8 @@ export const getCareersByLocale= async(locale:Locale)=>
           status: 500,
         };
       }
-    }
-  )
+    },[`all-careers-by-locale-${locale}`],{revalidate:3600,tags:[`careers`]}
+  )()
 
 
 export const getCareerByIdAndLocale= (id:string, locale:Locale)=> unstable_cache(

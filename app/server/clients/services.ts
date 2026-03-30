@@ -30,7 +30,7 @@ export const getAllClients = unstable_cache(async () => {
   } catch (error) {
     return { data: [], message: "Error In Adding The Clients", status: 500 };
   }
-},["all clients"],{tags:["clients"],revalidate:3600})
+},["all-clients"],{tags:["clients"],revalidate:3600})
 
 export const getClientById = (clientId:string)=> unstable_cache(async () => {
   try {
@@ -131,4 +131,4 @@ const translatedClients= result.map((client:NewClient)=>{
       status: 500,
     };
   }
-})()
+},[`all-client-by-locale-${locale}`],{revalidate:3600,tags:["clients"]})()
