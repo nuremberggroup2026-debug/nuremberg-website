@@ -132,3 +132,4 @@ const translatedClients= result.map((client:NewClient)=>{
     };
   }
 },[`all-client-by-locale-${locale}`],{revalidate:3600,tags:["clients"]})()
+

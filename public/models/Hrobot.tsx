@@ -44,7 +44,7 @@ type RobotProps = React.ComponentPropsWithoutRef<"group"> & {
 export function Robot({
   mouse,
   robotRotate,
-  headSensitivity = 1,
+  headSensitivity = 1.3,
   ...props
 }: RobotProps) {
   const bodyRef = useRef<THREE.Group>(null);

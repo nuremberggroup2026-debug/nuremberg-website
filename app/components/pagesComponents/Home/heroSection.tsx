@@ -46,7 +46,7 @@ export default function HeroSection() {
     <section 
       ref={sectionRef} 
       dir={isArabic ? "rtl" : "ltr"}
-      className="relative min-h-screen w-full bg-[#020202] flex flex-col items-center justify-center overflow-hidden font-sans pt-20"
+      className="relative min-h-screen w-full mt-14 md:mt-0 bg-[#020202] flex flex-col items-center justify-center overflow-hidden font-sans pt-20"
     >
       {/* Background Decor */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

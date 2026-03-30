@@ -40,12 +40,12 @@ export default function CameraCyberNavbar() {
   return (
     <div className="fixed inset-0 pointer-events-none z-50 p-6">
       {/* Corner borders */}
-      <div className="absolute top-10 left-10 w-12 h-12 border-t-2 border-l-2 border-cyan-500/40" />
-      <div className="absolute top-10 right-10 w-12 h-12 border-t-2 border-r-2 border-cyan-500/40" />
-      <div className="absolute bottom-10 left-10 w-12 h-12 border-b-2 border-l-2 border-cyan-500/40" />
-      <div className="absolute bottom-10 right-10 w-12 h-12 border-b-2 border-r-2 border-cyan-500/40" />
+      <div className="absolute top-24 md:top-10   left-10 w-12 h-12 border-t-2 border-l-2 border-cyan-500/40" />
+      <div className="absolute top-24   md:top-10 right-10 w-12 h-12 border-t-2 border-r-2 border-cyan-500/40" />
+      <div className="absolute bottom-24  md:bottom-10 left-10 w-12 h-12 border-b-2 border-l-2 border-cyan-500/40" />
+      <div className="absolute bottom-24  md:bottom-10 right-10 w-12 h-12 border-b-2 border-r-2 border-cyan-500/40" />
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto relative z-[70]">
+      <div className="max-w-7xl mx-auto flex items-center justify-center gap-5 pointer-events-auto relative z-[70]">
         {/* Left: Logo + REC */}
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-3 group cursor-pointer">
@@ -93,20 +93,13 @@ export default function CameraCyberNavbar() {
             <LanguageSwitcher />
           </div>
 
-          <div className="flex flex-col items-start border-r border-white/10 pr-4">
+          <div className="flex flex-col items-start ">
             <span className="text-[8px] text-gray-500 font-mono italic uppercase font-bold">{locale === "ar" ? "الساعة" : "Clock"}</span>
             <span className="text-[10px] text-white font-mono leading-none tracking-tighter font-black"><DigitalClock /></span>
           </div>
 
-          <div className="flex flex-col items-start border-r border-white/10 pr-4">
-            <span className="text-[8px] text-gray-500 font-mono italic uppercase font-bold">{locale === "ar" ? "تكبير" : "ZOOM"}</span>
-            <span className="text-[10px] text-cyan-500 font-mono tracking-tighter transition-all leading-none font-black">x{zoom}</span>
-          </div>
 
-          <div className="flex flex-col items-end">
-            <span className="text-[8px] text-gray-500 font-mono uppercase italic font-bold">{locale === "ar" ? "الحالة" : "Status"}</span>
-            <span className="text-[10px] text-cyan-500 font-mono animate-pulse tracking-widest leading-none font-black">{locale === "ar" ? "مباشر" : "LIVE"}</span>
-          </div>
+         
         </div>
 
         {/* Mobile menu button */}
