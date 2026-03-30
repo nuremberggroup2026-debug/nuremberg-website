@@ -49,7 +49,7 @@ export default function AlphaOffers({ locale }: AlphaOffersProps) {
 
   return (
     <section
-      className="relative w-full min-h-screen flex flex-col items-center justify-start px-4 py-12 bg-black overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col items-center justify-start px-4 py-12  overflow-hidden"
       dir={locale === "ar" ? "rtl" : "ltr"}
     >
       {/* العنوان */}

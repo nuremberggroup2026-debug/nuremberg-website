@@ -8,7 +8,7 @@ import SystemsTechSection from "@/app/components/pagesComponents/NurembergTech/S
 import ImpactHero from "@/app/components/pagesComponents/NurembergTech/ImpactHero";
 import { InteractiveBackground } from "@/app/components/shared/interactivebackground";
 import { getAllProjectsByLocale } from "@/app/server/projects/services";
-
+import MobileResponsive from "@/app/components/pagesComponents/NurembergTech/MobileResponsive"
 type Locale = "en" | "ar";
 interface PageProps {
   params: Promise<{
@@ -27,7 +27,12 @@ export default async function TechPage({ params }: PageProps) {
       <SystemsTechSection locale={locale}  />
       <FeaturesSection locale={locale}  />
       {projects.length>0 && <ProjectsArchive projects={projects} />} 
+  <div className="hidden  md:block">
       <Responsivesection  />
+       </div>
+       <div className="block md:hidden">
+         <MobileResponsive  />
+       </div>
       <CTASection locale={locale}  />
     </InteractiveBackground>
   );
