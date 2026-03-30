@@ -34,48 +34,37 @@ const ResponsiveMobileSection: React.FC = () => {
   const DEVICE_TYPES = ["desktop", "laptop", "tablet", "phone"] as const;
 
   useGSAP(() => {
-    const devices = gsap.utils.toArray(".mobile-device-wrapper");
-    
-    // الأنميشن الأساسي (Timeline)
+    // Type-safe: cast to HTMLDivElement[]
+    const devices = gsap.utils.toArray<HTMLDivElement>(".mobile-device-wrapper");
+
+    // Main timeline with ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: triggerRef.current,
         start: "top top",
-        end: "+=400%", // مسافة السحب
-        pin: true,     // تثبيت السكشن
-        scrub: 1,      // السلاسة في التتبع
-        snap: {        // ميزة Snap: تجعل السكرول "يقفز" للمرحلة التالية تلقائياً
+        end: "+=400%",
+        pin: true,
+        scrub: 1,
+        snap: {
           snapTo: 1 / (DEVICE_TYPES.length - 1),
           duration: 0.5,
           ease: "power2.inOut"
         },
         onUpdate: (self) => {
-          // حساب الـ Stage الفعلي بناءً على التقدم
-          const progress = self.progress;
-          const stage = Math.round(progress * (DEVICE_TYPES.length - 1));
+          const stage = Math.round(self.progress * (DEVICE_TYPES.length - 1));
           if (stage !== activeStage) setActiveStage(stage);
         }
       }
     });
 
-    // إعداد الوضعية الأولية لكل الأجهزة ما عدا الأول
+    // Initial position for all devices except first
     gsap.set(devices.slice(1), { yPercent: 100, opacity: 0, scale: 0.6 });
 
-    // بناء الأنميشن التسلسلي
-    devices.forEach((device: any, i: number) => {
+    // Sequential animation
+    devices.forEach((device, i) => {
       if (i < devices.length - 1) {
-        tl.to(devices[i], {
-          yPercent: -100,
-          opacity: 0,
-          scale: 1.2,
-          ease: "power2.inOut"
-        }, i)
-        .to(devices[i + 1], {
-          yPercent: 0,
-          opacity: 1,
-          scale: 1,
-          ease: "power2.out"
-        }, i);
+        tl.to(device, { yPercent: -100, opacity: 0, scale: 1.2, ease: "power2.inOut" }, i)
+          .to(devices[i + 1], { yPercent: 0, opacity: 1, scale: 1, ease: "power2.out" }, i);
       }
     });
   }, { scope: triggerRef });
@@ -96,7 +85,7 @@ const ResponsiveMobileSection: React.FC = () => {
             className="mobile-device-wrapper absolute inset-0 flex items-center justify-center p-4"
             style={{ zIndex: 10 + idx }}
           >
-            {/* Scaling Layer - حل مشكلة الأبعاد */}
+            {/* Scaling Layer */}
             <div 
               className="w-full flex items-center justify-center"
               style={{
@@ -108,9 +97,8 @@ const ResponsiveMobileSection: React.FC = () => {
               }}
             >
               <DeviceFrame type={type} active={activeStage === idx}>
-                {/* الشاشة الداخلية */}
                 <div className="w-full h-full min-h-[450px] bg-[#0a0a0a] overflow-hidden">
-                   <MockDeviceCanvas title={isAr ? STAGES[idx].title : type.toUpperCase()} />
+                  <MockDeviceCanvas title={isAr ? STAGES[idx].title : type.toUpperCase()} />
                 </div>
               </DeviceFrame>
             </div>
