@@ -34,7 +34,7 @@ const ProInput = ({
         </span>
         <label
           htmlFor={id}
-          className="text-[11px] font-black text-white uppercase tracking-[0.2em] group-focus-within:text-cyan-400 transition-colors"
+          className="text-[11px] font-black text-white  tracking-[0.2em] group-focus-within:text-cyan-400 transition-colors"
         >
           {label}
         </label>

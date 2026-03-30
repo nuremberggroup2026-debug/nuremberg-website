@@ -6,17 +6,11 @@ import { applicationSchema } from "@/app/server/applications/validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { z } from "zod";
-import {
-  Loader2,
-  ArrowRight,
-  ArrowLeft,
-  FileText,
-} from "lucide-react";
-import TextInput from "../inputs/TextInput";
-import EmailInput from "../inputs/EmailInput";
+import { Loader2, ArrowRight, ArrowLeft, FileText } from "lucide-react";
 import { useRouter } from "next/navigation";
 import FileUploader from "../FileUploader";
 import FormHeader from "./FormHeader";
+import ProInput from "../inputs/ProInput";
 
 type ApplicationFormValue = z.infer<ReturnType<typeof applicationSchema>>;
 
@@ -40,7 +34,7 @@ const translations = {
     phone: "Phone Number",
     major: "Major / Specialization",
     cv: "Upload CV (PDF)",
-    submit: "Send Application",
+    submit: "Submit Application",
     success: "Application Sent Successfully",
     error: "Connection Error",
   },
@@ -55,7 +49,7 @@ const translations = {
     phone: "رقم الهاتف",
     major: "التخصص",
     cv: "ارفع السيرة الذاتية (PDF)",
-    submit: "إرسال الطلب",
+    submit: "تقديم الطلب",
     success: "تم إرسال طلبك بنجاح",
     error: "خطأ في الاتصال",
   },
@@ -119,8 +113,8 @@ function NewApplicationForm({ action, locale, career }: Props) {
         <FormHeader
           locale={locale}
           career={{
-            position_en: career.position_en??"",
-            position_ar: career.position_ar??"",
+            position_en: career.position_en ?? "",
+            position_ar: career.position_ar ?? "",
           }}
         />
 
@@ -129,75 +123,50 @@ function NewApplicationForm({ action, locale, career }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
             {/* First Name */}
             <div className="relative group">
-              <label className="absolute -top-3 left-4 px-2 bg-[#020202] text-[10px] font-mono text-cyan-500 uppercase tracking-[0.2em] z-10">
-                {t.firstName}
-              </label>
-              <TextInput
-                label=""
-                
+              <ProInput
+                label={t.firstName}
                 register={register("first_name")}
                 error={errors.first_name}
-                className="w-full bg-white/[0.02] border border-white/10 text-gray-700 px-4 h-14 rounded-none focus:border-cyan-500 focus:bg-white/[0.05] outline-none transition-none"
               />
             </div>
-
             {/* Last Name */}
             <div className="relative group">
-              <label className="absolute -top-3 left-4 px-2 bg-[#020202] text-[10px] font-mono text-cyan-500 uppercase tracking-[0.2em] z-10">
-                {t.lastName}
-              </label>
-              <TextInput
-                label=""
+              <ProInput
+                label={t.lastName}
                 register={register("last_name")}
                 error={errors.last_name}
-                className="w-full bg-white/[0.02] border border-white/10 text-gray-700 px-4 h-14 rounded-none focus:border-cyan-500 focus:bg-white/[0.05] outline-none transition-none"
               />
             </div>
-
             {/* Email Address */}
             <div className="relative group">
-              <label className="absolute -top-3 left-4 px-2 bg-[#020202] text-[10px] font-mono text-cyan-500 uppercase tracking-[0.2em] z-10">
-                {t.email}
-              </label>
-              <EmailInput
-                label=""
+              <ProInput
+                label={t.email}
                 register={register("email")}
                 error={errors.email}
-                className="w-full bg-white/2 border border-white/10 text-gray-700 px-4 h-14 rounded-none focus:border-cyan-500 focus:bg-white/[0.05] outline-none transition-none"
               />
             </div>
-
             {/* Phone Number */}
             <div className="relative group">
-              <label className="absolute -top-3 left-4 px-2 bg-[#020202] text-[10px] font-mono text-cyan-500 uppercase tracking-[0.2em] z-10">
-                {t.phone}
-              </label>
-              <TextInput
-                label=""
+              <ProInput
+                label={t.phone}
                 register={register("phone_number")}
                 error={errors.phone_number}
-                className="w-full bg-white/[0.02] border border-white/10 text-gray-700 px-4 h-14 rounded-none focus:border-cyan-500 focus:bg-white/[0.05] outline-none transition-none"
               />
             </div>
-
             {/* Major */}
             <div className="md:col-span-2 relative group">
-              <label className="absolute -top-3 left-4 px-2 bg-[#020202] text-[10px] font-mono text-cyan-500 uppercase tracking-[0.2em] z-10">
-                {t.major}
-              </label>
-              <TextInput
-                label=""
+              <ProInput
+                label={t.major}
                 register={register("major")}
                 error={errors.major}
-                className="w-full bg-white/2 border border-white/10 text-gray-700 px-4 h-14 rounded-none focus:border-cyan-500 focus:bg-white/[0.05] outline-none transition-none"
               />
             </div>
           </div>
 
-          <div className="border border-white/10 bg-white/[0.01] p-6 rounded-none">
+          <div className="border border-white/10 bg-white/1 p-6 rounded-none">
             <div className="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
-              <FileText size={16} className="text-cyan-500" />
-              <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+              <FileText size={16} className="text-white" />
+              <span className="text-[11px] font-black text-white tracking-[0.2em] group-focus-within:text-cyan-400 transition-colors">
                 {t.cv}
               </span>
             </div>
@@ -205,30 +174,41 @@ function NewApplicationForm({ action, locale, career }: Props) {
               name="cv"
               control={control}
               label=""
-              required
               error={errors.cv}
+              locale={locale}
             />
           </div>
 
-          {/* Submit Button - ثابت وقوي */}
-          <div className="pt-8 border-t border-white/5">
+          <div className="pt-10">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center bg-white hover:bg-cyan-500 text-black py-6 px-10 font-black italic uppercase tracking-[0.3em] text-sm rounded-none transition-none disabled:opacity-50"
+              className="relative w-full h-20 bg-white/5 backdrop-blur-xl border border-cyan-500/10 rounded-full flex items-center justify-between px-10 hover:bg-white/10 transition-all duration-300 group overflow-hidden"
             >
-              {isSubmitting ? (
-                <Loader2 className="animate-spin" size={20} />
-              ) : (
-                <div className="flex items-center gap-4">
-                  <span>{t.submit}</span>
-                  {isArabic ? (
-                    <ArrowLeft size={20} />
-                  ) : (
-                    <ArrowRight size={20} />
-                  )}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+              <span className="text-lg font-semibold tracking-wide text-white/90">
+                {t.submit}
+              </span>
+
+              <div className="flex items-center gap-3">
+                <div className="h-1 w-8 bg-white/20 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full bg-cyan-500 transition-all duration-500 ${isSubmitting ? "w-full animate-pulse" : "w-0 group-hover:w-full"}`}
+                  />
                 </div>
-              )}
+                {isSubmitting ? (
+                  <Loader2 className="animate-spin text-cyan-500" size={24} />
+                ) : (
+                  <div className="bg-white text-black p-3 rounded-full group-hover:scale-110 transition-transform">
+                    {isArabic ? (
+                      <ArrowLeft size={20} />
+                    ) : (
+                      <ArrowRight size={20} />
+                    )}
+                  </div>
+                )}
+              </div>
             </button>
           </div>
         </form>

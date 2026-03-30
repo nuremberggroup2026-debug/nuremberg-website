@@ -1,11 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { Control, Controller, FieldValues, Path, FieldError } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldValues,
+  Path,
+  FieldError,
+} from "react-hook-form";
 import { useUploadThing } from "@/lib/uploadthing";
 import { toast } from "sonner";
 import { FileUp, X, Loader2, Paperclip, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Locale } from "@/types";
 
 interface UploadResponse {
   name: string;
@@ -17,6 +24,7 @@ type FileUploaderProps<T extends FieldValues> = {
   control: Control<T>;
   label: string;
   required?: boolean;
+  locale?: Locale;
   error?: FieldError;
   disabled?: boolean;
 };
@@ -26,6 +34,7 @@ export default function FileUploader<T extends FieldValues>({
   label,
   control,
   error,
+  locale,
   required,
   disabled,
 }: FileUploaderProps<T>) {
@@ -49,7 +58,7 @@ export default function FileUploader<T extends FieldValues>({
 
   const handleFileChange = async (
     e: React.ChangeEvent<HTMLInputElement>,
-    onChange: (value: string) => void
+    onChange: (value: string) => void,
   ) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -97,21 +106,29 @@ export default function FileUploader<T extends FieldValues>({
               <label
                 className={cn(
                   "flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer transition-colors",
-                  "hover:bg-accent/50 hover:border-primary/50",
-                  error ? "border-destructive bg-destructive/5" : "border-muted-foreground/25",
-                  (disabled || isUploading) && "opacity-50 cursor-not-allowed"
+                  "hover:bg-black/60 hover:border-cyan-500/50",
+                  error
+                    ? "border-destructive bg-destructive/5"
+                    : "border-muted-foreground/25",
+                  (disabled || isUploading) && "opacity-50 cursor-not-allowed",
                 )}
               >
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   {isUploading ? (
                     <Loader2 className="w-8 h-8 mb-3 animate-spin text-muted-foreground" />
                   ) : (
-                    <FileUp className="w-8 h-8 mb-3 text-muted-foreground" />
+                    <FileUp className="w-8 h-8 mb-3 text-cyan-500" />
                   )}
                   <p className="mb-1 text-sm text-muted-foreground">
-                    <span className="font-semibold text-primary">Click to upload</span>
+                    <span className="font-semibold text-cyan-500">
+                      {locale === "ar" ? "اضغط للرفع" : "Click to upload"}
+                    </span>
                   </p>
-                  <p className="text-xs text-muted-foreground/70">PDF (Max 8MB)</p>
+                  <p className="text-xs text-muted-foreground/90">
+                    {locale === "ar"
+                      ? "ملف PDF (الحد الأقصى 8 ميجابايت)"
+                      : "PDF (Max 8MB)"}
+                  </p>
                 </div>
                 <input
                   type="file"
@@ -122,21 +139,21 @@ export default function FileUploader<T extends FieldValues>({
                 />
               </label>
             ) : (
-              <div className="flex items-center gap-3 p-3 border rounded-lg bg-card animate-in fade-in zoom-in-95 duration-200">
+              <div className="flex items-center gap-3 p-3 border rounded-lg bg-black/60 animate-in fade-in zoom-in-95 duration-200">
                 <div className="p-2 bg-primary/10 rounded-full">
-                  <Paperclip className="w-4 h-4 text-primary" />
+                  <Paperclip className="w-4 h-4 text-cyan-500" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate">{fileName}</p>
+                  <p className="text-sm font-medium text-cyan-500 truncate">{fileName}</p>
                   <div className="flex items-center text-xs text-green-600 gap-1">
                     <CheckCircle2 className="w-3 h-3" />
-                    Ready
+                    {locale==="en"?"Ready":"جاهز"}
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleRemove(field.onChange)}
-                  className="p-2 hover:bg-destructive/10 hover:text-destructive rounded-md transition-colors"
+                  className="p-2 hover:bg-black/60 hover:text-destructive rounded-md transition-colors"
                   disabled={isUploading}
                 >
                   <X className="w-4 h-4" />
@@ -146,7 +163,9 @@ export default function FileUploader<T extends FieldValues>({
           </div>
 
           {error && (
-            <p className="text-[0.8rem] font-medium text-destructive">{error.message}</p>
+            <p className="text-[0.8rem] font-medium text-destructive">
+              {error.message}
+            </p>
           )}
         </div>
       )}
