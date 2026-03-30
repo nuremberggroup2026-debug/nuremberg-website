@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Shield, Box, Zap, Command, Home, Aperture, X } from "lucide-react";
+import { Shield, Box, Zap, Home, Aperture, X } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import DigitalClock from "./DigitalClock";
