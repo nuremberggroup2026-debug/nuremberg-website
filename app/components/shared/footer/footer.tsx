@@ -58,7 +58,7 @@ export default function ProfessionalBalancedFooter() {
       network: "Live Environment",
       kernel: "System Version",
       email: process.env.NEXT_PUBLIC_EMAIL || process.env.NEXT_PUBLIC_Email || "hello@ntech.pro",
-      phone: "+962 7 9000 0000",
+      phone:  process.env.NEXT_PUBLIC_EMAIL,
     },
     ar: {
       description:

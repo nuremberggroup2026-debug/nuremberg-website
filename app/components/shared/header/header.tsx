@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { Shield, Box, Zap, Home, Aperture, X } from "lucide-react";
+import {  Briefcase, Box, Zap, Home, Aperture, X } from "lucide-react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import DigitalClock from "./DigitalClock";
@@ -35,7 +35,7 @@ export default function CameraCyberNavbar() {
     { name: locale === "ar" ? "معلومات عنا" : "About Us", link: "/about-us", icon: <Zap className="group-hover:-translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-700" size={14} /> },
     { name: locale === "ar" ? "ألفا للإنتاج" : "Alpha Production", link: "/alpha-production", icon: <Aperture className="group-hover:-rotate-180 transition-transform duration-700" size={14} /> },
     { name: locale === "ar" ? "نورمبرغ تك" : "Nuremberg Tech", link: "/nuremberg-tech", icon: <Box className="group-hover:-translate-y-0.5 transition-transform duration-700" size={14} /> },
-        { name: locale === "ar" ? "الوظائف" : "Careers", link: "/careers", icon: <Box className="group-hover:-translate-y-0.5 transition-transform duration-700" size={14} /> },
+        { name: locale === "ar" ? "الوظائف" : "Careers", link: "/careers", icon: < Briefcase className="group-hover:-translate-x-0.5 transition-transform duration-700" size={14} /> },
 
   ];
 

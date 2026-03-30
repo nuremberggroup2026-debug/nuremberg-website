@@ -154,11 +154,7 @@ export default function Section2() {
                     {item.desc}
                   </p>
                 </div>
-                <div className="mt-8 flex gap-6 opacity-20 text-[8px] font-mono text-white uppercase tracking-[0.4em]">
-                  <span>Status: Optimized</span>
-                  <span>Sync: Stable</span>
-                  <span>Active_Core: v4.2</span>
-                </div>
+            
               </div>
             </div>
           </section>

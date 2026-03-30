@@ -114,13 +114,7 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="mt-20 flex items-center justify-between border-t border-white/5 pt-8 opacity-40">
-           <div className="flex gap-10">
-              <span className="text-[8px] font-mono text-cyan-500 tracking-[0.3em] uppercase italic font-bold">Logic_Layer</span>
-              <span className="text-[8px] font-mono text-cyan-500 tracking-[0.3em] uppercase italic font-bold">Visual_Matrix</span>
-           </div>
-           <p className="text-[8px] font-mono text-white tracking-[0.3em] uppercase">Alpha_Systems // 2026</p>
-        </div>
+      
       </div>
     </section>
   );
