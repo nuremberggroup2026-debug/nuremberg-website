@@ -111,7 +111,7 @@ export default function ProfessionalBalancedFooter() {
     >
       <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-white/5">
         {/* LEFT */}
-        <div className="md:col-span-4  py-6 md:py-16 px-3 md:px-10 space-y-12">
+        <div className="md:col-span-4 mt-3  py-6 md:py-16 px-3 md:px-10 space-y-12">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12   flex items-center justify-center rounded-xl">
               <img src="/favicon.ico" alt="Alpha Logo" className="w-full h-full object-contain filter brightness-110 group-hover:scale-105 transition-transform duration-500" />
