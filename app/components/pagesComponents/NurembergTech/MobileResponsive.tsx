@@ -33,38 +33,62 @@ const ResponsiveMobileSection: React.FC = () => {
 
   const DEVICE_TYPES = ["desktop", "laptop", "tablet", "phone"] as const;
 
+  // Scale mapping for devices (Desktop & Laptop أكبر)
+  const SCALE_MAP: Record<string, number> = {
+    desktop: 0.85,
+    laptop: 0.85,
+    tablet: 0.75,
+    phone: .85
+  };
+
   useGSAP(() => {
-    // Type-safe: cast to HTMLDivElement[]
     const devices = gsap.utils.toArray<HTMLDivElement>(".mobile-device-wrapper");
 
-    // Main timeline with ScrollTrigger
-    const tl = gsap.timeline({
+    // Hide all initially
+    gsap.set(devices, { yPercent: 100, opacity: 0, scale: 0.7 });
+    gsap.set(devices[0], { yPercent: 0, opacity: 1, scale: SCALE_MAP[DEVICE_TYPES[0]], zIndex: 100 });
+
+    // Timeline with onUpdate controlling visibility for all devices
+    gsap.timeline({
       scrollTrigger: {
         trigger: triggerRef.current,
         start: "top top",
         end: "+=400%",
         pin: true,
         scrub: 1,
-        snap: {
-          snapTo: 1 / (DEVICE_TYPES.length - 1),
-          duration: 0.5,
-          ease: "power2.inOut"
-        },
+        snap: { snapTo: 1 / (DEVICE_TYPES.length - 1), duration: 0.5, ease: "power2.inOut" },
         onUpdate: (self) => {
           const stage = Math.round(self.progress * (DEVICE_TYPES.length - 1));
-          if (stage !== activeStage) setActiveStage(stage);
+          setActiveStage(stage);
+
+          devices.forEach((device, i) => {
+            if (i === stage) {
+              gsap.to(device, {
+                opacity: 1,
+                scale: SCALE_MAP[DEVICE_TYPES[i]],
+                yPercent: 0,
+                zIndex: 100,
+                overwrite: "auto"
+              });
+            } else if (i < stage) {
+              gsap.to(device, {
+                opacity: 0,
+                scale: 1.2,
+                yPercent: -100,
+                zIndex: 90 - i,
+                overwrite: "auto"
+              });
+            } else {
+              gsap.to(device, {
+                opacity: 0,
+                scale: 0.7,
+                yPercent: 100,
+                zIndex: 90 - i,
+                overwrite: "auto"
+              });
+            }
+          });
         }
-      }
-    });
-
-    // Initial position for all devices except first
-    gsap.set(devices.slice(1), { yPercent: 100, opacity: 0, scale: 0.6 });
-
-    // Sequential animation
-    devices.forEach((device, i) => {
-      if (i < devices.length - 1) {
-        tl.to(device, { yPercent: -100, opacity: 0, scale: 1.2, ease: "power2.inOut" }, i)
-          .to(devices[i + 1], { yPercent: 0, opacity: 1, scale: 1, ease: "power2.out" }, i);
       }
     });
   }, { scope: triggerRef });
@@ -72,28 +96,24 @@ const ResponsiveMobileSection: React.FC = () => {
   return (
     <section ref={triggerRef} className="h-screen w-full bg-[#050505] overflow-hidden flex flex-col relative">
       
-      {/* 1. Header (Fixed Height) */}
+      {/* Header */}
       <div className="h-[25vh] flex items-end px-6 pb-6 z-40 relative">
         <StageHeader stage={STAGES[activeStage]} index={activeStage} />
       </div>
 
-      {/* 2. Content Area (Flexible) */}
+      {/* Device Content */}
       <div className="relative flex-1 w-full flex items-center justify-center overflow-hidden">
         {DEVICE_TYPES.map((type, idx) => (
-          <div 
-            key={type} 
-            className="mobile-device-wrapper absolute inset-0 flex items-center justify-center p-4"
-            style={{ zIndex: 10 + idx }}
+          <div
+            key={type}
+            className="mobile-device-wrapper absolute inset-0 flex items-center justify-center"
+            style={{ zIndex: 100 - idx }}
           >
-            {/* Scaling Layer */}
-            <div 
+            <div
               className="w-full flex items-center justify-center"
               style={{
-                transform: 
-                  type === 'desktop' ? 'scale(0.42)' : 
-                  type === 'laptop' ? 'scale(0.52)' : 
-                  type === 'tablet' ? 'scale(0.75)' : 'scale(1)',
-                width: type === 'desktop' || type === 'laptop' ? '180%' : '100%'
+                transform: `scale(${SCALE_MAP[type]})`,
+                width: type === "desktop" || type === "laptop" ? "180%" : "100%"
               }}
             >
               <DeviceFrame type={type} active={activeStage === idx}>
@@ -106,11 +126,11 @@ const ResponsiveMobileSection: React.FC = () => {
         ))}
       </div>
 
-      {/* 3. Navigation / Progress Bar */}
+      {/* Navigation / Progress */}
       <div className="h-[10vh] flex flex-col items-center justify-center gap-4 z-50">
         <div className="flex gap-3">
           {STAGES.map((_, i) => (
-            <div 
+            <div
               key={i}
               className={`h-1.5 transition-all duration-500 rounded-full ${
                 activeStage === i ? "w-10 bg-cyan-500 shadow-[0_0_15px_#06b6d4]" : "w-3 bg-white/10"
@@ -123,8 +143,8 @@ const ResponsiveMobileSection: React.FC = () => {
         </span>
       </div>
 
-      {/* Ambiance Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.03)_0%,transparent 70%)] pointer-events-none" />
+      {/* Ambient Gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.03)_0%,transparent_70%)] pointer-events-none" />
     </section>
   );
 };

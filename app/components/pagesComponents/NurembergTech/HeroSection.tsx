@@ -32,7 +32,7 @@ export default function HeroSection({ locale }: PageProps) {
           {texts.mainTitle1} 
           <span className="block md:inline-block"> {/* تضمن كسر السطر بشكل جميل في الجوال */}
             <br className="hidden md:block" />
-            <span className="text-transparent pr-60 bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+            <span className="text-transparent  bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600 drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
               {" "}{texts.mainTitle2}
             </span>
           </span>
