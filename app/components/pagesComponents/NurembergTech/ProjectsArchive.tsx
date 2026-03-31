@@ -12,7 +12,7 @@ export default function ProjectsArchive({ projects,locale }: Props) {
   return (
     <section className="py-32">
       <div className="px-10 md:px-20 mb-20 flex justify-center items-center gap-8">
-        <h2 className="text-5xl font-black italic tracking-tighter uppercase">
+        <h2 className="text-4xl font-black italic tracking-tighter uppercase">
           {isAr ? (
             <div className="flex flex-row justify-center">
               {" "}

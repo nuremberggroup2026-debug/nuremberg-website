@@ -61,10 +61,10 @@ const ResponsiveSection: React.FC = () => {
 
     // الحركات التسلسلية: كل حركة تأخذ "ثانية واحدة" من زمن التايم لاين الافتراضي
     // المجموع 4 ثواني، والبروجرس مدته 4 ثواني، فيتطابقان تماماً
-    tl.to(desktopContentRef.current, { yPercent: -88, ease: "none", duration: 1 }, 0)
-      .to(laptopContentRef.current, { yPercent: -88, ease: "none", duration: 1 }, 1)
-      .to(tabletContentRef.current, { yPercent: -85, ease: "none", duration: 1 }, 2)
-      .to(phoneContentRef.current, { yPercent: -82, ease: "none", duration: 1 }, 3);
+    tl.to(desktopContentRef.current, { yPercent: -80, ease: "none", duration: 1 }, 0)
+      .to(laptopContentRef.current, { yPercent: -80, ease: "none", duration: 1 }, 1)
+      .to(tabletContentRef.current, { yPercent: -70, ease: "none", duration: 1 }, 2)
+      .to(phoneContentRef.current, { yPercent: -65, ease: "none", duration: 1 }, 3);
 
   }, { scope: sectionRef });
 
