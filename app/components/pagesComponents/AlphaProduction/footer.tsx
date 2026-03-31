@@ -35,7 +35,7 @@ export default function ProfessionalBalancedFooter({ locale }: Props) {
     home: locale === "ar" ? "الرئيسية" : "Home",
     about: locale === "ar" ? "من نحن" : "About Us",
     alphaLink: locale === "ar" ? "ألفا للإنتاج" : "Alpha Production",
-    tech: locale === "ar" ? "نورمبرغ تك" : "Nuremberg Tech",
+    tech: locale === "ar" ? "نورمبيرغ تك" : "Nuremberg Tech",
 
     initiate: locale === "ar" ? "ابدأ مشروعك" : "Start Project",
 

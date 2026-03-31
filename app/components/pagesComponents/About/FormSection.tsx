@@ -1,14 +1,11 @@
 "use client";
-import  { useRef } from "react";
+import { useRef } from "react";
 import {
-  Zap,
-  Send,
   User,
   Mail,
   MessageSquare,
   Tag,
   Settings,
-  Loader2,
 } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -21,6 +18,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import ProInputs from "@/components/inputs/ProInput";
+import ContactFormButton from "./ContactFormButton";
 type ContactFormValues = z.infer<ReturnType<typeof createContactSchema>>;
 interface Props {
   action: (
@@ -35,7 +33,8 @@ export default function FormSection({ action, locale }: Props) {
   const router = useRouter();
   const {
     register,
-    formState: { errors, isDirty, isSubmitting },reset,
+    formState: { errors, isDirty, isSubmitting },
+    reset,
     handleSubmit,
   } = useForm<ContactFormValues>({
     resolver: zodResolver(createContactSchema(locale)),
@@ -46,7 +45,7 @@ export default function FormSection({ action, locale }: Props) {
       const result = await action(data);
       if (result.success) {
         toast.success(result.message);
-        reset()
+        reset();
         router.replace("/about-us");
         return;
       }
@@ -87,18 +86,21 @@ export default function FormSection({ action, locale }: Props) {
       ref={containerRef}
       className="min-h-screen w-full flex flex-col items-center justify-center p-4 relative z-10 font-sans tracking-tight"
     >
-       <div className="text-center mb-20">
-          <div className="flex justify-center items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-cyan-500/40" />
-            <span className="text-[11px] font-mono text-cyan-500 tracking-[0.5em] uppercase font-bold">
-              {locale==="ar" ?"التواصل":"Contact"}
-            </span>
-            <div className="h-px w-12 bg-cyan-500/40" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
-            {locale==="ar"?"تواصل":"contact"} <span className="text-cyan-500">{locale==="ar"?"معنا":"with us"}</span>
-          </h2>
+      <div className="text-center mb-20">
+        <div className="flex justify-center items-center gap-3 mb-4">
+          <div className="h-px w-12 bg-cyan-500/40" />
+          <span className="text-[11px] font-mono text-cyan-500 tracking-[0.5em] uppercase font-bold">
+            {locale === "ar" ? "التواصل" : "Contact"}
+          </span>
+          <div className="h-px w-12 bg-cyan-500/40" />
         </div>
+        <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
+          {locale === "ar" ? "تواصل" : "contact"}{" "}
+          <span className="text-cyan-500">
+            {locale === "ar" ? "معنا" : "with us"}
+          </span>
+        </h2>
+      </div>
       <div className="main-panel w-full max-w-312.5 bg-[#050505]/95 backdrop-blur-2xl border-2 border-cyan-500/60 shadow-[0_0_25px_rgba(6,182,212,0.4)] overflow-hidden relative">
         <div className="absolute -top-24 -right-24 opacity-[0.05] text-white pointer-events-none ">
           <Settings size={450} className="gear-rotate" />
@@ -141,6 +143,7 @@ export default function FormSection({ action, locale }: Props) {
                 <ProInputs
                   register={register("name")}
                   label={texts.operatorName}
+                  error={errors.name}
                   placeholder={texts.enterName}
                   icon={<User size={16} />}
                 />
@@ -174,43 +177,7 @@ export default function FormSection({ action, locale }: Props) {
                 />
               </div>
 
-              <div className="input-field pt-2">
-                <button
-                  type="submit"
-                  disabled={!isDirty || isSubmitting}
-                  className={`w-full h-14 text-white font-black text-sm tracking-[0.6em]  transition-all flex items-center justify-center gap-4 group rounded-sm shadow-[0_10px_30px_rgba(8,145,178,0.3)] 
-      ${
-        isSubmitting
-          ? "bg-cyan-800 cursor-not-allowed opacity-80"
-          : "bg-cyan-600 hover:bg-cyan-500 active:scale-[0.98]"
-      }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2
-                        size={18}
-                        className="animate-spin text-cyan-300"
-                      />
-                      <span className="animate-pulse">
-                        {locale === "ar" ? "جاري الإرسال..." : "Sending..."}
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <Send
-                        size={18}
-                        className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-                      />
-                      {locale==="ar"?"إرسال البريد":"Send Email"}
-                      <Zap
-                        size={18}
-                        fill="currentColor"
-                        className="group-hover:scale-125 transition-transform"
-                      />
-                    </>
-                  )}
-                </button>
-              </div>
+              <ContactFormButton locale={locale} isDirty={isDirty} isSubmitting={isSubmitting} />
             </form>
           </div>
         </div>

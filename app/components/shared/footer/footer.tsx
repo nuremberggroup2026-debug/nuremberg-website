@@ -75,7 +75,7 @@ export default function ProfessionalBalancedFooter() {
       about: "من نحن",
       home: "الرئيسية",
       alphaLink: "ألفا للإنتاج",
-      tech: "نورمبرغ تك",
+      tech: "نورمبيرغ تك",
       contact: "التواصل",
       emailLabel: "البريد الإلكتروني",
       phoneLabel: "الهاتف",
@@ -141,13 +141,13 @@ export default function ProfessionalBalancedFooter() {
 
           <div className="flex gap-4">
             <a href={instagramURL} target="_blank">
-              <SocialIcon icon={<Instagram size={18} />} />
+              <SocialIcon icon={<Instagram size={18} className="no-flip" />} />
             </a>
             <a href={linkedINURL} target="_blank">
-              <SocialIcon icon={<Linkedin size={18} />} />
+              <SocialIcon icon={<Linkedin size={18} className="no-flip"/>} />
             </a>
             <a href={facebookURL} target="_blank">
-              <SocialIcon icon={<Facebook size={18} />} />
+              <SocialIcon icon={<Facebook size={18} className="no-flip" />} />
             </a>
           </div>
         </div>
@@ -191,13 +191,13 @@ export default function ProfessionalBalancedFooter() {
 
               <div className="flex items-center gap-3 break-words">
                 <Phone size={18} className="text-cyan-500" />
-                <a href={`tel:${phoneNum}`} className="hover:text-white">
+                <a href={`tel:${phoneNum}`} className="hover:text-white " dir="ltr">
                   {t.phone}
                 </a>
               </div>
-              <div className="flex items-center gap-3 break-words">
+              <div className="flex items-center gap-3 break-words" >
                 <Phone size={18} className="text-cyan-500" />
-                <a href={`tel:${landNum}`} className="hover:text-white">
+                <a href={`tel:${landNum}`} className="hover:text-white " dir="ltr">
                   {landNum}
                 </a>
               </div>
@@ -227,7 +227,7 @@ export default function ProfessionalBalancedFooter() {
 }
 
 const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
-  <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-gray-500 hover:border-cyan-500 hover:text-cyan-500 transition-all duration-500 cursor-pointer rounded-xl">
+  <div className="w-10 h-10 border border-white/10  flex items-center justify-center text-gray-500 hover:border-cyan-500 hover:text-cyan-500 transition-all duration-500 cursor-pointer rounded-xl">
     {icon}
   </div>
 );

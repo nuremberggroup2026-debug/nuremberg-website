@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import FileUploader from "../FileUploader";
 import FormHeader from "./FormHeader";
 import ProInput from "../inputs/ProInput";
+import FormSubmittingButton from "./FormSubmittingButton";
 
 type ApplicationFormValue = z.infer<ReturnType<typeof applicationSchema>>;
 
@@ -180,36 +181,7 @@ function NewApplicationForm({ action, locale, career }: Props) {
           </div>
 
           <div className="pt-10">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="relative w-full h-20 bg-white/5 backdrop-blur-xl border border-cyan-500/10 rounded-full flex items-center justify-between px-10 hover:bg-white/10 transition-all duration-300 group overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-
-              <span className="text-lg font-semibold tracking-wide text-white/90">
-                {t.submit}
-              </span>
-
-              <div className="flex items-center gap-3">
-                <div className="h-1 w-8 bg-white/20 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full bg-cyan-500 transition-all duration-500 ${isSubmitting ? "w-full animate-pulse" : "w-0 group-hover:w-full"}`}
-                  />
-                </div>
-                {isSubmitting ? (
-                  <Loader2 className="animate-spin text-cyan-500" size={24} />
-                ) : (
-                  <div className="bg-white text-black p-3 rounded-full group-hover:scale-110 transition-transform">
-                    {isArabic ? (
-                      <ArrowLeft size={20} />
-                    ) : (
-                      <ArrowRight size={20} />
-                    )}
-                  </div>
-                )}
-              </div>
-            </button>
+           <FormSubmittingButton locale={locale} isSubmitting={isSubmitting} />
           </div>
         </form>
       </div>

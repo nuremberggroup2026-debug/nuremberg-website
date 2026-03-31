@@ -12,7 +12,7 @@ export default function CTASectionMobile({ locale }: Props) {
   const translations = {
     en: {
       title1: "GO",
-      title2: "ALPHA.",
+      title2: "ALPHA",
       est: "EST_2026 // DUBAI_HQ",
       contact: "CONTACT",
       email: "HELLO@ALPHA.PROD",

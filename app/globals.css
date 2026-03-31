@@ -132,3 +132,15 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+
+ 
+.centert {
+  text-align: center !important;
+  line-height: 1.5;
+}
+
+
+[dir="rtl"] .no-flip {
+  transform: none !important;
+}

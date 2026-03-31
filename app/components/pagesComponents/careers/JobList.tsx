@@ -1,11 +1,8 @@
 import React from "react";
-import Link from "next/link";
 import {
   Terminal,
   Clock,
   ShieldCheck,
-  ArrowUpRight,
-  ArrowUpLeft,
 } from "lucide-react";
 import { JobSeparator } from "./JobSeparator";
 import { Locale, translatedCareers } from "@/types/index";
@@ -69,22 +66,35 @@ export const JobsList = ({ jobs, locale }: Props) => {
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter leading-[0.9]">
-            {jobs
-              ? locale === "ar"
-                ? "الوظائف"
-                : "Active"
-              : locale === "ar"
-                ? "النظام"
-                : "System"}
-            <br />
-            <span
-              className="text-transparent"
-              style={{ WebkitTextStroke: "1.5px #fff" }}
-            >
-              {locale === "ar" ? "المتاحة" : "Jobs"}
-            </span>
-          </h1>
+         <h1 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter leading-[0.9]">
+  {jobs ? (
+    locale === "ar" ? (
+      <>
+        <span className="text-white">الوظائف</span>
+        <br />
+        <span className="text-cyan-400">المتاحة</span>
+      </>
+    ) : (
+      <>
+        <span className="text-white">Active</span>
+        <br />
+        <span className="text-cyan-400">Jobs</span>
+      </>
+    )
+  ) : locale === "ar" ? (
+    <>
+      <span className="text-white">النظام</span>
+      <br />
+      <span className="text-cyan-400">غير متاح</span>
+    </>
+  ) : (
+    <>
+      <span className="text-white">System</span>
+      <br />
+      <span className="text-cyan-400">Unavailable</span>
+    </>
+  )}
+</h1>
 
           {jobs && (
             <p className="text-white/60 text-lg md:text-xl font-light max-w-2xl border-l-2 border-white/10 pl-6 py-2">

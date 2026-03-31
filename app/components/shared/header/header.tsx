@@ -32,9 +32,9 @@ export default function CameraCyberNavbar() {
   // Navigation items
   const navItems = [
     { name: locale === "ar" ? "الرئيسية" : "Home", link: "/", icon: <Home className="group-hover:scale-125 transition-transform duration-700" size={14} /> },
-    { name: locale === "ar" ? "معلومات عنا" : "About Us", link: "/about-us", icon: <Zap className="group-hover:-translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-700" size={14} /> },
+    { name: locale === "ar" ? " من نحن" : "About Us", link: "/about-us", icon: <Zap className="group-hover:-translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-700" size={14} /> },
     { name: locale === "ar" ? "ألفا للإنتاج" : "Alpha Production", link: "/alpha-production", icon: <Aperture className="group-hover:-rotate-180 transition-transform duration-700" size={14} /> },
-    { name: locale === "ar" ? "نورمبرغ تك" : "Nuremberg Tech", link: "/nuremberg-tech", icon: <Box className="group-hover:-translate-y-0.5 transition-transform duration-700" size={14} /> },
+    { name: locale === "ar" ? "نورمبيرغ تك" : "Nuremberg Tech", link: "/nuremberg-tech", icon: <Box className="group-hover:-translate-y-0.5 transition-transform duration-700" size={14} /> },
         { name: locale === "ar" ? "الوظائف" : "Careers", link: "/careers", icon: < Briefcase className="group-hover:-translate-x-0.5 transition-transform duration-700" size={14} /> },
 
   ];

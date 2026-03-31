@@ -7,7 +7,7 @@ interface Props {
 
 const translations = {
   en: {
-    goAlpha: "GO ALPHA.",
+    goAlpha: "GO ALPHA",
     est: "EST_2026 // DUBAI_HQ",
     contactHub: "CONTACT_HUB",
     initiateProject: "INITIATE_PROJECT",
@@ -17,7 +17,7 @@ const translations = {
     allRights: "ALL_RIGHTS_RESERVED_2026",
   },
   ar: {
-    goAlpha: "انطلق ألفا.",
+    goAlpha: "انطلق ألفا",
     est: "تأسست_2026 // دبي_المقر",
     contactHub: "مركز_الاتصال",
     initiateProject: "ابدأ_المشروع",
@@ -88,7 +88,7 @@ export default function CTASection({ locale }: Props) {
             >
               <Instagram
                 size={18}
-                className="text-white/40 group-hover:text-cyan-500 transition-colors"
+                className="text-white/40 group-hover:text-cyan-500 transition-colors no-flip"
               />
               <span className="text-[10px] font-black tracking-[0.3em] text-white/40 group-hover:text-white transition-colors">
                 {t.insta}
@@ -102,7 +102,7 @@ export default function CTASection({ locale }: Props) {
             >
               <Facebook
                 size={18}
-                className={`text-white/40 group-hover:text-cyan-500 transition-colors`}
+                className={`text-white/40 group-hover:text-cyan-500 transition-colors no-flip`}
               />
               <span className="text-[10px] font-black tracking-[0.3em] text-white/40 group-hover:text-white transition-colors">
                 {t.vimeo}
