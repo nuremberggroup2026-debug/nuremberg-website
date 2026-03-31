@@ -73,10 +73,8 @@ export default function ClientsCarousel({ clients, locale }: Props) {
         >
           {clients.map((client, i) => (
             <SwiperSlide key={i}>
-              {/* الكرت بستايل زجاجي مضيء */}
               <div className="group relative flex flex-col items-center p-10 bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] transition-all duration-500 h-72 justify-center overflow-hidden rounded-xl">
                 
-                {/* انعكاس ضوئي داخلي عند الهوفر */}
                 <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/5 to-transparent rotate-45 group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
                 
                 <div className="h-28 w-full flex items-center justify-center relative z-10 mb-6">
@@ -95,7 +93,6 @@ export default function ClientsCarousel({ clients, locale }: Props) {
                   </p>
                 </div>
 
-                {/* زوايا نيون مضيئة */}
                 <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyan-500/30 group-hover:border-cyan-400 group-hover:shadow-[0_0_10px_#22d3ee] transition-all" />
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyan-500/30 group-hover:border-cyan-400 group-hover:shadow-[0_0_10px_#22d3ee] transition-all" />
               </div>

@@ -23,14 +23,13 @@ import {
 export default function ProfessionalBalancedFooter() {
   const locale = useLocale() as "en" | "ar";
   const isArabic = locale === "ar";
-  const addressAr= process.env.NEXT_PUBLIC_ADDRESS_AR
-  const addressEn= process.env.NEXT_PUBLIC_ADDRESS_EN
-  const phoneNum=process.env.NEXT_PUBLIC_PHONE_NUMBER
-  const landNum=process.env.NEXT_PUBLIC_LAND_NUMBER
-  const linkedINURL= process.env.NEXT_PUBLIC_LINKEDIN_URL
-  const facebookURL= process.env.NEXT_PUBLIC_FACEBOOK_URL
-  const instagramURL= process.env.NEXT_PUBLIC_INSTAGRAM_URL
-
+  const addressAr = process.env.NEXT_PUBLIC_ADDRESS_AR;
+  const addressEn = process.env.NEXT_PUBLIC_ADDRESS_EN;
+  const phoneNum = process.env.NEXT_PUBLIC_PHONE_NUMBER;
+  const landNum = process.env.NEXT_PUBLIC_LAND_NUMBER;
+  const linkedINURL = process.env.NEXT_PUBLIC_LINKEDIN_URL;
+  const facebookURL = process.env.NEXT_PUBLIC_FACEBOOK_URL;
+  const instagramURL = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
 
   const translations = {
     en: {
@@ -44,7 +43,7 @@ export default function ProfessionalBalancedFooter() {
       initiate: "Start Project",
       important: "Important Links",
       about: "About Us",
-      home:"Home",
+      home: "Home",
       alphaLink: "Alpha Production",
       tech: "Nuremberg Tech",
       contact: "Contact",
@@ -57,8 +56,11 @@ export default function ProfessionalBalancedFooter() {
       location: addressEn,
       network: "Live Environment",
       kernel: "System Version",
-      email: process.env.NEXT_PUBLIC_EMAIL || process.env.NEXT_PUBLIC_Email || "hello@ntech.pro",
-      phone:  process.env.NEXT_PUBLIC_EMAIL,
+      email:
+        process.env.NEXT_PUBLIC_EMAIL ||
+        process.env.NEXT_PUBLIC_Email ||
+        "hello@ntech.pro",
+      phone: process.env.NEXT_PUBLIC_PHONE_NUMBER,
     },
     ar: {
       description:
@@ -71,7 +73,7 @@ export default function ProfessionalBalancedFooter() {
       initiate: "ابدأ مشروعك",
       important: "روابط مهمة",
       about: "من نحن",
-      home:"الرئيسية",
+      home: "الرئيسية",
       alphaLink: "ألفا للإنتاج",
       tech: "نورمبرغ تك",
       contact: "التواصل",
@@ -84,8 +86,11 @@ export default function ProfessionalBalancedFooter() {
       location: addressAr,
       network: "بيئة التشغيل",
       kernel: "إصدار النظام",
-      email: process.env.NEXT_PUBLIC_EMAIL || process.env.NEXT_PUBLIC_Email || "hello@ntech.pro",
-      phone: "+962 7 9000 0000",
+      email:
+        process.env.NEXT_PUBLIC_EMAIL ||
+        process.env.NEXT_PUBLIC_Email ||
+        "hello@ntech.pro",
+      phone: process.env.NEXT_PUBLIC_PHONE_NUMBER,
     },
   };
 
@@ -102,7 +107,7 @@ export default function ProfessionalBalancedFooter() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
- // const modules = [t.backend, t.alpha, t.cloud, t.web3];
+  // const modules = [t.backend, t.alpha, t.cloud, t.web3];
 
   return (
     <footer
@@ -114,14 +119,18 @@ export default function ProfessionalBalancedFooter() {
         <div className="md:col-span-4 mt-3  py-6 md:py-16 px-3 md:px-10 space-y-12">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12   flex items-center justify-center rounded-xl">
-              <img src="/favicon.ico" alt="Alpha Logo" className="w-full h-full object-contain filter brightness-110 group-hover:scale-105 transition-transform duration-500" />
+              <img
+                src="/favicon.ico"
+                alt="Alpha Logo"
+                className="w-full h-full object-contain filter brightness-110 group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
             <div>
               <span className="text-2xl font-black uppercase italic tracking-tighter block">
-                {locale==="en" ?"Nuremberg Group":"مجموعة نورمبغ"}
+                {locale === "en" ? "Nuremberg Group" : "مجموعة نورمبغ"}
               </span>
               <span className="text-[9px] font-mono text-cyan-500/60 tracking-[0.3em] uppercase">
-                {locale==="en"?"Tech_Evolution":"تطور التكنولوجيا"}
+                {locale === "en" ? "Tech_Evolution" : "تطور التكنولوجيا"}
               </span>
             </div>
           </div>
@@ -131,13 +140,18 @@ export default function ProfessionalBalancedFooter() {
           </p>
 
           <div className="flex gap-4">
-            <a href={instagramURL} target="_blank"><SocialIcon icon={<Instagram size={18} />} /></a>
-            <a href={linkedINURL} target="_blank"><SocialIcon icon={<Linkedin size={18} />} /></a>
-            <a href={facebookURL} target="_blank"><SocialIcon icon={<Facebook size={18} />} /></a>
+            <a href={instagramURL} target="_blank">
+              <SocialIcon icon={<Instagram size={18} />} />
+            </a>
+            <a href={linkedINURL} target="_blank">
+              <SocialIcon icon={<Linkedin size={18} />} />
+            </a>
+            <a href={facebookURL} target="_blank">
+              <SocialIcon icon={<Facebook size={18} />} />
+            </a>
           </div>
         </div>
 
-       
         {/* IMPORTANT LINKS */}
         <div className="md:col-span-3  py-6 md:py-16  px-3 md:p-10">
           <h4 className="text-cyan-500/50 text-[10px] font-black uppercase tracking-[0.5em] mb-4 md:mb-10">
@@ -145,7 +159,7 @@ export default function ProfessionalBalancedFooter() {
           </h4>
 
           <ul className="space-y-6">
-             <li className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer break-words">
+            <li className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer break-words">
               <Link href="/home">{t.home}</Link>
             </li>
             <li className="text-[11px] font-black uppercase tracking-widest text-gray-500 hover:text-white cursor-pointer break-words">
@@ -167,7 +181,6 @@ export default function ProfessionalBalancedFooter() {
               {t.initiate}
             </h4>
 
-
             <div className="  space-y-3 text-sm text-gray-500">
               <div className="flex items-center gap-3 break-words">
                 <Mail size={18} className="text-cyan-500" />
@@ -178,14 +191,14 @@ export default function ProfessionalBalancedFooter() {
 
               <div className="flex items-center gap-3 break-words">
                 <Phone size={18} className="text-cyan-500" />
-                <a href={`tel:${phoneNum}` } className="hover:text-white">
+                <a href={`tel:${phoneNum}`} className="hover:text-white">
                   {t.phone}
                 </a>
               </div>
               <div className="flex items-center gap-3 break-words">
                 <Phone size={18} className="text-cyan-500" />
-                <a href={`tel:${landNum}` } className="hover:text-white">
-                  {t.phone}
+                <a href={`tel:${landNum}`} className="hover:text-white">
+                  {landNum}
                 </a>
               </div>
 
@@ -197,9 +210,7 @@ export default function ProfessionalBalancedFooter() {
           </div>
 
           <div className="mt-12 space-y-8">
-          
             <div className="flex items-center justify-between gap-4">
-            
               <button
                 onClick={scrollToTop}
                 className="w-12 h-12 border border-white/10 flex items-center justify-center rounded-xl hover:bg-cyan-500 hover:text-black transition-all duration-500"
@@ -211,7 +222,6 @@ export default function ProfessionalBalancedFooter() {
           </div>
         </div>
       </div>
-    
     </footer>
   );
 }
@@ -221,4 +231,3 @@ const SocialIcon = ({ icon }: { icon: React.ReactNode }) => (
     {icon}
   </div>
 );
-
