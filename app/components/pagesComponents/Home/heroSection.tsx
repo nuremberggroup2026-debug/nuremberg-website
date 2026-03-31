@@ -77,10 +77,6 @@ export default function HeroSection() {
           {hero.description}
         </p>
 
-
-
-    
-
         {/* Info Cards Grid */}
         <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-1 bg-white/5 border border-white/10 backdrop-blur-md mb-10">
           {hero.cards.map((card, idx) => (
@@ -99,8 +95,6 @@ export default function HeroSection() {
           ))}
         </div>
       </div>
-
- 
 
       <style jsx>{`
         .animate-spin-slow { animation: spin 8s linear infinite; }

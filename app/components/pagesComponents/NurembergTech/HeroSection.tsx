@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpLeft } from "lucide-react";
 import { nurembergData } from "@/data/nurembergData";
 import Link from "next/link";
 
@@ -45,9 +45,17 @@ export default function HeroSection({ locale }: PageProps) {
         </p>
 
       <Link href={"/about-us#contact-form"}>
-        <button className="px-10 py-5 bg-cyan-400 text-black font-black italic tracking-widest rounded-xl hover:bg-white transition-all flex items-center gap-3 uppercase">
-          {texts.cta} <ArrowRight size={20} className={`${locale==="ar"?"rotate-180":"rotate-0"}`} />
-        </button></Link>
+      <button  className="group relative flex items-center gap-6 p-5 pr-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-500">
+              
+              <div className="text-left">
+                <p className="text-white font-black italic uppercase tracking-tighter text-xl leading-none">
+                  {texts.cta}
+                </p>
+              </div>
+              <div className={`w-14 h-14 rounded-full bg-cyan-500 flex items-center justify-center text-black ${locale==="ar"?"group-hover:-rotate-45":"group-hover:rotate-45"} transition-transform duration-500`}>
+                <ArrowUpLeft size={24} className={`${locale==="ar"?"":"rotate-90"}`} />
+              </div>
+            </button></Link>
 
       </div>
 

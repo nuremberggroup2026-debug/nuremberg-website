@@ -6,6 +6,8 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import SelectorInput from "@/components/inputs/SelectorInput";
 import { Role } from "@/app/server/users/services";
+import Button2 from "../ui/Button2";
+import Button1 from "../ui/Button1";
 interface Props {
   userId: string;
   userRole: string;
@@ -68,16 +70,16 @@ export default function UpdateRoleForm({ userId, userRole, action }: Props) {
         only.{" "}
       </div>
       <div className="flex flex-row gap-3 justify-end mt-8">
-        <Button variant="outline" type="button" className="cursor-pointer" onClick={()=>{router.push("/admin/dashboard/users")}}>
+        <Button1  type="button" className="cursor-pointer" onClick={()=>{router.push("/admin/dashboard/users")}}>
           Cancel
-        </Button>
-        <Button
+        </Button1>
+        <Button2
           type="submit"
           className="bg-black text-white cursor-pointer hover:bg-gray-700"
           disabled={isPending}
         >
           {isPending ? "Updating..." : "Update Role"}
-        </Button>
+        </Button2>
       </div>
     </form>
   );

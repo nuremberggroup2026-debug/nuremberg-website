@@ -1,4 +1,5 @@
-import { ChevronRight, Instagram, Mail, Link2 } from "lucide-react";
+import { ChevronRight, Instagram, Mail, Link2, Facebook } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   locale: "en" | "ar";
@@ -12,7 +13,7 @@ const translations = {
     initiateProject: "INITIATE_PROJECT",
     startNow: "START_NOW",
     insta: "INSTA",
-    vimeo: "VIMEO",
+    vimeo: "Facebook",
     allRights: "ALL_RIGHTS_RESERVED_2026",
   },
   ar: {
@@ -22,13 +23,16 @@ const translations = {
     initiateProject: "ابدأ_المشروع",
     startNow: "ابدأ_الآن",
     insta: "إنستاغرام",
-    vimeo: "فيميو",
+    vimeo: "فايسبوك",
     allRights: "جميع_الحقوق_محفوظة_2026",
   },
 };
 
 export default function CTASection({ locale }: Props) {
-  const t = translations[locale]; 
+  const t = translations[locale];
+  const contactEmail = process.env.NEXT_PUBLIC_Email;
+  const facebookURL = process.env.NEXT_PUBLIC_FACEBOOK_URL;
+  const instagramURL = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
 
   return (
     <section className="h-screen w-screen flex justify-between items-center pb-24 px-12 md:px-24 relative">
@@ -39,39 +43,49 @@ export default function CTASection({ locale }: Props) {
             <br />
             <span className="text-cyan-500">{t.goAlpha.split(" ")[1]}</span>
           </h2>
-          <p className="text-[9px] font-mono tracking-[0.5em] text-white/20">
-            {t.est}
-          </p>
         </div>
 
-        <div className="group cursor-pointer border-l-2 border-cyan-500 pl-6">
+        <div className="group cursor-pointer border-l-2  border-cyan-500 pl-6">
           <p className="text-cyan-500 text-[10px] font-bold tracking-[0.5em] mb-2">
             {t.contactHub}
           </p>
           <div className="flex items-center gap-4 text-2xl font-black tracking-tighter group-hover:text-cyan-400 transition-colors">
-            <Mail size={20} /> HELLO@ALPHA.PROD
+            <Mail size={20} className="shrink-0" />
+            <a href={`mailto:${contactEmail}`} className="hover:underline">
+              {contactEmail}
+            </a>
           </div>
         </div>
       </div>
 
       <div className="w-[38%] flex flex-col items-end pointer-events-auto space-y-16">
-        <button className="group relative flex items-center gap-8 pl-10 pr-4 py-6 bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-cyan-500 transition-all duration-700 rounded-2xl shadow-[0_0_30px_rgba(6,182,212,0.1)]">
-          <div className="text-left">
-            <span className="text-[10px] font-mono text-cyan-500 mb-1 block tracking-[0.4em]">
-              {t.initiateProject}
-            </span>
-            <span className="text-xl font-[1000] tracking-[0.5em]">
-              {t.startNow}
-            </span>
-          </div>
-          <div className="bg-cyan-500 p-5 group-hover:bg-white group-hover:text-cyan-500 transition-all rounded-lg">
-            <ChevronRight size={28} strokeWidth={3} />
-          </div>
-        </button>
+        <Link href={`/about-us#contact-form`}>
+          <button className="group relative flex items-center gap-8 pl-10 pr-4 py-6 bg-zinc-900/60 backdrop-blur-xl border border-white/10 hover:border-cyan-500 transition-all duration-700 rounded-2xl shadow-[0_0_30px_rgba(6,182,212,0.1)]">
+            <div className="text-left">
+              <span className="text-[10px] font-mono text-cyan-500 mb-1 block tracking-[0.4em]">
+                {t.initiateProject}
+              </span>
+              <span className="text-xl font-[1000] tracking-[0.5em]">
+                {t.startNow}
+              </span>
+            </div>
+            <div className="bg-cyan-500 p-5 group-hover:bg-white group-hover:text-cyan-500 transition-all rounded-lg">
+              <ChevronRight
+                size={28}
+                strokeWidth={3}
+                className={`${locale === "ar" ? "rotate-180" : ""}`}
+              />
+            </div>
+          </button>
+        </Link>
 
         <div className="flex flex-col items-end gap-6">
           <div className="flex gap-8">
-            <a href="#" className="flex items-center gap-3 group">
+            <a
+              href={instagramURL}
+              target="_blank"
+              className="flex items-center gap-3 group"
+            >
               <Instagram
                 size={18}
                 className="text-white/40 group-hover:text-cyan-500 transition-colors"
@@ -81,10 +95,14 @@ export default function CTASection({ locale }: Props) {
               </span>
             </a>
 
-            <a href="#" className="flex items-center gap-3 group">
-              <Link2
+            <a
+              href={facebookURL}
+              target="_blank"
+              className="flex items-center gap-3 group"
+            >
+              <Facebook
                 size={18}
-                className="text-white/40 group-hover:text-cyan-500 transition-colors"
+                className={`text-white/40 group-hover:text-cyan-500 transition-colors`}
               />
               <span className="text-[10px] font-black tracking-[0.3em] text-white/40 group-hover:text-white transition-colors">
                 {t.vimeo}

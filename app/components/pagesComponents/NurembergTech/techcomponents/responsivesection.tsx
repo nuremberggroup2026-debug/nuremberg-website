@@ -23,24 +23,23 @@ const ResponsiveSection: React.FC = () => {
   const [activeStage, setActiveStage] = useState(0);
   const isAr = useLocale() === "ar";
 
-  const STAGES = isAr
-    ? [
-        { title: "دقة سطح المكتب", desc: "استمتع بكامل قوة واجهات سطح المكتب عالية الجودة." },
-        { title: "مرونة اللابتوب", desc: "أداء سلس ومثالي لبيئات العمل المتنقلة." },
-        { title: "سلاسة التابلت", desc: "تصميمات تعمل باللمس لتجربة إبداعية مرنة." },
-        { title: "بساطة الموبايل", desc: "استجابة مثالية تناسب استخدامك اليومي بيد واحدة." }
-      ]
-    : [
-        { title: "Desktop Precision", desc: "Experience the full scale of high-fidelity desktop interfaces." },
-        { title: "Laptop Agility", desc: "Seamless performance optimized for professional portable workflows." },
-        { title: "Tablet Fluidity", desc: "Intuitive touch-first designs crafted for creative freedom." },
-        { title: "Mobile Instinct", desc: "Pixel-perfect responsiveness for the palm of your hand." }
-      ];
+ const STAGES = isAr
+  ? [
+      { title1: "دقة", title2: "سطح المكتب", desc: "استمتع بكامل قوة واجهات سطح المكتب عالية الجودة." },
+      { title1: "مرونة", title2: "اللابتوب", desc: "أداء سلس ومثالي لبيئات العمل المتنقلة." },
+      { title1: "سلاسة", title2: "التابلت", desc: "تصميمات تعمل باللمس لتجربة إبداعية مرنة." },
+      { title1: "بساطة", title2: "الموبايل", desc: "استجابة مثالية تناسب استخدامك اليومي بيد واحدة." }
+    ]
+  : [
+      { title1: "Desktop", title2: "Precision", desc: "Experience the full scale of high-fidelity desktop interfaces." },
+      { title1: "Laptop", title2: "Agility", desc: "Seamless performance optimized for professional portable workflows." },
+      { title1: "Tablet", title2: "Fluidity", desc: "Intuitive touch-first designs crafted for creative freedom." },
+      { title1: "Mobile", title2: "Instinct", desc: "Pixel-perfect responsiveness for the palm of your hand." }
+    ];
 
   useGSAP(() => {
     if (!sectionRef.current) return;
 
-    // زيادة الـ end لتقليل الحساسية بشكل أكبر (مريح جداً للمستخدم)
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -56,11 +55,8 @@ const ResponsiveSection: React.FC = () => {
       }
     });
 
-    // البروجرس بار: يتحرك من 0 إلى 1 على طول "كامل مدة التايم لاين" (4 وحدات زمنية)
     tl.to(progressBarRef.current, { scaleX: 1, ease: "none", duration: 4 }, 0);
 
-    // الحركات التسلسلية: كل حركة تأخذ "ثانية واحدة" من زمن التايم لاين الافتراضي
-    // المجموع 4 ثواني، والبروجرس مدته 4 ثواني، فيتطابقان تماماً
     tl.to(desktopContentRef.current, { yPercent: -80, ease: "none", duration: 1 }, 0)
       .to(laptopContentRef.current, { yPercent: -80, ease: "none", duration: 1 }, 1)
       .to(tabletContentRef.current, { yPercent: -70, ease: "none", duration: 1 }, 2)
@@ -75,7 +71,7 @@ const ResponsiveSection: React.FC = () => {
     >
       {/* Header */}
       <div className="w-full pt-[6vh] pb-[1vh] z-20">
-        <StageHeader stage={STAGES[activeStage]} index={activeStage} />
+        <StageHeader stage={STAGES[activeStage]} index={activeStage} isAr={isAr} />
       </div>
 
       {/* Devices Layout - Surgical Precision */}
@@ -114,7 +110,6 @@ const ResponsiveSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Fixed Progress Bar - الحل الجذري هنا */}
       <div className="absolute bottom-0 left-0 w-full h-[2px] bg-white/5 z-50">
         <div
           ref={progressBarRef}

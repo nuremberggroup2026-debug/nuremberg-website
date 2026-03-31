@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, Code2, Terminal, Cpu } from "lucide-react";
+import { ArrowUpRight, Code2, Terminal, Cpu, ArrowUpLeft } from "lucide-react";
 import { nurembergData } from "@/data/nurembergData"; 
 
 if (typeof window !== "undefined") {
@@ -84,9 +84,7 @@ export default function CyberProgrammingSection({locale}:PageProps) {
             <button onClick={()=>{
               window.location.href="/about-us#contact-form"
             }} className="group relative flex items-center gap-6 p-5 pr-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all duration-500">
-              <div className="w-14 h-14 rounded-full bg-cyan-500 flex items-center justify-center text-black group-hover:rotate-45 transition-transform duration-500">
-                <ArrowUpRight size={24} />
-              </div>
+              
               <div className="text-left">
                 <p className="text-white font-black italic uppercase tracking-tighter text-xl leading-none">
                   {texts.ctaTitle}
@@ -94,6 +92,9 @@ export default function CyberProgrammingSection({locale}:PageProps) {
                 <p className="text-[9px] font-mono text-cyan-500/60 uppercase mt-1 tracking-widest">
                   {texts.ctaSubtitle}
                 </p>
+              </div>
+              <div className={`w-14 h-14 rounded-full bg-cyan-500 flex items-center justify-center ${locale==="ar"?"group-hover:-rotate-45":"group-hover:rotate-45"} text-black  transition-transform duration-500`}>
+               <ArrowUpLeft size={24} className={`${locale==="ar"?"":"rotate-90"}`} />
               </div>
             </button>
           </div>

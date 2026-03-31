@@ -21,6 +21,8 @@ import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { MemberOrder } from "@/types";
 import { Button } from "../ui/button";
+import Button1 from "../ui/Button1";
+import Button2 from "../ui/Button2";
 
 
 export type Member = {
@@ -205,13 +207,13 @@ export default function MemberReorder({
         </DndContext>
       </div>
       <div className="flex items-center gap-3 mt-5 flex-row justify-end">
-        <Button type="button" onClick={handleCancel} disabled={saving}>
+        <Button1 type="button" onClick={handleCancel} disabled={saving}>
           Cancel
-        </Button>
-        <Button type="button" onClick={handleSaveOrder} disabled={saving}>
+        </Button1>
+        <Button2 type="button" onClick={handleSaveOrder} disabled={saving}>
           {" "}
           {saving ? "Saving..." : "Save Order"}
-        </Button>
+        </Button2>
       </div>
 
       <div className="mt-3 text-sm text-gray-400">

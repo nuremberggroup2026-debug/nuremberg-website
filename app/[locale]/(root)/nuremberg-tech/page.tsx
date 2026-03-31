@@ -9,11 +9,18 @@ import ImpactHero from "@/app/components/pagesComponents/NurembergTech/ImpactHer
 import { InteractiveBackground } from "@/app/components/shared/interactivebackground";
 import { getAllProjectsByLocale } from "@/app/server/projects/services";
 import MobileResponsive from "@/app/components/pagesComponents/NurembergTech/MobileResponsive"
+import { generatePageMetadata } from "@/lib/constants/metadata";
 type Locale = "en" | "ar";
 interface PageProps {
   params: Promise<{
     locale: Locale;
   }>
+}
+
+export async function generateMetadata({params}:PageProps) {
+  const locale= (await params).locale
+  return generatePageMetadata("nuremberg-tech",locale)
+  
 }
 
 export default async function TechPage({ params }: PageProps) {

@@ -1,6 +1,6 @@
 "use client";
 
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -41,13 +41,12 @@ export default function CreateCareerForm({ action }: Props) {
     formState: { errors, isDirty, isSubmitting },
   } = useForm<CareerFormValues>({
     resolver: zodResolver(careersSchema),
-    defaultValues:{
-        requirements_ar:[],
-        requirements_en:[],
-        is_deleted:false
-    }
+    defaultValues: {
+      requirements_ar: [],
+      requirements_en: [],
+      is_deleted: false,
+    },
   });
-  
 
   const handleUploadComplete = (url: string) => {
     setValue("image", url, { shouldValidate: true });
@@ -196,15 +195,7 @@ export default function CreateCareerForm({ action }: Props) {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12 mb-12">
-              <Button2
-                type="submit"
-                disabled={!isDirty || isSubmitting}
-                className="bg-gray-800 sm:w-auto"
-                aria-disabled={!isDirty || isSubmitting}
-              >
-                {isSubmitting ? "Adding..." : "Add Course"}
-              </Button2>
-              <Button1
+               <Button1
                 disabled={isSubmitting}
                 type="button"
                 onClick={() => router.push("/admin/dashboard/careers")}
@@ -212,6 +203,15 @@ export default function CreateCareerForm({ action }: Props) {
               >
                 Cancel
               </Button1>
+              <Button2
+                type="submit"
+                disabled={!isDirty || isSubmitting}
+                className="bg-gray-800 sm:w-auto"
+                aria-disabled={!isDirty || isSubmitting}
+              >
+                {isSubmitting ? "Adding..." : "Add Career"}
+              </Button2>
+             
             </div>
           </form>
         </CardContent>

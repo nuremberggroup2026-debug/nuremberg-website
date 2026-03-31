@@ -3,9 +3,16 @@ import { notFound } from 'next/navigation'
 import NewApplicationForm from '@/components/applications/NewApplicationForm'
 import { newApplicationAction } from "../(actions)/newApplication"
 import {InteractiveBackground} from "@/app/components/shared/interactivebackground"
+import { generateApplicationMetadata } from '@/lib/constants/metadata'
 
 interface Props {
   params: Promise<{ id: string, locale: "en" | "ar" }>
+}
+
+export async function generateMetadata({params}:Props){
+  const {locale,id}= await params
+  return generateApplicationMetadata({id,locale})
+
 }
 
 async function Page({ params }: Props) {

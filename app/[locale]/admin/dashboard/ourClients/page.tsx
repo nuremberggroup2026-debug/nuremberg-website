@@ -13,7 +13,7 @@ export default async function ClientsTable() {
     <main className="flex flex-col justify-center items-center ml-2 md:ml-7 w-[90vw] md:w-[70vw] text-black">
       {/* Header */}
       <div className="flex flex-col justify-start items-start mb-6 border-b border-gray-300 w-full">
-        <h1 className="text-lg md:text-2xl font-bold">Clients</h1>
+        <h1 className="text-lg md:text-2xl text-cyan-900 font-bold">Clients</h1>
         <h2 className="text-sm md:text-lg text-gray-600">
           A list of Clients.
         </h2>

@@ -26,7 +26,7 @@ export default function HeroSection({ locale }: Props) {
       <div className={sideArea}>
         <div className="pointer-events-auto p-10 bg-zinc-900/20 backdrop-blur-sm rounded-3xl border-l-8 border-cyan-500">
           <h1 className="text-7xl md:text-9xl font-[1000] italic leading-none tracking-tighter">
-            ALPHA<span className="text-cyan-500">.</span>
+            {locale==="en"?"ALPHA":"ألفا"}<span className="text-cyan-500"></span>
           </h1>
           <p className="text-cyan-500 font-mono text-xs tracking-[1em] mt-4 font-bold">
             {t.system}

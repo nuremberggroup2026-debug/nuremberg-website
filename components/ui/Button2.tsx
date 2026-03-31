@@ -1,44 +1,46 @@
 import React, { ReactNode, ComponentPropsWithoutRef } from "react";
+import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 
-// Using ComponentPropsWithoutRef ensures 'type', 'disabled', etc. are included
-interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+interface FancyButtonProps extends ComponentPropsWithoutRef<"button"> {
   children: ReactNode;
+  locale?: "en" | "ar";
+  arrow?: boolean; // whether to show arrow icon
   className?: string;
 }
 
-export default function MainButton({
+export default function Button2({
   children,
+  locale = "en",
+  arrow = true,
   className = "",
   ...props
-}: ButtonProps) {
+}: FancyButtonProps) {
   return (
     <button
       className={`
-        px-4 py-2 text-sm
-        sm:px-5 sm:py-2.5 sm:text-base
-        md:px-6 md:py-3 md:text-lg
-        lg:px-4 lg:py-2 lg:text-lg
-
-        rounded-full font-bold text-white
-        bg-[#0b1236] border-2 border-[#0b1236]
-        relative overflow-hidden
-        
-        /* Standard states */
-        disabled:opacity-50 disabled:cursor-not-allowed
-
-        /* Hover effect */
-        before:absolute before:top-0 before:left-0 before:h-full before:w-0
-        before:bg-white/10 before:transition-all before:duration-300
-        hover:before:w-full
-
-        transition-all duration-300 hover:text-white
-        shadow-md hover:shadow-xl
-
+        group/btn relative w-full md:w-auto px-8 py-3 bg-black text-cyan-600 transition-all 
+        active:scale-95  shadow-[0_10px_20px_rgba(0,0,0,0.08)]
+        hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]
         ${className}
       `}
       {...props}
     >
-      <span className="relative z-10">{children}</span>
+      {/* Background pulse border */}
+      <div className="absolute inset-0 pointer-events-none border border-cyan-500/20 rounded-full scale-0 group-hover/btn:scale-100 transition-transform duration-1000 group-hover/btn:bg-cyan-500/10 -z-10" />
+
+      {/* Top-left animated border */}
+      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-cyan-500/50 
+        group-hover/btn:w-full group-hover/btn:h-full group-hover/btn:border-cyan-500 group-hover/btn:animate-pulse transition-all duration-700" />
+
+      {/* Bottom-right animated border */}
+      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-500/50 
+        group-hover/btn:w-full group-hover/btn:h-full group-hover/btn:border-cyan-500 group-hover/btn:animate-pulse transition-all duration-700" />
+
+      {/* Content */}
+      <div className="flex items-center justify-center gap-4 font-black italic uppercase tracking-[0.2em] text-cyan-400 text-base group-hover/btn:gap-6 transition-all duration-500">
+        <span className="animate-pulse">{children}</span>
+
+      </div>
     </button>
   );
 }

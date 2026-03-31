@@ -111,16 +111,14 @@ tl.current.to(camera.position, { x: 0, y: .5, z: 8, duration: 1 }, 6);
       5
     );
 
-    // تلاشي الهالة (Glow)
     if (glowRef.current) {
       tl.current.to(glowRef.current.material, {
         opacity: 0,
-        duration: 2, // يتلاشى تدريجياً خلال ثانيتين من التايم لاين
+        duration: 2, 
         ease: "power2.out"
       }, 6);
     }
 
-    // تلاشي البارتيكلز (Sparkles)
     if (sparkleMat.current) {
       tl.current.to(sparkleMat.current, {
         opacity: 0,

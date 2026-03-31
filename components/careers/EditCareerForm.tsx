@@ -208,6 +208,14 @@ export default function EditCareerForm({ action,career }: Props) {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12 mb-12">
+               <Button1
+                disabled={isSubmitting}
+                type="button"
+                onClick={() => router.push("/admin/dashboard/careers")}
+                className="bg-gray-800 sm:w-auto"
+              >
+                Cancel
+              </Button1>
               <Button2
                 type="submit"
                 disabled={!isDirty || isSubmitting}
@@ -216,14 +224,7 @@ export default function EditCareerForm({ action,career }: Props) {
               >
                 {isSubmitting ? "Saving..." : "Save Change"}
               </Button2>
-              <Button1
-                disabled={isSubmitting}
-                type="button"
-                onClick={() => router.push("/admin/dashboard/careers")}
-                className="bg-gray-800 sm:w-auto"
-              >
-                Cancel
-              </Button1>
+             
             </div>
           </form>
         </CardContent>

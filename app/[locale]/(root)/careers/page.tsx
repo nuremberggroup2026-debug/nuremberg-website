@@ -2,10 +2,17 @@ import { EmptyState } from "@/app/components/pagesComponents/careers/EmptyState"
 import { JobsList } from "@/app/components/pagesComponents/careers/JobList";
 import { InteractiveBackground } from "@/app/components/shared/interactivebackground";
 import { getCareersByLocale } from "@/app/server/careers/services";
+import { generatePageMetadata } from "@/lib/constants/metadata";
 import { Locale } from "@/types";
 
 interface Props {
   params: Promise<{ locale: Locale }>;
+}
+
+export async function generateMetadata({params}:Props) {
+ const locale= (await params).locale
+ return generatePageMetadata("careers",locale)
+  
 }
 
 export default async function CareersPage({ params }: Props) {

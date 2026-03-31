@@ -12,6 +12,7 @@ import AboutSectors from "@/app/components/pagesComponents/About/AboutSector";
 import { InteractiveBackground } from "@/app/components/shared/interactivebackground";
 import { getAllMembersBylocale } from "@/app/server/ourTeam/services";
 import { getAllClientsByLocale } from "@/app/server/clients/services";
+import { generatePageMetadata } from "@/lib/constants/metadata";
 
 type Locale = "en" | "ar";
 interface PageProps {
@@ -22,6 +23,12 @@ interface PageProps {
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
+}
+
+export async function generateMetadata({params}:PageProps) {
+  const locale= (await params).locale
+  return generatePageMetadata("about-us",locale)
+  
 }
 
 export default async function NeuralCoreAbout({ params }: PageProps) {

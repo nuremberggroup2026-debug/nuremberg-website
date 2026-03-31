@@ -19,6 +19,8 @@ import { Label } from "@radix-ui/react-dropdown-menu";
 import { NewProject } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Button1 from "../ui/Button1";
+import Button2 from "../ui/Button2";
 type ProjectFormValues = z.infer<typeof projectsSchema>;
 
 interface Props {
@@ -149,14 +151,7 @@ function CreateProjectForm({ action }: Props) {
               )}
             </div>
             <div className="flex flex-row justify-center gap-4 mt-10 mb-5">
-              <Button
-                type="submit"
-                disabled={!isDirty || isSubmitting}
-                className="bg-gray-800"
-              >
-                {isSubmitting ? "Adding..." : "Add Project"}{" "}
-              </Button>
-              <Button
+               <Button1
                 disabled={isSubmitting}
                 className="bg-gray-800"
                 type="button"
@@ -165,7 +160,15 @@ function CreateProjectForm({ action }: Props) {
                 }}
               >
                 Cancel
-              </Button>
+              </Button1>
+              <Button2
+                type="submit"
+                disabled={!isDirty || isSubmitting}
+                className="bg-gray-800"
+              >
+                {isSubmitting ? "Adding..." : "Add Project"}{" "}
+              </Button2>
+             
             </div>
           </form>
         </CardContent>

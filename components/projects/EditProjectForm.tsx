@@ -20,6 +20,8 @@ import { NewProject } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import FormSelect from "../inputs/SelectorInput";
+import Button1 from "../ui/Button1";
+import Button2 from "../ui/Button2";
 type ProjectFormValues = z.infer<typeof projectsSchema>;
 
 interface Props {
@@ -159,14 +161,7 @@ function EditProjectForm({ action, project }: Props) {
               )}
             </div>
             <div className="flex flex-row justify-center gap-4 mt-10 mb-5">
-              <Button
-                type="submit"
-                disabled={!isDirty || isSubmitting}
-                className="bg-gray-800"
-              >
-                {isSubmitting ? "Saving..." : "Save Change"}{" "}
-              </Button>
-              <Button
+               <Button1
                 disabled={isSubmitting}
                 className="bg-gray-800"
                 type="button"
@@ -175,7 +170,15 @@ function EditProjectForm({ action, project }: Props) {
                 }}
               >
                 Cancel
-              </Button>
+              </Button1>
+              <Button2
+                type="submit"
+                disabled={!isDirty || isSubmitting}
+                className="bg-gray-800"
+              >
+                {isSubmitting ? "Saving..." : "Save Change"}{" "}
+              </Button2>
+             
             </div>
           </form>
         </CardContent>

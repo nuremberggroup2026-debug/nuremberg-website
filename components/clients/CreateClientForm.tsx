@@ -18,6 +18,8 @@ import { clientsSchema } from "@/app/server/clients/validators";
 import TextInput from "../inputs/TextInput";
 import z from "zod";
 import { Button } from "../ui/button";
+import Button2 from "../ui/Button2";
+import Button1 from "../ui/Button1";
 
 interface Props {
   action: (
@@ -129,16 +131,16 @@ export default function CreateNewClientForm({ action }: Props) {
             {/* Buttons */}
             <div className="w-full flex justify-center mt-5">
               <div className="flex flex-row gap-3">
-                <Button
+                <Button1
                   type="button"
                   onClick={() => router.replace("/admin/dashboard/ourClients")}
                 >
                   Cancel
-                </Button>
+                </Button1>
 
-                <Button type="submit" disabled={!isDirty || isSubmitting}>
+                <Button2 type="submit" disabled={!isDirty || isSubmitting}>
                   {isSubmitting  ? "Adding..." : "Add Client"}
-                </Button>
+                </Button2>
               </div>
             </div>
           </CardContent>

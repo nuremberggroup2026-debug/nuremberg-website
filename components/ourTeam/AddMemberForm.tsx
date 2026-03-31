@@ -18,6 +18,8 @@ import TextInput from "../inputs/TextInput";
 import TextareaInput from "../inputs/TextareaInput";
 import { Button } from "../ui/button";
 import FormCheckbox from "@/components/inputs/CheckBoxInput"
+import Button1 from "../ui/Button1";
+import Button2 from "../ui/Button2";
 
 interface Props {
   action: (
@@ -159,16 +161,16 @@ export default function AddMemberForm({ action }: Props) {
             </div>
             <div className="w-full flex justify-center mt-5">
               <div className="flex flex-row gap-3">
-                <Button
+                <Button1
                   type="button" disabled={isSubmitting}
                   onClick={() => router.replace("/admin/dashboard/ourTeam")}
                 >
                   Cancel
-                </Button>
+                </Button1>
 
-                <Button type="submit" disabled={isSubmitting}>
+                <Button2 type="submit" disabled={isSubmitting}>
                   {isSubmitting ? "Adding..." : "Add Member"}{" "}
-                </Button>
+                </Button2>
               </div>
             </div>
           </CardContent>

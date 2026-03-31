@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight,  Zap, ShieldCheck } from "lucide-react";
+import { ArrowUpRight,  Zap, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { homeData } from "@/data/Homadata";
 import { useLocale } from "next-intl";
@@ -75,12 +75,18 @@ export default function HomeAbout() {
               <div className="pt-6">
                 <Link 
                   href={`${about.cta.link}#contact-form`} 
-                  className="relative inline-flex items-center group overflow-hidden border border-cyan-500 px-8 py-4 transition-all duration-300 hover:bg-cyan-500"
+                  
                 >
-                  <span className="relative z-10 text-cyan-500 group-hover:text-black font-bold text-xs uppercase tracking-widest transition-colors duration-300">
-                    {about.cta.label}
-                  </span>
-                  <ArrowUpRight className={`relative z-10 ml-4 group-hover:text-black text-cyan-500 transition-colors ${isArabic ? "mr-4 ml-0 rotate-[-90deg] group-hover:rotate-0" : ""}`} size={18} />
+                   <button className="group relative overflow-hidden bg-white px-8 md:px-10 py-4 md:py-5 rounded-full transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_20px_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(6,182,212,0.4)]">
+            <div className="absolute inset-0 bg-cyan-500 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+            
+            <div className="relative z-10 flex items-center gap-5 text-black font-black uppercase text-lg tracking-[0.4em]">
+              {about.cta.label} 
+              <div className="bg-black/5 p-1 rounded-full group-hover:bg-black/20 transition-colors">
+                <ArrowRight size={22} className={`${locale==="en"?"group-hover:translate-x-2":"group-hover:-translate-x-2"} transition-transform duration-500 ${locale==="en"?"rotate-0":"rotate-180"}`} />
+              </div>
+            </div>
+          </button>
                 </Link>
               </div>
             </div>

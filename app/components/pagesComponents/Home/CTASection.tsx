@@ -64,10 +64,10 @@ export default function CTA({locale}:PageProps) {
         <div className="flex flex-col items-center gap-8">
           <button onClick={()=>{
      window.location.href="/about-us#contact-form"
-          }} className="group relative overflow-hidden bg-white px-14 py-7 rounded-full transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_20px_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(6,182,212,0.4)]">
+          }} className="group relative overflow-hidden bg-white px-8 md:px-10 py-4 md:py-5 rounded-full transition-all duration-500 hover:scale-110 active:scale-95 shadow-[0_20px_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(6,182,212,0.4)]">
             <div className="absolute inset-0 bg-cyan-500 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]" />
             
-            <div className="relative z-10 flex items-center gap-5 text-black font-black uppercase text-xs tracking-[0.4em]">
+            <div className="relative z-10 flex items-center gap-5 text-black font-black uppercase text-lg tracking-[0.4em]">
               {data.button} 
               <div className="bg-black/5 p-1 rounded-full group-hover:bg-black/20 transition-colors">
                 <ArrowRight size={22} className={`${locale==="en"?"group-hover:translate-x-2":"group-hover:-translate-x-2"} transition-transform duration-500 ${locale==="en"?"rotate-0":"rotate-180"}`} />

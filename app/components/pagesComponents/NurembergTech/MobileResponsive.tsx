@@ -18,18 +18,18 @@ const ResponsiveMobileSection: React.FC = () => {
   const isAr = useLocale() === "ar";
 
   const STAGES = isAr
-    ? [
-        { title: "دقة سطح المكتب", desc: "تجربة بصرية متكاملة" },
-        { title: "مرونة اللابتوب", desc: "أداء احترافي متنقل" },
-        { title: "سلاسة التابلت", desc: "إبداع يعمل باللمس" },
-        { title: "بساطة الموبايل", desc: "استجابة مثالية بيدك" }
-      ]
-    : [
-        { title: "Desktop Precision", desc: "Full-scale visual power" },
-        { title: "Laptop Agility", desc: "Pro workflow on the go" },
-        { title: "Tablet Fluidity", desc: "Creative touch freedom" },
-        { title: "Mobile Instinct", desc: "Pixel-perfect response" }
-      ];
+  ? [
+      { title1: "دقة", title2: "العرض", desc: "استمتع بكامل قوة واجهات سطح المكتب عالية الجودة." },
+      { title1: "مرونة", title2: "اللابتوب", desc: "أداء سلس ومثالي لبيئات العمل المتنقلة." },
+      { title1: "سلاسة", title2: "التابلت", desc: "تصميمات تعمل باللمس لتجربة إبداعية مرنة." },
+      { title1: "بساطة", title2: "الموبايل", desc: "استجابة مثالية تناسب استخدامك اليومي بيد واحدة." }
+    ]
+  : [
+      { title1: "Desktop", title2: "Precision", desc: "Experience the full scale of high-fidelity desktop interfaces." },
+      { title1: "Laptop", title2: "Agility", desc: "Seamless performance optimized for professional portable workflows." },
+      { title1: "Tablet", title2: "Fluidity", desc: "Intuitive touch-first designs crafted for creative freedom." },
+      { title1: "Mobile", title2: "Instinct", desc: "Pixel-perfect responsiveness for the palm of your hand." }
+    ];
 
   const DEVICE_TYPES = ["desktop", "laptop", "tablet", "phone"] as const;
 
@@ -128,7 +128,7 @@ const ResponsiveMobileSection: React.FC = () => {
       
       {/* Header */}
       <div className="h-[25vh] flex items-end px-6 pb-6 z-40 relative">
-        <StageHeader stage={STAGES[activeStage]} index={activeStage} />
+        <StageHeader stage={STAGES[activeStage]} isAr={isAr} index={activeStage} />
       </div>
 
       {/* Devices */}
@@ -149,7 +149,7 @@ const ResponsiveMobileSection: React.FC = () => {
               <DeviceFrame type={type} active={activeStage === idx}>
                 <div className="w-full h-full min-h-[450px] bg-[#0a0a0a] overflow-hidden">
                   <MockDeviceCanvas
-                    title={isAr ? STAGES[idx].title : type.toUpperCase()}
+                    title={isAr ? STAGES[idx].title2+ STAGES[idx].title2 : type.toUpperCase()}
                   />
                 </div>
               </DeviceFrame>

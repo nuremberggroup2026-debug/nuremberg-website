@@ -19,6 +19,8 @@ import TextInput from "../inputs/TextInput";
 import TextareaInput from "../inputs/TextareaInput";
 import ImageUploader from "../ImageUpload";
 import { Label } from "@radix-ui/react-dropdown-menu";
+import Button2 from "../ui/Button2";
+import Button1 from "../ui/Button1";
 
 interface Props {
   banner: NewBanner;
@@ -131,10 +133,7 @@ function EditBannerForm({ banner, action }: Props) {
               )}
             </div>
             <div className="flex flex-row justify-center gap-4 mt-10 mb-5">
-              <Button type="submit" disabled={!isDirty ||isSubmitting} className="bg-gray-800">
-                {isSubmitting ?"Saving..." : "Save Change"}{" "}
-              </Button>
-              <Button
+                <Button1
                 disabled={isSubmitting}
                 className="bg-gray-800"
                 type="button"
@@ -143,7 +142,11 @@ function EditBannerForm({ banner, action }: Props) {
                 }}
               >
                 Cancel
-              </Button>
+              </Button1>
+              <Button2 type="submit" disabled={!isDirty ||isSubmitting} className="bg-gray-800">
+                {isSubmitting ?"Saving..." : "Save Change"}{" "}
+              </Button2>
+            
             </div>
           </form>
         </CardContent>

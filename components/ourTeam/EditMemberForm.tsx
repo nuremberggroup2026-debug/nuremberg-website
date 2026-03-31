@@ -18,36 +18,37 @@ import TextInput from "../inputs/TextInput";
 import TextareaInput from "../inputs/TextareaInput";
 import FormCheckbox from "../inputs/CheckBoxInput";
 import { Button } from "../ui/button";
+import Button1 from "../ui/Button1";
+import Button2 from "../ui/Button2";
 interface Props {
-    member:NewMember | null
+  member: NewMember | null;
   action: (
-    memberId:string,
-    data: NewMember
+    memberId: string,
+    data: NewMember,
   ) => Promise<{ success: boolean; message: string; status: number }>;
 }
 type MembersFormValues = z.infer<typeof ourteamSchema>;
 
-
-export default function EditMemberForm({ action,member }: Props) {
+export default function EditMemberForm({ action, member }: Props) {
   const {
     register,
     handleSubmit,
     setValue,
     watch,
     control,
-    formState: { errors,isDirty,isSubmitting },
+    formState: { errors, isDirty, isSubmitting },
   } = useForm<MembersFormValues>({
     resolver: zodResolver(ourteamSchema),
-    defaultValues:{
-        name_en: member?.name_en,
-        name_ar: member?.name_ar,
-        description_en:member?.description_en ??"",
-        description_ar:member?.description_ar ??"",
-        main:member?.main??undefined,
-        position_en:member?.position_en,
-        position_ar:member?.position_ar,
-        image:member?.image
-    }
+    defaultValues: {
+      name_en: member?.name_en,
+      name_ar: member?.name_ar,
+      description_en: member?.description_en ?? "",
+      description_ar: member?.description_ar ?? "",
+      main: member?.main ?? undefined,
+      position_en: member?.position_en,
+      position_ar: member?.position_ar,
+      image: member?.image,
+    },
   });
   const router = useRouter();
 
@@ -61,32 +62,34 @@ export default function EditMemberForm({ action,member }: Props) {
   };
 
   const onSubmit: SubmitHandler<MembersFormValues> = async (data) => {
-      try {
-        const result = await action(member?.id??"",data);
-        if (result.status === 401) {
-          toast.error(result.message);
-          router.push("/login");
-          return;
-        } else if (result.status === 403) {
-          toast.error(result.message);
-          router.push("/");
-          return;
-        } else if (result.status === 201) {
-          toast.success(result.message);
-          router.push("/admin/dashboard/ourTeam");
-          return;
-        } else {
-          toast.error(result.message);
-        }
-      } catch (error) {
-        toast.error("Error In Creating The Member");
+    try {
+      const result = await action(member?.id ?? "", data);
+      if (result.status === 401) {
+        toast.error(result.message);
+        router.push("/login");
+        return;
+      } else if (result.status === 403) {
+        toast.error(result.message);
+        router.push("/");
+        return;
+      } else if (result.status === 201) {
+        toast.success(result.message);
+        router.push("/admin/dashboard/ourTeam");
+        return;
+      } else {
+        toast.error(result.message);
       }
+    } catch (error) {
+      toast.error("Error In Creating The Member");
+    }
   };
 
   return (
     <main className="ml-3 xl:ml-7 mb-7">
       <div className="flex flex-col justify-start items-start border-b border-gray-500 w-[90vw] md:w-[70vw] mb-7">
-        <h1 className="text-lg md:text-2xl text-[#050505] font-bold">Edit Member</h1>
+        <h1 className="text-lg md:text-2xl text-[#050505] font-bold">
+          Edit Member
+        </h1>
       </div>
 
       <form
@@ -103,12 +106,12 @@ export default function EditMemberForm({ action,member }: Props) {
 
           <CardContent className="flex flex-col items-start gap-5 mb-7 ">
             <FormCheckbox
-                         name="main"
-                         error={errors.main}
-                         className="lg:w-[19.5vw] w-full"
-                         label=" Is Main?"
-                         control={control}
-                       />
+              name="main"
+              error={errors.main}
+              className="lg:w-[19.5vw] w-full"
+              label=" Is Main?"
+              control={control}
+            />
             <div className="flex flex-col lg:flex-row w-full gap-4">
               <TextInput
                 register={register("name_en")}
@@ -165,10 +168,17 @@ export default function EditMemberForm({ action,member }: Props) {
             </div>
             <div className="w-full flex justify-center mt-5">
               <div className="flex flex-row gap-3">
-                <Button type="button" disabled={isSubmitting}
-                  onClick={() => router.replace("/admin/dashboard/ourTeam")}>Cancel</Button>
-                <Button type="submit"
-                  disabled={!isDirty || isSubmitting}> {isSubmitting ? "Saving..." : "Save Change"}</Button>
+                <Button1
+                  type="button"
+                  disabled={isSubmitting}
+                  onClick={() => router.replace("/admin/dashboard/ourTeam")}
+                >
+                  Cancel
+                </Button1>
+                <Button2 type="submit" disabled={!isDirty || isSubmitting}>
+                  {" "}
+                  {isSubmitting ? "Saving..." : "Save Change"}
+                </Button2>
               </div>
             </div>
           </CardContent>

@@ -9,7 +9,7 @@ async function page() {
   return (
     <main className="ml:0 md:ml-2.5 lg:ml-5 mt-2">
       <header className="mb-4">
-        <h1 className="ml-2 text-xl text-gray-800 lg:text-3xl font-semibold">
+        <h1 className="ml-2 text-xl text-cyan-900 font-bold lg:text-3xl ">
           All Careers
         </h1>
       </header>
@@ -55,7 +55,7 @@ async function page() {
                   </div>
 
                   <div className="mt-1 flex items-center gap-2 text-xs text-gray-600">
-                    <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-full bg-[#397a34]/10 text-[#397a34] font-semibold">
+                    <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-full bg-cyan-400/10 text-cyan-400 font-semibold">
                       {career.applications.length}
                     </span>
                     <span className="whitespace-nowrap">Applications</span>

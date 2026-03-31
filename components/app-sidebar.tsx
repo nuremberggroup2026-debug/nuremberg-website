@@ -19,6 +19,7 @@ import {
 import { TbCategory } from "react-icons/tb";
 import { GoProjectRoadmap } from "react-icons/go";
 import { VscGitStashApply } from "react-icons/vsc";
+import Logo from "@/public/favicon.ico"
 import {
   Sidebar,
   SidebarContent,
@@ -40,6 +41,7 @@ import {
 import { useSession } from "next-auth/react";
 import SignOutComponent from "./SignOutComponent";
 import Link from "next/link";
+import Image from "next/image";
 
 const items = [
   { title: "Home", url: "/", icon: Home },
@@ -72,8 +74,8 @@ export function AppSidebar() {
       <SidebarContent className="bg-[#050505] scrollbar-hide">
         <SidebarGroup>
           <SidebarGroupLabel className="flex items-center gap-3 px-2 py-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 border border-cyan-500/20">
-              <LayoutDashboard className="text-cyan-500 " size={18} />
+            <div className="flex h-8 w-8 items-center justify-center ">
+             <Image src={Logo.src} alt="Nuremberg" width={32} height={32} />
             </div>
             <span className="text-sm font-black tracking-widest text-white uppercase italic">
               Nurem<span className="text-cyan-500 font-bold ">berg</span>

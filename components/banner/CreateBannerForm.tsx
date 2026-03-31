@@ -1,18 +1,14 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { bannerSchema } from "@/app/server/banners/validators";
-import { boolean, z } from "zod";
-import { Button } from "@/components/ui/button";
+import {  z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import {
   Card,
   CardContent,
   CardHeader,
   CardDescription,
   CardTitle,
-  CardAction,
-  CardFooter,
 } from "@/components/ui/card";
 import TextInput from "../inputs/TextInput";
 import TextareaInput from "../inputs/TextareaInput";
@@ -21,6 +17,8 @@ import { toast } from "sonner";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { NewBanner } from "@/types";
 import { useRouter } from "next/navigation";
+import Button2 from "../ui/Button2";
+import Button1 from "../ui/Button1";
 type BannerFormValues = z.infer<typeof bannerSchema>;
 
 interface Props {
@@ -119,10 +117,7 @@ function CreateBannerForm({ action }: Props) {
               )}
             </div>
             <div className="flex flex-row justify-center gap-4 mt-10 mb-5">
-              <Button type="submit" disabled={!isDirty || isSubmitting} className="bg-gray-800">
-                {isSubmitting ? "Adding..." : "Add Banner"}{" "}
-              </Button>
-              <Button
+               <Button1
                 disabled={isSubmitting}
                 className="bg-gray-800"
                 type="button"
@@ -131,7 +126,11 @@ function CreateBannerForm({ action }: Props) {
                 }}
               >
                 Cancel
-              </Button>
+              </Button1>
+              <Button2 type="submit" disabled={!isDirty || isSubmitting} className="bg-gray-800">
+                {isSubmitting ? "Adding..." : "Add Banner"}{" "}
+              </Button2>
+             
             </div>
           </form>
         </CardContent>

@@ -84,7 +84,6 @@ export default function MissionSection({ locale = "en" }: MissionSectionProps) {
       dir={locale === "ar" ? "rtl" : "ltr"} 
       className="relative h-screen w-screen flex justify-between items-center bg-transparent overflow-hidden"
     >
-      {/* الجهة اليسرى: المحتوى الرئيسي */}
       <div className={sideArea}>
         <div 
           ref={leftBoxRef}
@@ -93,7 +92,7 @@ export default function MissionSection({ locale = "en" }: MissionSectionProps) {
           <h2 className="text-5xl font-[1000] italic mb-6 leading-tight uppercase">
             {t.title}
             <br />
-            <span className="text-cyan-500">{t.highlight}</span>
+           
           </h2>
           <p className="text-sm normal-case leading-loose text-gray-300 font-medium tracking-wide">
             {t.description}
@@ -101,7 +100,6 @@ export default function MissionSection({ locale = "en" }: MissionSectionProps) {
         </div>
       </div>
 
-      {/* الجهة اليمنى: الكبسولات */}
       <div className={`${sideArea} items-end space-y-6`}>
         {[
           { icon: Globe, text: t.global },
