@@ -66,7 +66,7 @@ export const ROOT_METADATA: Metadata = {
   icons: {
     icon: `${SITE_URL}/favicon.ico`,
     shortcut: `${SITE_URL}/favicon.ico`,
-    apple: `${SITE_URL}/logo.png`,
+    apple: `${SITE_URL}/logo.jpg`,
   },
   openGraph: {
     type: "website",
@@ -77,7 +77,7 @@ export const ROOT_METADATA: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`,
+        url: `${SITE_URL}/logo.jpg`,
         width: 1200,
         height: 630,
         alt: SITE_TITLE,
@@ -88,7 +88,7 @@ export const ROOT_METADATA: Metadata = {
     card: "summary_large_image",
     title: APP_NAME,
     description: HOME_DESCRIPTION_EN,
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/logo.jpg`],
   },
   robots: {
     index: true,
@@ -116,7 +116,7 @@ export const HOME_METADATA: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`,
+        url: `${SITE_URL}/logo.jpg`,
         width: 1200,
         height: 630,
         alt: `${SITE_TITLE} - Digital Services`,
@@ -127,7 +127,7 @@ export const HOME_METADATA: Metadata = {
     card: "summary_large_image",
     title: `${APP_NAME} | Digital Growth & Creative Solutions`,
     description: HOME_DESCRIPTION_EN,
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/logo.jpg`],
   },
 };
 
@@ -266,7 +266,7 @@ export function generatePageMetadata(
       locale: isArabic ? "ar_JO" : "en_US",
       images: [
         {
-          url: `${SITE_URL}/og-image.jpg`,
+          url: `${SITE_URL}/logo.jpg`,
           width: 1200,
           height: 630,
           alt: SITE_TITLE,
@@ -277,7 +277,7 @@ export function generatePageMetadata(
       card: "summary_large_image",
       title: `${t.title} | ${SITE_TITLE}`,
       description: t.description,
-      images: [`${SITE_URL}/og-image.jpg`],
+      images: [`${SITE_URL}/logo.jpg`],
     },
   };
 }
@@ -291,7 +291,6 @@ export async function generateApplicationMetadata({
   id: string;
   locale: "en" | "ar";
 }): Promise<Metadata> {
-  // 🔥 fetch your career from DB / API
   const res = (await getCareerById(id))
 
   const career = res.data
@@ -308,12 +307,11 @@ export async function generateApplicationMetadata({
 
   const image = career?.image || `${SITE_URL}/og-image.jpg`;
 
-  const url = `${SITE_URL}/${locale}/careers/${id}/apply`;
+  const url = `${SITE_URL}/${locale}/application-form/${id}`;
 
   return {
     title,
     description,
-
     openGraph: {
       title,
       description,
