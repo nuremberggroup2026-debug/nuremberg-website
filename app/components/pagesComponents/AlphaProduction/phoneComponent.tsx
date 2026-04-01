@@ -30,7 +30,7 @@ export default function Phonee({ locale }: PageProps) {
       <AlphaOffers locale={locale} />
       <FutureVission locale={locale} />
       </InteractiveBackground>
-      <Footer/>
+      <Footer locale={locale}/>
     </div>
   );
 }

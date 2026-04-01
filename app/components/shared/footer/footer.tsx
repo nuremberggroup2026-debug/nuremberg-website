@@ -2,26 +2,24 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+
 import {
-  ArrowUpRight,
-  Command,
-  Globe,
-  Cpu,
+
   Instagram,
   Linkedin,
-  Github,
   ChevronUp,
-  Activity,
-  Zap,
+
   Mail,
   Phone,
   MapPin,
   Facebook,
 } from "lucide-react";
+type Locale = "en" | "ar";
+interface PageProps {
+  locale: Locale;
+}
 
-export default function ProfessionalBalancedFooter() {
-  const locale = useLocale() as "en" | "ar";
+export default function ProfessionalBalancedFooter({locale}:PageProps) {
   const isArabic = locale === "ar";
   const addressAr = process.env.NEXT_PUBLIC_ADDRESS_AR;
   const addressEn = process.env.NEXT_PUBLIC_ADDRESS_EN;

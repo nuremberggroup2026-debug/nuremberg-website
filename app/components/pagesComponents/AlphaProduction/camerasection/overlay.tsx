@@ -6,7 +6,7 @@ import InfrastructureSection from "./overlaycomponents/InfrastructureSection";
 import CTASection from "./overlaycomponents/CTASection";
 import EngineSection from "./overlaycomponents/EngineSection";
 import AlphaOffers from "@/app/components/pagesComponents/AlphaProduction/camerasection/overlaycomponents/VideoAlphaOffers"
-import Footer from "@/app/components/pagesComponents/AlphaProduction/footer";
+import Footer from "@/app/components/shared/footer/footer";
 import FutureVission from "@/app/components/pagesComponents/AlphaProduction/camerasection/overlaycomponents/FutureVission"
 import { Scroll } from "@react-three/drei";
 
@@ -41,8 +41,9 @@ export default function Overlay({ locale }: Props) {
 
       <FutureVission locale={locale}/>
 
-
+<div className=" h-screen flex flex-col items-end justify-end">
         <Footer locale={locale} />
+        </div>
       </div>
     </Scroll>
   );
