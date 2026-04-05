@@ -30,8 +30,7 @@ export default function TeamSection({team,locale}:PageProps) {
         <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter italic">
   {locale === "ar" ? (
     <>
-      <span className="text-white">فريق</span>{" "}
-      <span className="text-cyan-500">نا</span>
+      <span className="text-white">فريقنا</span>{" "}
     </>
   ) : (
     <>

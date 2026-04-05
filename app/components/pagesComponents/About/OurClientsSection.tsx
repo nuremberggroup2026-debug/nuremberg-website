@@ -55,8 +55,7 @@ export default function ClientsCarousel({ clients, locale }: Props) {
       <h2 className="text-5xl md:text-7xl font-[1000] uppercase italic tracking-tighter drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
   {isArabic ? (
     <>
-      <span className="text-white">شركاء</span>{" "}
-      <span className="text-blue-500">نا</span>
+      <span className="text-white">شركاؤنا</span>{" "}
     </>
   ) : (
     <>
