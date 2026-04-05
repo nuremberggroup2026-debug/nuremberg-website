@@ -37,7 +37,7 @@ export default function Button2({
         group-hover/btn:w-full group-hover/btn:h-full group-hover/btn:border-cyan-500 group-hover/btn:animate-pulse transition-all duration-700" />
 
       {/* Content */}
-      <div className="flex items-center justify-center gap-4 font-black italic uppercase tracking-[0.2em] text-cyan-400 text-base group-hover/btn:gap-6 transition-all duration-500">
+      <div className="flex items-center justify-center gap-4 font-black italic uppercase  text-cyan-400 text-base group-hover/btn:gap-6 transition-all duration-500">
         <span className="animate-pulse">{children}</span>
 
       </div>

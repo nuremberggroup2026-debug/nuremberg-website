@@ -27,9 +27,19 @@ export default function TeamSection({team,locale}:PageProps) {
             </span>
             <div className="h-[1px] w-8 bg-cyan-500/40" />
           </div>
-          <h2 className="text-4xl md:text-7xl font-black uppercase   tracking-tighter italic">
-            {locale==="ar"?"فريقنا":"Our Team"}
-          </h2>
+        <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter italic">
+  {locale === "ar" ? (
+    <>
+      <span className="text-white">فريق</span>{" "}
+      <span className="text-cyan-500">نا</span>
+    </>
+  ) : (
+    <>
+      <span className="text-white">Our</span>{" "}
+      <span className="text-cyan-500">Team</span>
+    </>
+  )}
+</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-16">

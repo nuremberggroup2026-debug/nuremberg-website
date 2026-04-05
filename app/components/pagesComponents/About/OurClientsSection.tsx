@@ -44,15 +44,27 @@ export default function ClientsCarousel({ clients, locale }: Props) {
       {/* العنوان */}
       <div className="text-center mb-20 relative z-10">
         <div className="flex justify-center items-center gap-4 mb-6">
-          <div className="h-[2px] w-12 bg-cyan-500 shadow-[0_0_10px_#22d3ee]" />
-          <span className="text-xs font-mono text-cyan-400 tracking-[0.5em] uppercase font-bold">
-             {isArabic ? "شبكة الشركاء" : "Partner Network"}
-          </span>
-          <div className="h-[2px] w-12 bg-cyan-500 shadow-[0_0_10px_#22d3ee]" />
+      <div className="flex justify-center items-center gap-3 mb-4">
+            <div className="h-[1px] w-8 bg-cyan-500/40" />
+            <span className="text-[10px] font-mono text-cyan-500 tracking-[0.5em] uppercase font-bold">
+            {locale === "ar" ? "شبكة الشركاء" : "Partners Network"}
+            </span>
+            <div className="h-[1px] w-8 bg-cyan-500/40" />
+          </div>
         </div>
-        <h2 className="text-5xl md:text-7xl font-[1000] text-white uppercase italic tracking-tighter drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-          {isArabic ? "شركائنا " : "Our Partners "} 
-        </h2>
+      <h2 className="text-5xl md:text-7xl font-[1000] uppercase italic tracking-tighter drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+  {isArabic ? (
+    <>
+      <span className="text-white">شركاء</span>{" "}
+      <span className="text-blue-500">نا</span>
+    </>
+  ) : (
+    <>
+      <span className="text-white">Our</span>{" "}
+      <span className="text-blue-500">Partners</span>
+    </>
+  )}
+</h2>
       </div>
 
       {/* حاوية السوايبر */}

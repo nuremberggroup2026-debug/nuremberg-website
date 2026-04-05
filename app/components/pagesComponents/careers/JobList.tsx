@@ -57,13 +57,18 @@ const t = {
 export const JobsList = ({ jobs, locale }: Props) => {
   return (
     <div>
-      <section className="pt-32 pb-16 px-6">
+      <section className="py-20 pb-16 px-6">
         <div className="max-w-6xl mx-auto space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-0.5 bg-cyan-500" />
-            <span className="text-[10px] font-mono text-cyan-500 uppercase tracking-[0.4em] font-black">
-              {locale === "ar" ? "الوظائف" : "Careers"}
-            </span>
+               <div className="inline-flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 mb-4 ">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+          </span>
+          <span className="text-[9px] md:text-[10px] font-mono tracking-[0.15em] md:tracking-widest text-white/60 uppercase">
+            {locale==="ar"?"الوظائف":"jobs"}
+          </span>
+        </div>
           </div>
 
          <h1 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter leading-[0.9]">
