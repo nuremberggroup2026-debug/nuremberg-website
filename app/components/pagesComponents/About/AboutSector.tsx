@@ -24,7 +24,7 @@ export default function AboutSectors({ locale }: PageProps) {
             </span>
             <div className="h-px w-8 bg-cyan-500/40" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
+          <h2 className="text-4xl md:text-7xl font-black text-white uppercase italic tracking-tighter">
             {sectorsText.titleLine1}{" "}
             <span className="text-cyan-500">{sectorsText.titleLine2}</span>
           </h2>

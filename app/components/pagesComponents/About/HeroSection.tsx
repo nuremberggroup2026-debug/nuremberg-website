@@ -16,9 +16,12 @@ export default function HeroSection({ locale }: PageProps) {
       </div>
 
       <div className="relative z-10 max-w-5xl">
-        <div className="flex items-center gap-4 mb-10 reveal-up">
-          <div className="h-[2px] w-12 bg-cyan-500 shadow-[0_0_10px_#06b6d4]" />
-          <span className="text-cyan-400 font-mono text-xs tracking-[0.4em] uppercase font-black">
+              <div className="inline-flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 mb-6 md:mb-8">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+          </span>
+          <span className="text-[9px] md:text-[10px] font-mono tracking-[0.15em] md:tracking-widest text-white/60 uppercase">
             {content.manifesto}
           </span>
         </div>

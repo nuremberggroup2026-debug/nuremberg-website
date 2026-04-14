@@ -88,16 +88,18 @@ export default function FormSection({ action, locale }: Props) {
     >
       <div className="text-center mb-20">
         <div className="flex justify-center items-center gap-3 mb-4">
-          <div className="h-px w-12 bg-cyan-500/40" />
-          <span className="text-[11px] font-mono text-cyan-500 tracking-[0.5em] uppercase font-bold">
-            {locale === "ar" ? "التواصل" : "Contact"}
-          </span>
-          <div className="h-px w-12 bg-cyan-500/40" />
+       <div className="flex justify-center items-center gap-3 mb-4">
+            <div className="h-[1px] w-8 bg-cyan-500/40" />
+            <span className="text-[10px] font-mono text-cyan-500 tracking-[0.5em] uppercase font-bold">
+            {locale === "ar" ? "تواصل" : "Contact"}
+            </span>
+            <div className="h-[1px] w-8 bg-cyan-500/40" />
+          </div>
         </div>
-        <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic tracking-tighter">
+        <h2 className="text-4xl md:text-7xl font-black text-white uppercase italic tracking-tighter">
           {locale === "ar" ? "تواصل" : "contact"}{" "}
           <span className="text-cyan-500">
-            {locale === "ar" ? "معنا" : "with us"}
+            {locale === "ar" ? "معنا" : "us"}
           </span>
         </h2>
       </div>
