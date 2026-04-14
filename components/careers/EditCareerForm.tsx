@@ -62,7 +62,7 @@ export default function EditCareerForm({ action,career }: Props) {
   });
 
   const handleUploadComplete = (url: string) => {
-    setValue("image", url, { shouldValidate: true });
+    setValue("image", url, { shouldValidate: true,shouldDirty: true });
   };
   const handleUploadError = (error: Error) => {
     console.error(error);
