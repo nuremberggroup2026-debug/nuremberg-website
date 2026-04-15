@@ -48,7 +48,7 @@ export default function ImageUploader({
   }, [initialImageUrl]);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const MAX_BYTES = 2 * 1024 * 1024; // 2MB
+  const MAX_BYTES = 4 * 1024 * 1024; // 4MB
 
   const handleDelete = () => {
     setImageUrl(null);
@@ -73,8 +73,8 @@ export default function ImageUploader({
     setErrorMessage(null);
 
     if (file.size > MAX_BYTES) {
-      const err = new Error("File size exceeds 2 MB.");
-      setErrorMessage("File is too large — maximum is 2 MB.");
+      const err = new Error("File size exceeds 4 MB.");
+      setErrorMessage("File is too large — maximum is 4 MB.");
       onUploadError(err);
       return;
     }
@@ -105,7 +105,7 @@ export default function ImageUploader({
       // eslint-disable-next-line no-console
       console.error("Upload error:", normalizedError);
       setErrorMessage(
-        "Upload failed. Please try again or use a smaller image (max 2 MB)."
+        "Upload failed. Please try again or use a smaller image (max 4 MB)."
       );
       onUploadError(normalizedError);
     }
@@ -181,7 +181,7 @@ export default function ImageUploader({
         <div className="text-sm font-semibold">
           {isUploading ? "Uploading..." : isDragOver ? "Drop the file here" : "Drop file here or click to browse"}
         </div>
-        <div className="text-xs text-gray-400 mt-1">Image (Max 2MB)</div>
+        <div className="text-xs text-gray-400 mt-1">Image (Max 4MB)</div>
 
         <div className="mt-4">
           <button
