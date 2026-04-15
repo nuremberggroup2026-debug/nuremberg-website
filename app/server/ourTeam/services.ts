@@ -210,7 +210,7 @@ export const getAllMembersBylocale= (locale:Locale)=> unstable_cache(
   async()=>{
     try {
       const result = await prisma.our_team.findMany({
-        orderBy:{display_order:"desc"}
+        orderBy:{display_order:"asc"}
        
       });
       const translatedMembers = result.map((member:NewMember) => {
